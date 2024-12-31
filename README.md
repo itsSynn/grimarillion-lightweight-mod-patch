@@ -2,10 +2,10 @@
 
 1. Extracted the following:
 
-  - DoM (1.6.0a)
-  - Grimarillion (0.92a)
-  - Lightweight Mod (11.26.2023)
-  - Lightweight Mod DoM Compat Patch
+   - DoM (1.6.0a)
+   - Grimarillion (0.92a)
+   - Lightweight Mod (11.26.2023)
+   - Lightweight Mod DoM Compat Patch
 
 2. Three-way folder compared:
 
