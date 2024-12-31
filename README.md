@@ -1,7 +1,8 @@
 # grim-dawn-lightweight-grimarillion-compat
 
-Based on:
-https://forums.crateentertainment.com/t/lightweight-mod-for-speeding-up-the-leveling-process/108690/148
+Based on: https://forums.crateentertainment.com/t/lightweight-mod-for-speeding-up-the-leveling-process/108690/148
+
+## Info
 
 Steps for Grimarillion compatibility:
 
@@ -19,3 +20,11 @@ Steps for Grimarillion compatibility:
 
 3. Baselined changed files with Grimarillion version.
 4. Merged over DoM Compat Patch changes, updating skill/loot/etc indexes & weights where necessary.
+
+## Standard Asset Manager Setup
+
+>D:\SteamLibrary\steamapps\common\Grim Dawn\
+>D:\SteamLibrary\steamapps\common\Grim Dawn\
+>D:\SteamLibrary\steamapps\common\Grim Dawn\
+>D:\SteamLibrary\steamapps\common\Grim Dawn\gdx2\
+>D:\SteamLibrary\steamapps\common\Grim Dawn\mods\gdx2\
