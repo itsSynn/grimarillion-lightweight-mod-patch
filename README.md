@@ -1,5 +1,10 @@
 # grim-dawn-lightweight-grimarillion-compat
 
+Based on:
+https://forums.crateentertainment.com/t/lightweight-mod-for-speeding-up-the-leveling-process/108690/148
+
+Steps for Grimarillion compatibility:
+
 1. Extracted the following:
 
    - DoM (1.6.0a)
