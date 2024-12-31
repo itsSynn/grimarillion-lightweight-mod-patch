@@ -1,0 +1,63 @@
+tag_DogSpawned=^ySam, the Good Boy, has appeared!
+
+tag_DogSummonSkill=Summon the Good Boy
+tag_DogSummonSkillDesc=
+
+tag_DogPet=Sam
+tag_Dog=Sam the Good Boy
+
+tag_DogBuff=Blessing of Doggo
+tag_DogBuffDesc=You have been blessed by Sam, the Good Boy.{^n}{^n}You gain increased Damage, Run Speed and Experience Points.
+
+tag_MerchantSpawned=^yHonck has appeared!
+
+tag_Merchant=Honck
+
+tag_LootSphereCommon=Beutekugel (Common)
+tag_LootSphereCommonDesc="Holds some spoils. You should pop it."
+tag_LootSphereRandom=Beutekugel (Random)
+tag_LootSphereRandomDesc="Holds 1 to 60 Equipment Pieces. You should pop it."
+tag_LootSphereUncommon=Beutekugel (Uncommon)
+tag_LootSphereUncommonDesc="Holds plenty of spoils. You should pop it."
+tag_LootSphereValuable=Beutekugel (Valuable)
+tag_LootSphereValuableDesc="Holds plenty of valuable spoils. You should pop it."
+tag_LootSphereLegendary=Beutekugel (Legendary)
+tag_LootSphereLegendaryDesc="Holds plenty of legendary spoils. You should pop it."
+tag_LootSphereMaterialsLow=Beutekugel (Components Common)
+tag_LootSphereMaterialsLowDesc="Holds a few components. You should pop it."
+tag_LootSphereMaterialsNormal=Beutekugel (Components Uncommon)
+tag_LootSphereMaterialsNormalDesc="Holds some components. You should pop it."
+tag_LootSphereMaterialsValuable=Beutekugel (Components Valuable)
+tag_LootSphereMaterialsValuableDesc="Holds plenty of valuable components. You should pop it."
+tag_LootSphereMaterialsSpecial=Beutekugel (Special Materials)
+tag_LootSphereMaterialsSpecialDesc="Holds plenty of Special Materials (e.g. Blood of Ch'thon). You should pop it."
+tag_LootSphereDivine=Beutekugel (Divine)
+tag_LootSphereDivineDesc="Holds plenty of legendary spoils. Chance to contain multiple Beutekugeln. You should pop it."
+tag_LootSphereMI=Beutekugel (Monster Infrequents)
+tag_LootSphereMIDesc="Holds only Monster Infrequents. You should pop it."
+tag_LootSphereMagical=Beutekugel (Magical)
+tag_LootSphereMagicalDesc="Holds plenty of valuable spoils. Chance to contain multiple Blueprints. You should pop it."
+
+tag_ExperienceScrollSmall=Tome of Knowledge (S)
+tag_ExperienceScrollSmallDesc="Grants you 25% more Experience Points for 30 minutes."
+tag_ExperienceScrollSkillSmall=Experience Buff (S)
+tag_ExperienceScrollSkillSmallDesc=You gain 25% more Experience Points. Lasts 30 minutes.
+tag_ExperienceScrollMedium=Tome of Knowledge (M)
+tag_ExperienceScrollMediumDesc="Grants you 75% more Experience Points for 20 minutes."
+tag_ExperienceScrollSkillMedium=Experience Buff (M)
+tag_ExperienceScrollSkillMediumDesc=You gain 75% more Experience Points. Lasts 20 minutes.
+tag_ExperienceScrollLarge=Tome of Knowledge (L)
+tag_ExperienceScrollLargeDesc="Grants you 200% more Experience Points for 10 minutes."
+tag_ExperienceScrollSkillLarge=Experience Buff (L)
+tag_ExperienceScrollSkillLargeDesc=You gain 200% more Experience Points. Lasts 10 minutes.
+
+tag_PotionGold=Iron ... Potion?
+tag_PotionGoldDesc="Grants somehow 15 000 Iron Bits."
+tag_PotionGoldValuable=Iron ... Potion? (Valuable)
+tag_PotionGoldValuableDesc="Grants somehow 50 000 Iron Bits."
+tag_PotionAttribute=Attribute Potion
+tag_PotionAttributeDesc="Grants one Attribute Point."
+tag_PotionSkill=Skill Potion
+tag_PotionSkillDesc="Grants one Skill Point."
+tag_PotionDevotion=Devotion Potion
+tag_PotionDevotionDesc="Grants one Devotion Point."

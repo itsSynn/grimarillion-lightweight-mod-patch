@@ -1,0 +1,4 @@
+templateName,database/templates/leveltable.tpl,
+Class,LevelTable,
+levels,1;25;45;75;100,
+records,records/__mod/spheres/loot/tdyn_all_spheres_only_low.dbr;records/__mod/spheres/loot/tdyn_all_spheres_low.dbr;records/__mod/spheres/loot/tdyn_all_spheres_mid.dbr;records/__mod/spheres/loot/tdyn_all_spheres_end.dbr;records/__mod/spheres/loot/tdyn_all_spheres_top_end.dbr,
