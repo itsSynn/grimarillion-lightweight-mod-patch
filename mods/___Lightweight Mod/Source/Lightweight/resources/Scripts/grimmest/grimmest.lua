@@ -375,8 +375,6 @@ function gd.grimmest.OnAddToWorld_pc( objectId )
 	end
 
 	gd.loot.countSpheres()
-	
-	UI.Notify("tag_ReceivedSummonItem")
 
 	-- Lightweight Mod Stuff Ends
 
