@@ -25,13 +25,54 @@ IF NOT EXIST "%grimarillionDir%" (
 	EXIT
 )
 
+:: -- Templates
+
+:TEMPLATES
+CLS
+
+IF EXIST "%scriptDir%\database\templates" (
+	ECHO Grim Dawn templates.arc extract already exists at:
+	ECHO %scriptDir%\database\templates & ECHO.
+	ECHO Do you want to remove this directory and re-extract? & ECHO.
+	ECHO Type 'y' to re-extract.
+	ECHO Type 'n' to exit. & ECHO.
+) ELSE (
+	ECHO Grim Dawn templates.arc must be extracted to:
+	ECHO %scriptDir%\database\templates & ECHO.
+	ECHO Do you want to extract? & ECHO.
+	ECHO Type 'y' to extract.
+	ECHO Type 'n' to exit. & ECHO.
+)
+
+SET /p templatesInput=^>
+
+IF /I "%templatesInput%"=="y" (
+	IF EXIST "%scriptDir%\database\templates" (
+		RMDIR /s /q "%scriptDir%\database\templates"
+		ECHO. & ECHO Directory removed: %scriptDir%\database\templates
+	)
+	ECHO.
+	"%scriptDir%\ArchiveTool.exe" "%scriptDir%\database\templates.arc" -extract "%scriptDir%\database"
+	ECHO. & ECHO Press Enter to continue...
+	PAUSE >nul
+	GOTO :DATABASE
+)
+IF /I "%templatesInput%"=="n" (
+	EXIT
+)
+
+ECHO. & ECHO Invalid option. & ECHO.
+ECHO Press Enter to continue...
+PAUSE >nul
+GOTO :TEMPLATES
+
 :: -- Database
 
 :DATABASE
 CLS
 
 IF EXIST "%grimarillionDir%\database\records" (
-	ECHO Merge records directory already exists at:
+	ECHO Grimarillion merge records already exists at:
 	ECHO %grimarillionDir%\database\records & ECHO.
 	ECHO Do you want to remove this directory and continue? & ECHO.
 	ECHO Type 'y' to remove the existing records.
@@ -43,7 +84,7 @@ IF EXIST "%grimarillionDir%\database\records" (
 		ECHO. & ECHO Directory removed: %grimarillionDir%\database\records & ECHO.
 		ECHO Press Enter to continue...
 		PAUSE >nul
-		GOTO :TEMPLATES
+		GOTO :BACKUP
 	)
 	IF /I "!recordsInput!"=="n" (
 		EXIT
@@ -54,42 +95,6 @@ IF EXIST "%grimarillionDir%\database\records" (
 	PAUSE >nul
 	GOTO :DATABASE
 )
-
-:: -- Templates
-
-:TEMPLATES
-CLS
-
-IF EXIST "%scriptDir%\database\templates" (
-	ECHO Grim Dawn templates.arc extract directory already exists at:
-	ECHO %scriptDir%\database\templates & ECHO.
-	ECHO Do you want to re-extract the templates? & ECHO.
-	ECHO Type 'y' to re-extract.
-	ECHO Type 'n' to skip. & ECHO.
-	SET /p templatesInput=^>
-	
-	IF /I "!templatesInput!"=="y" (
-		GOTO :TEMPLATES_EXTRACT
-	)
-	IF /I "!templatesInput!"=="n" (
-		GOTO :BACKUP
-	)
-
-	ECHO. & ECHO Invalid option. & ECHO.
-	ECHO Press Enter to continue...
-	PAUSE >nul
-	GOTO :TEMPLATES
-)
-
-:TEMPLATES_EXTRACT
-IF EXIST "%scriptDir%\database\templates" (
-	RMDIR /s /q "%scriptDir%\database\templates"
-	ECHO. & ECHO Directory removed: %scriptDir%\database\templates
-)
-ECHO.
-"%scriptDir%\ArchiveTool.exe" "%scriptDir%\database\templates.arc" -extract "%scriptDir%\database"
-ECHO. & ECHO Press Enter to continue...
-PAUSE >nul
 
 :: -- Backup
 
@@ -117,7 +122,7 @@ IF /I "%backupInput%"=="y" (
 	PAUSE >nul
 	GOTO :MERGE
 )
-IF /I "!backupInput!"=="n" (
+IF /I "%backupInput%"=="n" (
 	GOTO :MERGE
 )
 
@@ -152,7 +157,7 @@ IF /I "%mergeInput%"=="y" (
 	ECHO Press Enter to continue...
 	PAUSE >nul
 	ECHO %scriptDir%
-	START /wait "%scriptDir%\AssetManager.exe"
+	START /wait "" "%scriptDir%\AssetManager.exe"
 	GOTO :CLEANUP
 )
 IF /I "%mergeInput%"=="n" (
@@ -169,7 +174,7 @@ GOTO :MERGE
 :CLEANUP
 CLS
 
-ECHO Database patching is assumed to be complete. & ECHO.
+ECHO AssetManager was closed and database patching is assumed to be complete. & ECHO.
 ECHO Do you want to perform final cleanup? & ECHO.
 ECHO Type 'y' to perform cleanup.
 ECHO Type 'n' to exit. & ECHO.
