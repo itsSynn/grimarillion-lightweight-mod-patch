@@ -1,99 +1,164 @@
 @ECHO off
 
-SETLOCAL
 SETLOCAL EnableDelayedExpansion
 
 SET grimDawnDir=
 SET grimarillionDir=
 SET "lightweightSourceDir=%~dp0\source\lightweight"
-
-:: Prep
+SET "savesDir=%UserProfile%\Documents\My Games\Grim Dawn\save"
 
 FOR %%i IN ("%~dp0..") DO (
 	IF NOT EXIST "%%~fi\__lightweight" (
-		ECHO The folder where this .bat is located must be in mods and named '__lightweight'. This is currently not the case.
+		ECHO ERROR - This .bat script is not running from the expected directory:
+		ECHO \mods\__lightweight & ECHO.
+		ECHO Press Enter to exit...
 		PAUSE >nul
 		EXIT
 	)
 	IF NOT EXIST "%%~fi\grimarillion" (
-		ECHO Grimarillion could not be found.
+		ECHO ERROR - Grimarillion could not be found at the expected location:
+		ECHO \mods\grimarillion & ECHO.
+		ECHO Press Enter to exit...
 		PAUSE >nul
 		EXIT
 	)
 	SET "grimarillionDir=%%~fi\grimarillion"
-	FOR %%a IN ("%%~fi\..") DO (
-		IF NOT "%%~nxa"=="Grim Dawn" (
-			ECHO You can not use a different working directory than the installation directory of Grim Dawn. Check the README.txt.
-			PAUSE >nul
-			EXIT
-		)
-		SET "grimDawnDir=%%~fa"
-		"%grimDawnDir%"\ArchiveTool.exe "%grimDawnDir%"\templates.arc -extract "%grimDawnDir%"\database
-	)
 )
 
-:: Backup
+FOR %%i IN ("%~dp0../..") DO SET "grimDawnDir=%%~fi"
 
-FOR /f "tokens=1-3 delims=/" %%A IN ("%date%") DO SET backupDate=%%C-%%A-%%B
+:: Grimarillion records
+
+:RECORDS
+CLS
+
+IF EXIST "%grimarillionDir%\database\records" (
+	ECHO Merge records directory already exists at:
+	ECHO %grimarillionDir%\database\records & ECHO.
+	ECHO Do you want to remove this directory and continue? & ECHO.
+	ECHO Type 'y' to remove the existing records.
+	ECHO Type 'n' to exit. & ECHO.
+	SET /p recordsInput=^>
+
+	IF /I "!recordsInput!"=="y" (
+		RMDIR /s /q "%grimarillionDir%\database\records"
+		ECHO. & ECHO Directory removed. & ECHO.
+		ECHO Press Enter to continue...
+		PAUSE >nul
+		GOTO :TEMPLATES
+	)
+	IF /I "!recordsInput!"=="n" (
+		EXIT
+	)
+
+	ECHO. & ECHO Invalid option. & ECHO.
+	ECHO Press Enter to continue...
+	PAUSE >nul
+	GOTO :RECORDS
+)
+
+:: Grim Dawn templates
+
+:TEMPLATES
+CLS
+
+IF EXIST "%grimDawnDir%\database\templates" (
+	ECHO Grim Dawn templates.arc extract directory already exists at:
+	ECHO %grimDawnDir%\database\templates & ECHO.
+	ECHO Do you want to re-extract the templates? & ECHO.
+	ECHO Type 'y' to re-extract.
+	ECHO Type 'n' to skip. & ECHO.
+	SET /p templatesInput=^>
+	
+	IF /I "!templatesInput!"=="y" (
+		GOTO :TEMPLATES_EXTRACT
+	)
+	IF /I "!templatesInput!"=="n" (
+		GOTO :BACKUP
+	)
+
+	ECHO. & ECHO Invalid option. & ECHO.
+	ECHO Press Enter to continue...
+	PAUSE >nul
+	GOTO :TEMPLATES
+)
+
+:TEMPLATES_EXTRACT
+IF EXIST "%grimDawnDir%\database\templates" (
+	RMDIR /s /q "%grimDawnDir%\database\templates"
+	ECHO. & ECHO Directory removed. & ECHO.
+)
+ECHO.
+"%grimDawnDir%\ArchiveTool.exe" "%grimDawnDir%\database\templates.arc" -extract "%grimDawnDir%\database"
+ECHO. & ECHO Press Enter to continue...
+PAUSE >nul
+
+:: Save backup
+
+:BACKUP
+CLS
+
+FOR /f "tokens=2 delims= " %%A IN ("%date%") DO SET datePart=%%A
+FOR /f "tokens=1,2,3 delims=/ " %%A IN ("%datePart%") DO SET backupDate=%%C-%%B-%%A
 SET "time=%time:~0,8%"
 SET "backupTime=%time::=%"
-SET "destinationSaves=%UserProfile%\Documents\My Games\Grim Dawn\save\user"
-SET "backupLocation=%UserProfile%\Documents\My Games\Grim Dawn\save\_backup_%backupDate%_%backupTime%"
-SET backupExists=
-MKDIR "%backupLocation%"
-FOR /F %%i IN ('DIR /b /a "%backupLocation%\*"') DO (
-	SET backupExists=^(Already exists^)
-    GOTO MERGE
+SET "backupLocation=%savesDir%\_backup_%backupDate%_%backupTime%"
+
+ECHO A backup of your characters can be created at:
+ECHO %backupLocation% & ECHO.
+ECHO Do you want to create a backup? & ECHO.
+ECHO Type 'y' to create a backup.
+ECHO Type 'n' to skip. & ECHO.
+SET /p backupInput=^>
+
+IF /I "%backupInput%"=="y" (
+	ECHO.
+	MKDIR "%backupLocation%"
+	XCOPY /e /y /q "%savesDir%\user" "%backupLocation%"
+	ECHO. & ECHO Press Enter to continue...
+	PAUSE >nul
+	GOTO :MERGE
 )
-XCOPY "%destinationSaves%" "%backupLocation%" /e /f /y /q
+IF /I "!backupInput!"=="n" (
+	GOTO :MERGE
+)
+
+ECHO. & ECHO Invalid option. & ECHO.
+ECHO Press Enter to continue...
+PAUSE >nul
+GOTO :BACKUP
 
 :: Merge
 
 :MERGE
 CLS
-ECHO Script merges the .arc archives of Grimarillion with the files from the Lightweight mod. & ECHO.
-ECHO As a precaution a backup of all your modded characters was created inside the save game directory. %backupExists% & ECHO.
-ECHO Press Enter to continue...
-SET /p input=
-CLS
 
-:OPTIONS
-ECHO You need to patch the database file afterwards. Read the included README.txt for instructions. & ECHO.
-ECHO Type 'merge' to begin.
-ECHO Type 'exit' to close the program. & ECHO.
-SET /p input=^> 
-IF "%input:~0,1%"==" " (
-	ECHO. & ECHO Command doesn't exist. & ECHO.
-	ECHO Press Enter to continue...
-	PAUSE >nul
-	CLS
-	GOTO :OPTIONS
-)
+ECHO Ready to merge^^!
+ECHO You must to patch the Grimarillion database after merging. & ECHO.
+ECHO Do you want to perform the merge? & ECHO.
+ECHO Type 'merge' to merge.
+ECHO Type 'exit' to exit. & ECHO.
+SET /p mergeInput=^>
 
-IF "%input%"=="merge" (
-	IF EXIST "%grimarillionDir%\database\records" (
-		ECHO. & ECHO The directory 'records' already exists in 'grimarillion\database'^^! This should not be the case with a clean install. & ECHO.
-		ECHO Press Enter to continue...
-		PAUSE >nul
-		CLS
-		GOTO :OPTIONS
-	)
-	XCOPY "%lightweightSourceDir%\database\records" "%grimarillionDir%\database\records" /e /f /y /q /i
-	"%grimDawnDir%"\ArchiveTool.exe "%grimarillionDir%"\resources\Conversations.arc -update . "%lightweightSourceDir%"\resources\conversations
-	"%grimDawnDir%"\ArchiveTool.exe "%grimarillionDir%"\resources\Creatures.arc -update . "%lightweightSourceDir%"\resources\creatures
-	"%grimDawnDir%"\ArchiveTool.exe "%grimarillionDir%"\resources\Scripts.arc -update . "%lightweightSourceDir%"\resources\scripts
-	"%grimDawnDir%"\ArchiveTool.exe "%grimarillionDir%"\resources\Sound.arc -update . "%lightweightSourceDir%"\resources\sound
-	"%grimDawnDir%"\ArchiveTool.exe "%grimarillionDir%"\resources\Text_EN.arc -update . "%lightweightSourceDir%"\resources\text_en
-	ECHO. & ECHO Please follow the instructions from the included README.txt to patch the database file. & ECHO.
+IF /I "%mergeInput%"=="merge" (
+	ECHO.
+	XCOPY /e /y /q /i "%lightweightSourceDir%\database\records" "%grimarillionDir%\database\records"
+	"%grimDawnDir%\ArchiveTool.exe" "%grimarillionDir%\resources\Conversations.arc" -update . "%lightweightSourceDir%\resources\conversations"
+	"%grimDawnDir%\ArchiveTool.exe" "%grimarillionDir%\resources\Creatures.arc" -update . "%lightweightSourceDir%\resources\creatures"
+	"%grimDawnDir%\ArchiveTool.exe" "%grimarillionDir%\resources\Scripts.arc" -update . "%lightweightSourceDir%\resources\scripts"
+	"%grimDawnDir%\ArchiveTool.exe" "%grimarillionDir%\resources\Sound.arc" -update . "%lightweightSourceDir%\resources\sound"
+	"%grimDawnDir%\ArchiveTool.exe" "%grimarillionDir%\resources\Text_EN.arc" -update . "%lightweightSourceDir%\resources\text_en"
+	ECHO Grimarillion archives updated. & ECHO.
+	ECHO Merge complete^^! & ECHO.
 	ECHO Press Enter to exit...
 	PAUSE >nul
 	EXIT
-) ELSE IF "%input%"=="exit" (
-	EXIT
-) ELSE (
-	ECHO. & ECHO Command doesn't exist & ECHO.
-	ECHO Press Enter to continue...
-	PAUSE >nul
-	CLS
-	GOTO :OPTIONS
 )
+IF /I "%mergeInput%"=="exit" (
+	EXIT
+)
+
+ECHO. & ECHO Invalid option. & ECHO.
+ECHO Press Enter to continue...
+PAUSE >nul
+GOTO :MERGE
