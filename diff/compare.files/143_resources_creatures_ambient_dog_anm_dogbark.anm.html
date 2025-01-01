@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>WinMerge File Compare Report</title>
+<style>
+<!--
+table { table-layout: fixed; margin: 0; border: 1px solid #a0a0a0; box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15); }
+th { position: sticky; top: 0; }
+td,th { word-break: break-all; font-size: 12pt; padding: 0 3px; }
+tr { vertical-align: top; }
+.title { font-weight: bold; color: white; background-color: blue; vertical-align: top; text-align: center; padding: 4px 4px; background: linear-gradient(mediumblue, darkblue);}
+.sf3b2 {color: #000000; background-color: #ffffff; }
+.sf3b5 {color: #000000; background-color: #0078d7; }
+.sf3b14 {color: #000000; background-color: #ffa0a0; }
+.sf3b16 {color: #000000; background-color: #f1e2ad; }
+.sf3b18 {color: #000000; background-color: #ffaa82; }
+.sf3b19 {color: #000000; background-color: #c8816c; }
+.sf6b2 {color: #ffffff; background-color: #ffffff; }
+.sf6b5 {color: #ffffff; background-color: #0078d7; }
+.sf6b14 {color: #ffffff; background-color: #ffa0a0; }
+.sf6b16 {color: #ffffff; background-color: #f1e2ad; }
+.sf6b18 {color: #ffffff; background-color: #ffaa82; }
+.sf6b19 {color: #ffffff; background-color: #c8816c; }
+.sf7b2 {color: #0000ff; background-color: #ffffff; font-weight: bold; }
+.sf7b5 {color: #0000ff; background-color: #0078d7; font-weight: bold; }
+.sf7b14 {color: #0000ff; background-color: #ffa0a0; font-weight: bold; }
+.sf7b16 {color: #0000ff; background-color: #f1e2ad; font-weight: bold; }
+.sf7b18 {color: #0000ff; background-color: #ffaa82; font-weight: bold; }
+.sf7b19 {color: #0000ff; background-color: #c8816c; font-weight: bold; }
+.sf8b2 {color: #800080; background-color: #ffffff; }
+.sf8b5 {color: #800080; background-color: #0078d7; }
+.sf8b14 {color: #800080; background-color: #ffa0a0; }
+.sf8b16 {color: #800080; background-color: #f1e2ad; }
+.sf8b18 {color: #800080; background-color: #ffaa82; }
+.sf8b19 {color: #800080; background-color: #c8816c; }
+.sf9b2 {color: #008000; background-color: #ffffff; }
+.sf9b5 {color: #008000; background-color: #0078d7; }
+.sf9b14 {color: #008000; background-color: #ffa0a0; }
+.sf9b16 {color: #008000; background-color: #f1e2ad; }
+.sf9b18 {color: #008000; background-color: #ffaa82; }
+.sf9b19 {color: #008000; background-color: #c8816c; }
+.sf10b2 {color: #ff0000; background-color: #ffffff; }
+.sf10b5 {color: #ff0000; background-color: #0078d7; }
+.sf10b14 {color: #ff0000; background-color: #ffa0a0; }
+.sf10b16 {color: #ff0000; background-color: #f1e2ad; }
+.sf10b18 {color: #ff0000; background-color: #ffaa82; }
+.sf10b19 {color: #ff0000; background-color: #c8816c; }
+.sf11b2 {color: #606060; background-color: #ffffff; }
+.sf11b5 {color: #606060; background-color: #0078d7; }
+.sf11b14 {color: #606060; background-color: #ffa0a0; }
+.sf11b16 {color: #606060; background-color: #f1e2ad; }
+.sf11b18 {color: #606060; background-color: #ffaa82; }
+.sf11b19 {color: #606060; background-color: #c8816c; }
+.sf12b2 {color: #800000; background-color: #ffffff; }
+.sf12b5 {color: #800000; background-color: #0078d7; }
+.sf12b14 {color: #800000; background-color: #ffa0a0; }
+.sf12b16 {color: #800000; background-color: #f1e2ad; }
+.sf12b18 {color: #800000; background-color: #ffaa82; }
+.sf12b19 {color: #800000; background-color: #c8816c; }
+.sf13b2 {color: #0080c0; background-color: #ffffff; }
+.sf13b5 {color: #0080c0; background-color: #0078d7; }
+.sf13b14 {color: #0080c0; background-color: #ffa0a0; }
+.sf13b16 {color: #0080c0; background-color: #f1e2ad; }
+.sf13b18 {color: #0080c0; background-color: #ffaa82; }
+.sf13b19 {color: #0080c0; background-color: #c8816c; }
+.sf15b2 {color: #000000; background-color: #ffffff; }
+.sf15b5 {color: #000000; background-color: #0078d7; }
+.sf15b14 {color: #000000; background-color: #ffa0a0; }
+.sf15b16 {color: #000000; background-color: #f1e2ad; }
+.sf15b18 {color: #000000; background-color: #ffaa82; }
+.sf15b19 {color: #000000; background-color: #c8816c; }
+.sf17b2 {color: #000000; background-color: #ffffff; }
+.sf17b5 {color: #000000; background-color: #0078d7; }
+.sf17b14 {color: #000000; background-color: #ffa0a0; }
+.sf17b16 {color: #000000; background-color: #f1e2ad; }
+.sf17b18 {color: #000000; background-color: #ffaa82; }
+.sf17b19 {color: #000000; background-color: #c8816c; }
+.sf20b2 {color: #000080; background-color: #ffffff; }
+.sf20b5 {color: #000080; background-color: #0078d7; }
+.sf20b14 {color: #000080; background-color: #ffa0a0; }
+.sf20b16 {color: #000080; background-color: #f1e2ad; }
+.sf20b18 {color: #000080; background-color: #ffaa82; }
+.sf20b19 {color: #000080; background-color: #c8816c; }
+.sf21b2 {color: #0080c0; background-color: #ffffff; }
+.sf21b5 {color: #0080c0; background-color: #0078d7; }
+.sf21b14 {color: #0080c0; background-color: #ffa0a0; }
+.sf21b16 {color: #0080c0; background-color: #f1e2ad; }
+.sf21b18 {color: #0080c0; background-color: #ffaa82; }
+.sf21b19 {color: #0080c0; background-color: #c8816c; }
+.sf3b2i {color: #ababab; background-color: #ffffff; }
+.sf3b5i {color: #005190; background-color: #0078d7; }
+.sf3b14i {color: #ab6b6b; background-color: #ffa0a0; }
+.sf3b16i {color: #a19774; background-color: #f1e2ad; }
+.sf3b18i {color: #ab7257; background-color: #ffaa82; }
+.sf3b19i {color: #865749; background-color: #c8816c; }
+.sf6b2i {color: #ffffff; background-color: #ffffff; }
+.sf6b5i {color: #54a4e4; background-color: #0078d7; }
+.sf6b14i {color: #ffbfbf; background-color: #ffa0a0; }
+.sf6b16i {color: #f5ebc8; background-color: #f1e2ad; }
+.sf6b18i {color: #ffc6ab; background-color: #ffaa82; }
+.sf6b19i {color: #daaa9c; background-color: #c8816c; }
+.sf7b2i {color: #ababff; background-color: #ffffff; font-weight: bold; }
+.sf7b5i {color: #0051e4; background-color: #0078d7; font-weight: bold; }
+.sf7b14i {color: #ab6bbf; background-color: #ffa0a0; font-weight: bold; }
+.sf7b16i {color: #a197c8; background-color: #f1e2ad; font-weight: bold; }
+.sf7b18i {color: #ab72ab; background-color: #ffaa82; font-weight: bold; }
+.sf7b19i {color: #86579c; background-color: #c8816c; font-weight: bold; }
+.sf8b2i {color: #d5abd5; background-color: #ffffff; }
+.sf8b5i {color: #2a51bb; background-color: #0078d7; }
+.sf8b14i {color: #d56b96; background-color: #ffa0a0; }
+.sf8b16i {color: #cc979f; background-color: #f1e2ad; }
+.sf8b18i {color: #d57282; background-color: #ffaa82; }
+.sf8b19i {color: #b15772; background-color: #c8816c; }
+.sf9b2i {color: #abd5ab; background-color: #ffffff; }
+.sf9b5i {color: #007a90; background-color: #0078d7; }
+.sf9b14i {color: #ab966b; background-color: #ffa0a0; }
+.sf9b16i {color: #a1c274; background-color: #f1e2ad; }
+.sf9b18i {color: #ab9d57; background-color: #ffaa82; }
+.sf9b19i {color: #868149; background-color: #c8816c; }
+.sf10b2i {color: #ffabab; background-color: #ffffff; }
+.sf10b5i {color: #545190; background-color: #0078d7; }
+.sf10b14i {color: #ff6b6b; background-color: #ffa0a0; }
+.sf10b16i {color: #f59774; background-color: #f1e2ad; }
+.sf10b18i {color: #ff7257; background-color: #ffaa82; }
+.sf10b19i {color: #da5749; background-color: #c8816c; }
+.sf11b2i {color: #cbcbcb; background-color: #ffffff; }
+.sf11b5i {color: #1f71b0; background-color: #0078d7; }
+.sf11b14i {color: #cb8b8b; background-color: #ffa0a0; }
+.sf11b16i {color: #c1b794; background-color: #f1e2ad; }
+.sf11b18i {color: #cb9277; background-color: #ffaa82; }
+.sf11b19i {color: #a67769; background-color: #c8816c; }
+.sf12b2i {color: #d5abab; background-color: #ffffff; }
+.sf12b5i {color: #2a5190; background-color: #0078d7; }
+.sf12b14i {color: #d56b6b; background-color: #ffa0a0; }
+.sf12b16i {color: #cc9774; background-color: #f1e2ad; }
+.sf12b18i {color: #d57257; background-color: #ffaa82; }
+.sf12b19i {color: #b15749; background-color: #c8816c; }
+.sf13b2i {color: #abd5eb; background-color: #ffffff; }
+.sf13b5i {color: #007ad0; background-color: #0078d7; }
+.sf13b14i {color: #ab96aa; background-color: #ffa0a0; }
+.sf13b16i {color: #a1c2b3; background-color: #f1e2ad; }
+.sf13b18i {color: #ab9d96; background-color: #ffaa82; }
+.sf13b19i {color: #868187; background-color: #c8816c; }
+.sf15b2i {color: #ababab; background-color: #ffffff; }
+.sf15b5i {color: #005190; background-color: #0078d7; }
+.sf15b14i {color: #ab6b6b; background-color: #ffa0a0; }
+.sf15b16i {color: #a19774; background-color: #f1e2ad; }
+.sf15b18i {color: #ab7257; background-color: #ffaa82; }
+.sf15b19i {color: #865749; background-color: #c8816c; }
+.sf17b2i {color: #ababab; background-color: #ffffff; }
+.sf17b5i {color: #005190; background-color: #0078d7; }
+.sf17b14i {color: #ab6b6b; background-color: #ffa0a0; }
+.sf17b16i {color: #a19774; background-color: #f1e2ad; }
+.sf17b18i {color: #ab7257; background-color: #ffaa82; }
+.sf17b19i {color: #865749; background-color: #c8816c; }
+.sf20b2i {color: #ababd5; background-color: #ffffff; }
+.sf20b5i {color: #0051bb; background-color: #0078d7; }
+.sf20b14i {color: #ab6b96; background-color: #ffa0a0; }
+.sf20b16i {color: #a1979f; background-color: #f1e2ad; }
+.sf20b18i {color: #ab7282; background-color: #ffaa82; }
+.sf20b19i {color: #865772; background-color: #c8816c; }
+.sf21b2i {color: #abd5eb; background-color: #ffffff; }
+.sf21b5i {color: #007ad0; background-color: #0078d7; }
+.sf21b14i {color: #ab96aa; background-color: #ffa0a0; }
+.sf21b16i {color: #a1c2b3; background-color: #f1e2ad; }
+.sf21b18i {color: #ab9d96; background-color: #ffaa82; }
+.sf21b19i {color: #868187; background-color: #c8816c; }
+.cn {text-align: center; word-break: normal; color: #000000; background-color: #f0f0f0;}
+.ln {text-align: right; word-break: normal; color: #000000; background-color: #f0f0f0;}
+-->
+</style>
+</head>
+<body>
+<table style="width: 100%; border-collapse: collapse;">
+<colgroup>
+<col style="width: 0.5em;" />
+<col style="width: calc(100% / 2 - 0.5em);" />
+<col style="width: 0.5em;" />
+<col style="width: calc(100% / 2 - 0.5em);" />
+</colgroup>
+<thead>
+<tr>
+<th colspan="2" class="title">Untitled left</th>
+<th colspan="2" class="title">D:\SteamLibrary\steamapps\common\Grim Dawn\working-grimarillion-lightweight\resources\creatures\ambient\dog\anm\dogbark.anm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="ln"><a id="d1" href="#d1">.</a></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">ANM	02	18	00	00	00	1F	00	00	00	1E	00	00<wbr>	00	08	00	00	00MOVEAXIS	00b/	1A	00b/š	0<wbr>0	00	00	00	00	00	00€	00	00	00€	00	00	00<wbr>€	00	00€?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€?	<wbr>00b/	1A	00b/š	00	00	00	00	00	00	00€	00	<wbr>00	00€	00	00	00€	00	00€?	00	00€?	00	00€<wbr>?	00	00€?	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00€?	00b/	1A	00b/š	00	00	00	0<wbr>0	00	00	00€	00	00	00€	00	00	00€	00	00€?<wbr>	00	00€?	00	00€?	00	00€?	00	00	00	00	00<wbr>	00	00	00	00	00	00	00	00	00€?	00b/	1A	0<wbr>0b/š	00	00	00	00	00	00	00€	00	00	00€	00<wbr>	00	00€	00	00€?	00	00€?	00	00€?	00	00€?<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00€?	00b/	1A	00b/š	00	00	00	00	00	00	0<wbr>0€	00	00	00€	00	00	00€	00	00€?	00	00€?	<wbr>00	00€?	00	00€?	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00€?	00b/	1A	00b/š	00	0<wbr>0	00	00	00	00	00€	00	00	00€	00	00	00€	0<wbr>0	00€?	00	00€?	00	00€?	00	00€?	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00€?	00b<wbr>/	1A	00b/š	00	00	00	00	00	00	00€	00	00	<wbr>00€	00	00	00€	00	00€?	00	00€?	00	00€?	0<wbr>0	00€?	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00€?	00b/	1A	00b/š	00	00	00	00	0<wbr>0	00	00€	00	00	00€	00	00	00€	00	00€?	00<wbr>	00€?	00	00€?	00	00€?	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00	00€?	00b/	1A	00b/<wbr>š	00	00	00	00	00	00	00€	00	00	00€	00	00<wbr>	00€	00	00€?	00	00€?	00	00€?	00	00€?	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>€?	00b/	1A	00b/š	00	00	00	00	00	00	00€	<wbr>00	00	00€	00	00	00€	00	00€?	00	00€?	00	<wbr>00€?	00	00€?	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00€?	00b/	1A	00b/š	00	00	0<wbr>0	00	00	00	00€	00	00	00€	00	00	00€	00	0<wbr>0€?	00	00€?	00	00€?	00	00€?	00	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00€?	00b/	1<wbr>A	00b/š	00	00	00	00	00	00	00€	00	00	00€<wbr>	00	00	00€	00	00€?	00	00€?	00	00€?	00	0<wbr>0€?	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00€?	00b/	1A	00b/š	00	00	00	00	00	0<wbr>0	00€	00	00	00€	00	00	00€	00	00€?	00	00<wbr>€?	00	00€?	00	00€?	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00€?	00b/	1A	00b/š	0<wbr>0	00	00	00	00	00	00€	00	00	00€	00	00	00<wbr>€	00	00€?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€?	<wbr>00b/	1A	00b/š	00	00	00	00	00	00	00€	00	<wbr>00	00€	00	00	00€	00	00€?	00	00€?	00	00€<wbr>?	00	00€?	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00€?	00b/	1A	00b/š	00	00	00	0<wbr>0	00	00	00€	00	00	00€	00	00	00€	00	00€?<wbr>	00	00€?	00	00€?	00	00€?	00	00	00	00	00<wbr>	00	00	00	00	00	00	00	00	00€?	00b/	1A	0<wbr>0b/š	00	00	00	00	00	00	00€	00	00	00€	00<wbr>	00	00€	00	00€?	00	00€?	00	00€?	00	00€?<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00€?	00b/	1A	00b/š	00	00	00	00	00	00	0<wbr>0€	00	00	00€	00	00	00€	00	00€?	00	00€?	<wbr>00	00€?	00	00€?	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00€?	00b/	1A	00b/š	00	0<wbr>0	00	00	00	00	00€	00	00	00€	00	00	00€	0<wbr>0	00€?	00	00€?	00	00€?	00	00€?	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00€?	00b<wbr>/	1A	00b/š	00	00	00	00	00	00	00€	00	00	<wbr>00€	00	00	00€	00	00€?	00	00€?	00	00€?	0<wbr>0	00€?	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00€?	00b/	1A	00b/š	00	00	00	00	0<wbr>0	00	00€	00	00	00€	00	00	00€	00	00€?	00<wbr>	00€?	00	00€?	00	00€?	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00	00€?	00b/	1A	00b/<wbr>š	00	00	00	00	00	00	00€	00	00	00€	00	00<wbr>	00€	00	00€?	00	00€?	00	00€?	00	00€?	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>€?	00b/	1A	00b/š	00	00	00	00	00	00	00€	<wbr>00	00	00€	00	00	00€	00	00€?	00	00€?	00	<wbr>00€?	00	00€?	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00€?	00b/	1A	00b/š	00	00	0<wbr>0	00	00	00	00€	00	00	00€	00	00	00€	00	0<wbr>0€?	00	00€?	00	00€?	00	00€?	00	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00€?	00b/	1<wbr>A	00b/š	00	00	00	00	00	00	00€	00	00	00€<wbr>	00	00	00€	00	00€?	00	00€?	00	00€?	00	0<wbr>0€?	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00€?	00b/	1A	00b/š	00	00	00	00	00	0<wbr>0	00€	00	00	00€	00	00	00€	00	00€?	00	00<wbr>€?	00	00€?	00	00€?	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00€?	00b/	1A	00b/š	0<wbr>0	00	00	00	00	00	00€	00	00	00€	00	00	00<wbr>€	00	00€?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€?	<wbr>00b/	1A	00b/š	00	00	00	00	00	00	00€	00	<wbr>00	00€	00	00	00€	00	00€?	00	00€?	00	00€<wbr>?	00	00€?	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00€?	00b/	1A	00b/š	00	00	00	0<wbr>0	00	00	00€	00	00	00€	00	00	00€	00	00€?<wbr>	00	00€?	00	00€?	00	00€?	00	00	00	00	00<wbr>	00	00	00	00	00	00	00	00	00€?	00b/	1A	0<wbr>0b/š	00	00	00	00	00	00	00€	00	00	00€	00<wbr>	00	00€	00	00€?	00	00€?	00	00€?	00	00€?<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00€?	00b/	1A	00b/š	00	00	00	00	00	00	0<wbr>0€	00	00	00€	00	00	00€	00	00€?	00	00€?	<wbr>00	00€?	00	00€?	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00€?	0C	00	00	00Bone_Sp<wbr>ine01Eðú»<wbr>E[	06&gt;æM&lt;²7ª‘°'jš°¨T¶½Ãû~?	00	00€?	00	0<wbr>0€?	00	00€?	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00€?WvÀºÛ¸	03&gt;u	1A&amp;²|ôƒ°œá‹<wbr>°m+¥½…*?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€? &nbsp; &nbsp;ÅY&lt;Láú=SSâ±ŽsF°]_R°Žgx½_‡?	00	00€?	00	<wbr>00€?	00	00€?	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00€?f3ý&lt;Qâë=ãæG±±qð¯	1Aãþ¯<wbr>À{	16½ÁÓ?	00	00€?	00	00€?	00	00€?	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00€?<wbr>¨	0E;=çQß=½Ä=/«}Z¯5žg¯Ù¾ˆ¼Þö?	00	00€?	<wbr>00	00€?	00	00€?	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00€?ýhT=	1A</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">Ú=ÛSÉ0gÙØ®Ëßå®r·<wbr>	07¼Àý?	00	00€?	00	00€?	00	00€?	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00€?b5<wbr>	15=‹/ç=Âj¦±Eàë¯V	0Bú¯ØŸ	13½lÕ?	00	00€<wbr>?	00	00€?	00	00€?	00	00	00	00	00	00	00	<wbr>00	00	00	00	00	00	00€?›¬þ;	12”ÿ=Ò	11&gt;²ì<wbr>	13k°	123y°# “½¬V?	00	00€?	00	00€?	00	00€?	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00€?Eðú»<wbr>E[	06&gt;æM&lt;²ÌŽˆ°´Â°Wîª½W	1B?	00	00€?	00<wbr>	00€?	00	00€?	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00€?Eðú»<wbr>E[	06&gt;æM&lt;²)&lt;°5æ˜°€Š´½Û	00?	00	00€?	00<wbr>	00€?	00	00€?	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00€?ÐãŽ»<wbr>µ	06&gt;6	05=²7ª‘°'jš°¨T¶½Ãû~?	00	00€?	00<wbr>	00€?	00	00€?	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00€?Ô^„;¸K	04&gt;	12Ç1²yÅŠ°y<wbr>	1B“°½³­½Ú	13?	00	00€?	00	00€?	00	00€?<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00€?ïãw&lt;6Áü=¢	06	15²|¥t°ç«°2	1D™½–H?<wbr>	00	00€?	00	00€?	00	00€?	00	00	00	00	00<wbr>	00	00	00	00	00	00	00	00	00€?ùc×&lt;ÿ`î=Ž„<wbr>ä±	1BZM°þ¯Y°d…€½Ô~?	00	00€?	00	00€?	00<wbr>	00€?	00	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00€?ðý	0E=	18?â=Éð©±üg,°&gt;Ã6°ŸÍW½ú<wbr>¤?	00	00€?	00	00€?	00	00€?	00	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00€?è#	1D=Ä<wbr>#Ý=yN‘±Á•	1E°I	1C(°²€F½ÿ²?	00	00€?	00	<wbr>00€?	00	00€?	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00€?(‰Ø&lt;2yé=@ˆ	03²%4&gt;°ì I°<wbr>„	14n½3‘?	00	00€?	00	00€?	00	00€?	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00€?<wbr> </span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">Œ;Š0	00&gt;]p=²ì	13k°	123y°# “½¬V?	00	00€?	00	00€?	00	00€?	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00€?Eðú»<wbr>E[	06&gt;æM&lt;²	02»<wbr>‚°n•Š°=££½x.?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?Eðú»<wbr>E[	06&gt;æM&lt;²±R°âÏ•°eå°½	12	0B?	00	00€?	<wbr>00	00€?	00	00€?	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00€?KóS»<wbr>ñž	06&gt;×C=²7ª‘°'jš°¨T¶½Ãû~?	00	00€?	00	0<wbr>0€?	00	00€?	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00€?0	18	02&lt;EE	05&gt;	1BÈ2²‰T‰<wbr>°G”‘°Þå«½¾	18?	00	00€?	00	00€?	00	00€?<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00€?²	11¹&lt;tU	01&gt;Ž-	17²Ùáj°výx°	00“½õV<wbr>?	00	00€?	00	00€?	00	00€?	00	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00€?!Ã	18=üï<wbr>ø=	0EAë±Ñ[;°æœF°ð„j½~”?	00	00€?	00	00€<wbr>?	00	00€?	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00€?Ó.G=Êªð=èš²±	04ƒ	13°5_	1C<wbr>°C¤8½a½?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€?Û<wbr>ÅY=b,í=œÁš±!Ë	02°£¦</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">°t·<wbr>#½¡Ë?	00	00€?	00	00€?	00	00€?	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00€?T.	1<wbr>9=¬Yõ=F	08	07²‹í.°po9°zõZ½K¢?	00	00€?	<wbr>00	00€?	00	00€?	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00€?	01æ	04&lt;œD	02&gt;ö©&gt;²ì<wbr>	13k°	123y°# “½¬V?	00	00€?	00	00€?	00	00€?	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00€?Eðú»<wbr>E[	06&gt;æM&lt;²«öƒ°îã‹°%.¥½~*?	00	00€?	00	0<wbr>0€?	00	00€?	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00€?Eðú»<wbr>E[	06&gt;æM&lt;²wð°	18w–°½ª±½î	08?	00	00€?	<wbr>00	00€?	00	00€?	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00€?Eðú»<wbr>E[	06&gt;æM&lt;²7ª‘°'jš°¨T¶½Ãû~?	00	00€?	00	0<wbr>0€?	00	00€?	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00€?	0C	00	00	00Bone_Spine0<wbr>24¹“²M/²‰0Ï&amp;	00	00	00€	00	00	00	00	00	<wbr>00	00	00	00	00€?	00	00€?	00	00€?	00	00€<wbr>?	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00€?Iõ{²jË¹²Þ	05Ä'‡-Á1;”ÿ1$ì	12½ÓÕ?	<wbr>00	00€?	00	00€?	00	00€?	00	00	00	00	00	<wbr>00	00	00	00	00	00	00	00	00€?K£³2FÜ&gt;³˜ Ç<wbr>'U„82Õ	1Et2ÙUŒ½öe?	00	00€?	00	00€?	00	<wbr>00€?	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00€?lÃ;2</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">Ý*0@¯	10'	07à^2Go“2G‚©½#	1F?	00	00€?	0<wbr>0	00€?	00	00€?	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00	00€?Fÿ!3œ3–2&amp;\Ê'*ê	1C2%š<wbr>O2L¯n½£?	00	00€?	00	00€?	00	00€?	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00€?<wbr>k¥T²…A &nbsp; ³þ…Ç¥úe80‹ös0ï&gt;Œ»<wbr>fÿ?	00	00€?	00	00€?	00	00€?	00	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00€?!	0E0²<wbr>T‹2³	15</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">ä¦ &nbsp;æ	05²±&amp;1²­¬K=í®?	00	00€?	00	00€?	00	00<wbr>€?	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00	00€?„ÖM³"Ž	1F²Vê,¨{åG²è;„²F	08˜=,K?<wbr>	00	00€?	00	00€?	00	00€?	00	00	00	00	00<wbr>	00	00	00	00	00	00	00	00	00€?Bˆƒ²óº ²ûw<wbr>…§1H:²³tv²Š­=ÿb?	00	00€?	00	00€?	00	0<wbr>0€?	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00€?}	07U²ÜÒ	08³	1E	1FÌ&amp;ò9	18²6fI²š<wbr>g=2—?	00	00€?	00	00€?	00	00€?	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00€?Ù/Í<wbr>²¶µ«2ž	0F	06¦	0EÖ×±@Ç	0E²Æ'$=YË?	00	00<wbr>€?	00	00€?	00	00€?	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00€?8Rå±	03Òw³YFb'{R<wbr>~±Ï&lt;¨±	1BmÁ&lt;»<wbr>í?	00	00€?	00	00€?	00	00€?	00	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00€?+d²…zï<wbr>²:„Î¥×²ë°þê	1B±#C3&lt;	14ü?	00	00€?	00	00<wbr>€?	00	00€?	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00€?~©²Ý+©²m4‡&amp;	01	04}°©_§°<wbr>ÄnÀ;ßþ?	00	00€?	00	00€?	00	00€?	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00€?µœ<wbr>	12²]ÄS³ôŒh¥	06	1B`±¢?”±Êqª&lt;Ðñ?	00	00€<wbr>?	00	00€?	00	00€?	00	00	00	00	00	00	00	<wbr>00	00	00	00	00	00	00€?c	0F¾²½ÞN2~	13û¦	<wbr>11p	10²J	18?²»<wbr>´[=§¡?	00	00€?	00	00€?	00	00€?	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00€?ºþw<wbr>²	04½Â²¢ºÑ§ƒ±h²ûí™²ëù°=Ù</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">?	00	00€?	00	00€?	00	00€?	00	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00€?Nÿ8³þó	0<wbr>5³Ñíƒ§»<wbr>]ˆ²tj´²“mÏ=ý®~?	00	00€?	00	00€?	00	00€?<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00€?öû	16²mÕN³rC§—	11^²·<wbr>æ’²Då¨=Ã ?	00	00€?	00	00€?	00	00€?	00	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00€?Ðí…²«é•²<wbr>ìdó&amp; fÝ±£u	12²Ac(=™È?	00	00€?	00	00€?	<wbr>00	00€?	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00€?f´«²õ³$1t=,§	00	00	00€	00	0<wbr>0	00	00	00	00	00	00	00	00€?	00	00€?	00	<wbr>00€?	00	00€?	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00€?ÆH	191ðK+3ÛE	15§uºY®æ	<wbr>0B®	05œ¥9ÿÿ?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?KFñ²¶K'31†Ø%uã¦¯:ÌÜ¯eÛý:àÿ?	00	00€<wbr>?	00	00€?	00	00€?	00	00	00	00	00	00	00	<wbr>00	00	00	00	00	00	00€?v¹	05²&amp;Ob³Ó</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">Ä§</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">	04}°®_§°ÄnÀ;ßþ?	00	00€?	00	00€?	00	00<wbr>€?	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00	00€?	1BH¤2‘4	1C³P	17	15§‰€±ª	01ª±Êu<wbr>Ã&lt;Xí?	00	00€?	00	00€?	00	00€?	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00€?	18•<wbr>D³ÔS£²~	1A]¨Ø¼	17²¼ÀH²XÏf=Þ—?	00	00€?	<wbr>00	00€?	00	00€?	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00€?	08ùG³ó¸„²	17wC¨°lk<wbr>²‚¼›²²</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">³=</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">	05?	00	00€?	00	00€?	00	00€?	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00€?[V2³J<wbr>	03$³îS	0E¨»<wbr>]ˆ²tj´²“mÏ=ý®~?	00	00€?	00	00€?	00	00€?<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00€?Oúf²\$é²^	1BÃ¦“	11^²µæ’²Cå¨=Ã ?	00	00€?	00	00€?	00	00€?	00	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00€?•«€²â¥­²<wbr>	00¹ã!§fÝ±¢u	12²=c(=™È?	00	00€?	00	00€<wbr>?	00	00€?	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00€?4¹“²M/²‰0Ï&amp;	00	00	00	00	<wbr>00	00	00	00	00	00	00€	00	00€?	00	00€?	0<wbr>0	00€?	00	00€?	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00	00€?	0B	00	00	00Bone_Tai<wbr>l01	1Bu	1C1XãÂ2ò;è%"fJ2ÅÙ	18²qx¾o¾u?	0<wbr>0	00€?	00	00€?	00	00€?	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00	00	00€?Ò&lt;ç2Í"S3ö	15<wbr>å'Z	1C02yÿ	04²	1A¬y¾&amp;Fx?	00	00€?	00	00€<wbr>?	00	00€?	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00€?	07•'² â¤3™	04«'äNý1	07L¿±µŽ3¾›	08|?	00	00€?	0<wbr>0	00€?	00	00€?	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00	00€?&lt; &nbsp; 1±k'?3·<wbr>H	1B'T€Ç1©–±žj</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">¾ &nbsp; Œ}?	00	00€?	00	00€?	00	00€?	00	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00€?Ö3~²	11<wbr>[	043m«w¦	01T	052¥`É±ó	04=¾Ð™{?	00	00€?<wbr>	00	00€?	00	00€?	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00€?¢k¸²|š‚3§]ß&amp;±</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">N2Jœ	1B²	0F’¾±\u?	00	00€?	00	00€?	00	0<wbr>0€?	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00€?5</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">93|ËA3 2	0F(¥HŠ2ÂÜP²|	0BÄ¾|}l?	00	00€?	<wbr>00	00€?	00	00€?	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00€?KV‚1ÀQˆ2;Î&amp;¥[×™25\h<wbr>²Ë	19Ú¾œg?	00	00€?	00	00€?	00	00€?	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00€<wbr>?5œ£2EÇˆ2…	08`¨B8‘2ªV[²ÉàÍ¾Rdj?	00	00€?<wbr>	00	00€?	00	00€?	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00€?²›	1E3”ßŽ1fÅE'ø{v2<wbr>Ê$:²m¸®¾	06¢p?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?dG	162E	05Ü±ïi‘¨¤É;2ûÐ</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">²	02	1D…¾[2w?	00	00€?	00	00€?	00	00€?	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0€?]X„2ò«</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">3ÖŽ^'Œtÿ1	18ëÀ±R	145¾/÷{?	00	00€?	00	00<wbr>€?	00	00€?	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00€?Ih)3æ &nbsp;„3ÛÞ&amp;(	1A¿¡1àLt±ÓNå½èc~?	00	00€?	00	00€<wbr>?	00	00€?	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00€?ÂT	0F2	1BŒ± &nbsp; &nbsp;Ê	00§i	17x1u[;±	0CÜ¯½ð</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">?	00	00€?	00	00€?	00	00€?	00	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00€?‹š	173…	<wbr>0F¬3ÈÔA(ÀÓ‹1r1S±œ;Æ½GÌ~?	00	00€?	00	00€<wbr>?	00	00€?	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00€?,	1E3:qœ3YO7(·<wbr>q´1BEˆ±ÙÐÿ½ºþ}?	00	00€?	00	00€?	00	00€?<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00€?DŸ¤1ÂÔ«3Â^ù'ì½ë1ï	07²±	07	1B'¾z‘|?<wbr>	00	00€?	00	00€?	00	00€?	00	00	00	00	00<wbr>	00	00	00	00	00	00	00	00	00€?±Rk²öóÊ3	1<wbr>8OÞ'&amp;Ë	132É9ß±ã†Q¾i•z?	00	00€?	00	00€?	<wbr>00	00€?	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00€?ûå2—dê2äŸA'æ	06/2ð-	04²Â"x<wbr>¾Ê^x?	00	00€?	00	00€?	00	00€?	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00€?Šõ	0E<wbr>³y™B3^	14è¦ÉÇB2ç	18	13²ó	11Š¾	1B„v?	00	<wbr>00€?	00	00€?	00	00€?	00	00	00	00	00	00	<wbr>00	00	00	00	00	00	00	00€?‚°©2…äZ2æ¢d¨"f<wbr>J2ÅÙ	18²qx¾o¾u?	00	00€?	00	00€?	00	00€<wbr>?	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00€?»<wbr>	1893	0CvÊ²</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">J	15&amp; Œ&amp;26û±B	1Dl¾	05	1Ay?	00	00€?	00	00€?	0<wbr>0	00€?	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00€?',	032EàÀ°</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">ÁÜ¦…¿Å1 V•±w,	0C¾	13—}?	00	00€?	00	00€?<wbr>	00	00€?	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00€?	1AëI3)WÎ3	04”’¥h	17x1w[;±<wbr></span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">Ü¯½ð</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">?	00	00€?	00	00€?	00	00€?	00	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00€?)6Ô²	11×<wbr>¡3OÚC'ÄÓ‹1{1S±;Æ½GÌ~?	00	00€?	00	00€?	<wbr>00	00€?	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00€?H…Š3‹Þ•2Ê®ì§®q´1CEˆ±ÙÐÿ½ºþ}<wbr>?	00	00€?	00	00€?	00	00€?	00	00	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00€?VaT³ËðS3Ã<wbr>¨f§è½ë1ï	07²±	07	1B'¾z‘|?	00	00€?	00	00<wbr>€?	00	00€?	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00€?ž‡[2dn=3	15y‘'&amp;Ë	132É9ß±<wbr>ã†Q¾i•z?	00	00€?	00	00€?	00	00€?	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00€?5É<wbr>‡²îà	173	13u	0E¦ç	06/2ò-	04²Â"x¾Ê^x?	00<wbr>	00€?	00	00€?	00	00€?	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00	00€?Ä§¯2‘</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">¨3¹ 	1C(ÎÇB2æ	18	13²ó	11Š¾	1B„v?	00	00€<wbr>?	00	00€?	00	00€?	00	00	00	00	00	00	00	<wbr>00	00	00	00	00	00	00€?	1Bu	1C1XãÂ2ò;è%"<wbr>fJ2ÅÙ	18²qx¾o¾u?	00	00€?	00	00€?	00	00<wbr>€?	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00	00€?	10	00	00	00Bone_R_BackFemurJèé³<wbr>î³Ÿ338Ô1ð¤	10;8¤g&lt;o†&gt;•ýv?	00	00€?	00	0<wbr>0€?	00	00€?	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00€?G‹Ò²õ·<wbr>µ3!8Ô1¡Ž	13;mke&lt;è	1Av&gt;Qxx?	00	00€?	00	0<wbr>0€?	00	00€?	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00€?BÐ³IÍÞ3	0B	0Eµ2J´	1A;Ô<wbr>	12`&lt; •&gt;&gt;…€{?	00	00€?	00	00€?	00	00€?	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00€?óX	<wbr>07³|Áé2	0B	0Eµ2</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">$;¸–Y&lt;Ï9ó='*~?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">eÃ³­Ã'368Ô12/-;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">T&lt;çrs=j†?	00	00€?	00	00€?	00	00€?	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00€?<wbr>ØU³FB3.8Ô1ª“1; &nbsp;«Q&lt;	1EM =Õ?	00	00€?	00	00€?	00	00€?	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00€?×	02°<wbr>³h"„308Ô17f*;‡NW&lt;•šÚ=­ƒ~?	00	00€?	00	00<wbr>€?	00	00€?	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00€?ì	1FÇ²{õM3'8Ô1D×	19;^èa&lt;<wbr>	08ÐX&gt;›+z?	00	00€?	00	00€?	00	00€?	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00€?<wbr></span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">	0B‚³›¾	15318Ô1JÈ</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">;[ðg&lt;Æ‘‚&gt;.‚w?	00	00€?	00	00€?	00	00€?	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0€?	15¢Ù³ú¼d368Ô11	10;V°g&lt;fÔ…&gt;¥	12w?	0<wbr>0	00€?	00	00€?	00	00€?	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00	00	00€?	14òä²‚×(3*8<wbr>Ô1÷‚	15;ÚBg&lt;þµƒ&gt;{[w?	00	00€?	00	00€?	00<wbr>	00€?	00	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00€? „&lt;³</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">ô£3&amp;8Ô1oå	1D;’´d&lt;÷Ér&gt;ƒ¬x?	00	00€?	00	00<wbr>€?	00	00€?	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00€?qr‘²„bˆ3#8Ô1öÑ$;	08µ_&lt;ÏÉ<wbr>O&gt;	1E¦z?	00	00€?	00	00€?	00	00€?	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00€?‹-<wbr>Ò³zí„348Ô13q*;f	13Z&lt;NQ(&gt;}~|?	00	00€?	00<wbr>	00€?	00	00€?	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00€?7Rº³£PÀ3,8Ô1¨’.;C‚U&lt;s<wbr>e	07&gt;¿º}?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€?ô<wbr>zB³¦‡œ3</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">	0Eµ24?0;¶ S&lt;o	0Fó=	12+~?	00	00€?	00	00<wbr>€?	00	00€?	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00€?	17H˜³è·<wbr>R318Ô1Ø	13';bÌX&lt;sc &gt;	18Ñ|?	00	00€?	00	00€?	00	00€?	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00€?ÁÆÁ<wbr>³¦Á­3.8Ô1Ð	1A	15;Ì´b&lt;	13ï^&gt;oÕy?	00	00€?<wbr>	00	00€?	00	00€?	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00€?Þët³ç—³3'8Ô1£ð	0B;<wbr>å	1Eh&lt;ž	16€&gt;	17Õw?	00	00€?	00	00€?	00	0<wbr>0€?	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00€?l`~³‘z÷°88Ô1ËG	0F;êÈg&lt;%˜„&gt;A=w?	<wbr>00	00€?	00	00€?	00	00€?	00	00	00	00	00	<wbr>00	00	00	00	00	00	00	00	00€?‰î!³id^3*8Ô<wbr>1E+	17;$!g&lt;	1BÇ‚&gt;*{w?	00	00€?	00	00€?	0<wbr>0	00€?	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00€?	18)Á²àaU3'8Ô1ù©#;öÀd&lt;Q4k&gt;	0<wbr>5!y?	00	00€?	00	00€?	00	00€?	00	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00€?16o³^µ<wbr>I3.8Ô1qÜ/;0x`&lt;+{?&gt;…u{?	00	00€?	00	00€?	<wbr>00	00€?	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00€?bÊ–³M$Z308Ô1%µ:;ð¢[&lt;ˆ€	0E&gt;	<wbr>18|}?	00	00€?	00	00€?	00	00€?	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00€?€ð»<wbr>³§áL348Ô1ÎçB;L¨W&lt;	19‰Ë=Žµ~?	00	00€?	00	<wbr>00€?	00	00€?	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00€?ØU³FB3.8Ô1%9F;yÿU&lt;èB<wbr>©=â	19?	00	00€?	00	00€?	00	00€?	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00€?	1<wbr>Fó	1E³ÎÐe3)8Ô1$ò7;z²Z&lt;)	13	08&gt;£´}?	00	0<wbr>0€?	00	00€?	00	00€?	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00	00€?uñã³¸Œ®328Ô1ïÛ	<wbr>1B;	14lc&lt;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">ýX&gt;	14)z?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€?†<wbr>·<wbr>E³¬O	053/8Ô1ùT	0C;=	15h&lt;	10€&gt;¯Ãw?	00	0<wbr>0€?	00	00€?	00	00€?	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00	00€?Š?³Ø= 3'8Ô1qx	<wbr>0F;®Ãg&lt;	15Û„&gt;E4w?	00	00€?	00	00€?	00	00<wbr>€?	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00	00€?Jèé³î³Ÿ338Ô1ð¤	10;8¤g&lt;o†&gt;•ýv?	0<wbr>0	00€?	00	00€?	00	00€?	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00	00	00€?	10	00	00	00<wbr>Bone_L_BackFemurPt	03´s4˜3ò"</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">0ð\B:þè</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">=	13ªÆ&gt;Èk?	00	00€?	00	00€?	00	00€?	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00€<wbr>?¡rÂ³èÇì3Ú"</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">0PDf:Q° =	1Aì»<wbr>&gt;1úm?	00	00€?	00	00€?	00	00€?	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00€?ß	11ì<wbr>³ÿ	03Û3Ó-w²	16µœ:™Á	06=²Ú¡&gt;È¹r?	00	00€?<wbr>	00	00€?	00	00€?	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00€?¹wÔ³Ü'T3Ì-w²ÕÌ:/9<wbr>	03=ôà&gt;…}w?	00	00€?	00	00€?	00	00€?	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>€?úiÝ³'3S#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">08	00õ:a=	00=CšL&gt;“µz?	00	00€?	00	00€?	0<wbr>0	00€?	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00€?ÅZ©³	13	1C3S#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">0</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">	10	03;a÷ý&lt;êþ4&gt;	01Ø{?	00	00€?	00	00€?	0<wbr>0	00€?	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00€?y…Ë³	1DY€38#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">0=Eì:Ú</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">	02=ÙÒx&gt;œ1x?	00	00€?	00	00€?	00	00€?	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>€?ª	1D³vö&gt;3¸#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">0€Ý–:ÁÊ	07=B*®&gt;m•p?	00	00€?	00	00€?	00	<wbr>00€?	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00€?h	0BŸ³¿	063“#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">0	17</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">%:ˆ	06	0B=	1C	04Ã&gt;	0C‹l?	00	00€?	00	00€<wbr>?	00	00€?	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00€?	17ÇÞ³)B¦3	05#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">0Qµ=:¬í</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">=¿	17Æ&gt;Açk?	00	00€?	00	00€?	00	00€?	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00€<wbr>?Ày,³}Ø	193Ä#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">0Gvp:ÍÈ</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">=Ï#Ä&gt;¬Ol?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€?8<wbr>€y³W¾˜3_#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">0bW¤:^z =Àvº&gt;©Cn?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€?é<wbr>¹	02³	01ã€3¤#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">0³êÍ:»<wbr>½	06=Ê	11ª&gt;7Qq?	00	00€?	00	00€?	00	00€?<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00€?â-ï³üÛz3	1E#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">0-Hð:Rž	03=KÆ—&gt;ÏZt?	00	00€?	00	00€?	00	<wbr>00€?	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00€?ŒR×³&amp;Ñ¸3ú"</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">0</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">î	03;7	15	01=€ºˆ&gt;	08’v?	00	00€?	00	00€?<wbr>	00	00€?	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00€?µ	08ò³5+Ì3Ó-w²ê`	08;C</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">	00=àu‚&gt;Škw?	00	00€?	00	00€?	00	00€?	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>€?»<wbr>Ê³³P%K3c#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">0ÛÔâ:~Ñ	02=	17	0C”&gt;nít?	00	00€?	00	00€?<wbr>	00	00€?	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00€?	17ÇÞ³)B¦3	05#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">0NU:ú(	08=Vý°&gt;*	11p?	00	00€?	00	00€?	0<wbr>0	00€?	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00€?/›š²â	11[3Ê#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">0÷L	12:f	18	0B=+¬À&gt;Ë	05m?	00	00€?	00	00<wbr>€?	00	00€?	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00€?•0œ³’Öµ±Þ#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">0 &nbsp; Z4:G÷</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">=^íÄ&gt;¨%l?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€?&lt;<wbr>ï[³geO3˜#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">0(	15€:†½</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">=™FÃ&gt;z}l?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€??<wbr>•	1A³ÛbF3¶#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">0ø½:/ž =ýø¶&gt;‹ðn?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€?r<wbr>›”³_¶:3„#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">0˜jü: f	07=#˜¢&gt;¯™r?	00	00€?	00	00€?	00	00€?	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0€?»<wbr>Ê³³P%K3c#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">0	1C%	19;nÙ	04=	05	00Œ&gt;_	1Av?	00	00€?	0<wbr>0	00€?	00	00€?	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00	00€?$s×³	12OE3J#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">0=	17,;D¿	02=-ør&gt;Ùx?	00	00€?	00	00€?	0<wbr>0	00€?	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00€?†?Ö²ñÕ	103â#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">0ñO3;ªß	01=Z”c&gt;ñvy?	00	00€?	00	00€?	00	<wbr>00€?	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00€?gøU³1&gt;^3”#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">0Mg	13;uA	04=Ÿýˆ&gt;	00‡v?	00	00€?	00	00€?<wbr>	00	00€?	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00€?åx	00´=</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">§3ê"</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">0G	17œ:	1C´	08=+L®&gt;ÄŽp?	00	00€?	00	00€?<wbr>	00	00€?	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00€?Ó¼|³!zû2±#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">0	1BD	16:­	14	0B=1+Á&gt;óël?	00	00€?	00	00<wbr>€?	00	00€?	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00€?8€y³W¾˜3_#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">0'Q6:=õ</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">=Š,Å&gt;{	18l?	00	00€?	00	00€?	00	00€?	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00€<wbr>?Pt	03´s4˜3ò"</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">0ð\B:þè</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">=	13ªÆ&gt;Èk?	00	00€?	00	00€?	00	00€?	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00€<wbr>?	0B	00	00	00Bone_Neck01ùâÒ±ëý³ &nbsp;´“(	00	00	00€	00	00	00€	00	00	00	00	00	<wbr>00€?	00	00€?	00	00€?	00	00€?	00	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00€?BØ®²Á§<wbr>Ž³è	16	16(±î	1F/Ï^30ßFë&lt;÷ä?	00	00€?	00<wbr>	00€?	00	00€?	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00€?”y</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">3hD³ÿïG(µ@ä/äýÿ0®ã§=k#?	00	00€?	00	00<wbr>€?	00	00€?	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00€?cþ+³èáS³~ª§'áí	190ˆ¢,1	0<wbr>0qâ=-n~?	00	00€?	00	00€?	00	00€?	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00€?Öæ<wbr>52MYÈ³x	1A(2o	110¯	1B#1öñÕ=l™~?	00	00€<wbr>?	00	00€?	00	00€?	00	00	00	00	00	00	00	<wbr>00	00	00	00	00	00	00€?»<wbr> n3å9Ç³`Ô™(~	01÷/Î‚</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">1™®µ=ý~?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€?	<wbr>10Å	19²à¬ø³}ø®(	05ïº/¢¥Ñ0¹~‰=$l?	00	00<wbr>€?	00	00€?	00	00€?	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00€?Ñ¯*³Û	02</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">´£Ðw(pÃr/Ú ˆ0‹Ž2=³Á?	00	00€?	00	00€?	00	00€?	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00€?<wbr>Öæ52MYÈ³ð4^(«šô.[+ 0	18ì³&lt;1ð?	00	00€?	00	00€?	00	00€?	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00€<wbr>?5B	1F³	04:Ä³	05¥(	05²	08.îQ	19/ä	1AÉ;<wbr>Äþ?	00	00€?	00	00€?	00	00€?	00	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00€?Õ+ß²b*<wbr>„³oQÆ'	00	00	00	00	00	00	00€	00	00	00€	<wbr>00	00€?	00	00€?	00	00€?	00	00€?	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00€?Ú(Î<wbr>³þ	1F«³	08	0Bj'1ï	1F/›^30âFë&lt;÷ä?	00	00<wbr>€?	00	00€?	00	00€?	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00€?Ép£2[	15Ø³	1CM­(<wbr>fAä/áýÿ0®ã§=k#?	00	00€?	00	00€?	00	00€<wbr>?	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00€?ûqø³1i†³ÒÜ÷¥Âí	190¢,1	00qâ=-n~?	<wbr>00	00€?	00	00€?	00	00€?	00	00	00	00	00	<wbr>00	00	00	00	00	00	00	00	00€?	0C	02Ç²	11<wbr>i‰³Ÿ?™'Qo	110¬	1B#1öñÕ=l™~?	00	00€?	00	<wbr>00€?	00	00€?	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00€?Ð=ª³u	1Bk³	02}Š&amp;z	02÷/<wbr>Ð‚</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">1˜®µ=ý~?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€?5<wbr>B	1F³	04:Ä³ &nbsp; J_(Qîº/“¥Ñ0¹~‰=$l?	00	00€?	00	00€?	00	<wbr>00€?	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00€?¤	18J²1nó³ñ&lt;š(xÂr/ë ˆ0‹Ž2=³Á?	00	00€?	00	00€?	00	00€?	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00€?<wbr>	1Eö	022x \³&amp;À	12(	17ô.M+ 0	0Cì³&lt;1ð?	00	00€?	00	00€?	00	00€?	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00€<wbr>?B“	052	1AÃ³Ø½	14(Äµ	08.jP	19/³	1AÉ;Äþ<wbr>?	00	00€?	00	00€?	00	00€?	00	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00€?Üfh³	0Co<wbr>	1F³ÈñÛ¦	00	00	00€	00	00	00€	00	00	00	0<wbr>0	00	00€?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€?²<wbr>I32×f³&gt;7	1C(Vð	1F/	1E_30ßFë&lt;÷ä?	00	00<wbr>€?	00	00€?	00	00€?	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00€?¤	18J²1nó³ñ&lt;ª(	1<wbr>1Aä/Íýÿ0¯ã§=k#?	00	00€?	00	00€?	00	00€<wbr>?	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00€?6"¢2ú</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">ƒ³‡œ	18(4î	190‰¢,1	00qâ=-n~?	00	00€?	00<wbr>	00€?	00	00€?	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00€?]é³ˆDš³’"ç'uo	110¦	1<wbr>B#1ôñÕ=l™~?	00	00€?	00	00€?	00	00€?	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00€<wbr>?x	1E˜³ÉI…³è´</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">(H	01÷/Î‚</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">1˜®µ=ý~?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€?È<wbr>µL²Ðcž³0|r({îº/¢¥Ñ0¹~‰=$l?	00	00€?	00	<wbr>00€?	00	00€?	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00€?h	1EÈ³­^°³´ó‡'xÂr/ë ˆ0‹Ž2=³Á?	00	00€?	00	00€?	00	00€?	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00€?<wbr>žPÈ²ÂzÑ²Û!*&amp;£œô.V+ &nbsp; 0	0Cì³&lt;1ð?	00	00€?	00	00€?	00	00€?	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00€<wbr>?ŠWÝ±œ­'³„+[%X´	08.-P	19/³	1AÉ;Äþ?	00	<wbr>00€?	00	00€?	00	00€?	00	00	00	00	00	00	<wbr>00	00	00	00	00	00	00	00€?ú	1013-ì/³•WB(<wbr>	00	00	00€	00	00	00€	00	00	00€	00	00€?	<wbr>00	00€?	00	00€?	00	00€?	00	00	00	00	00	<wbr>00	00	00	00	00	00	00	00	00€?	11	00	00	0<wbr>0Bone_R_FrontFemurN”²²XoÞ3ô	10"2	03Ð’=Ï<wbr>á=™$ ¾'šz?	00	00€?	00	00€?	00	00€?	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00€?P‹L³Æ<wbr>\X3ŒN:2Ò¼™=K¶à==	03	04¾r’{?	00	00€?	00	<wbr>00€?	00	00€?	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00€?Kvµ²rüz1yÒM2ÄA™=OžÓ=›Y<wbr>ñ½ÿ	1B|?	00	00€?	00	00€?	00	00€?	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00€?1W<wbr>£2	03cW3ì	0B82sÓ=|¬Â=õÿ½….|?	00	00€?	<wbr>00	00€?	00	00€?	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00€?»<wbr>e	13³	18Ž;3—Å&lt;2`ƒ~=%Ó³=™L	1D¾Qu{?	00	00<wbr>€?	00	00€?	00	00€?	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00€?	06»<wbr>/³ ¾ˆ3&amp;?42ì&lt;V=ûx«=—°&gt;¾Ç?z?	00	00€?	00	0<wbr>0€?	00	00€?	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00€?gxì²o	0EÁ3|”¯±	12$S=­û±<wbr>=gèf¾¼	0Fx?	00	00€?	00	00€?	00	00€?	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00€<wbr>?iÑ»<wbr>³Ž	1BÞ3	07.·<wbr>±t3g={,Ä=¹ƒr¾E	15w?	00	00€?	00	00€?	00	<wbr>00€?	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00€?fní²;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">s3Îh’±³	1Dt=_ÜÏ=~Ác¾	1BÃw?	00	00€?	00	0<wbr>0€?	00	00€?	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00€?˜@‘³ú</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">&lt;3çæ=2_€=€	12Õ=OW¾æQx?	00	00€?	00	00€<wbr>?	00	00€?	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00€?N”²²XoÞ3ô	10"2Ç ‡=C[Ø=</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">L¾øÔx?	00	00€?	00	00€?	00	00€?	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00€?E~	0<wbr>2²0€ˆ3Ö	1D32Ñ	19‹=ùDÖ=‰ÛE¾&gt;#y?	00	00€?	<wbr>00	00€?	00	00€?	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00€?›àh³ø%—3	1BÈ12éò‰=å<wbr> Î=lØD¾dNy?	00	00€?	00	00€?	00	00€?	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00€?<wbr>1W£2	03cW3ì	0B82éÅ„=»<wbr>	17Ä=IðG¾URy?	00	00€?	00	00€?	00	00€?	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0€?P‹L³Æ\X3ŒN:2ÉÚt=Êªº=+­U¾þÍx?	00	00€?<wbr>	00	00€?	00	00€?	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00€?RB|°Á?¤3P¸¥±) &nbsp; \=ªj´=­Nj¾ïÍw?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?ž&gt;Ÿ³7´Ï3ñ?²±¾ÐQ=	0F.·<wbr>=Wž}¾Åv?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€?h<wbr>‚ë² K	044*ÀÌ±_TU=îÁÀ=‚	17¾¬1v?	00	00€?	00	<wbr>00€?	00	00€?	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00€?edî²/ûÇ2?zj±	08 h=	07~Ë=_ùn¾ÿ3w?	00	00€?	00	00€?	00	00€<wbr>?	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00€?	17~‘³\í32¾|L2“r„=	1A	00×=‚WJ¾–õx<wbr>?	00	00€?	00	00€?	00	00€?	00	00	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00€?G’	00²	01<wbr>	08Ð3ÿ‡$2Ìü“=‚¦à=]„%¾¾bz?	00	00€?	00	00<wbr>€?	00	00€?	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00€?›àh³ø%—3	1BÈ12µ%“=</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">æÙ=°“4¾èÕy?	00	00€?	00	00€?	00	00€?	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00€<wbr>?á*í²“®t31¶62zt=¤šÍ=_£G¾l$y?	00	00€?	0<wbr>0	00€?	00	00€?	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00	00€?1W£2	03cW3ì	0B82À"…=<wbr>/ƒÁ=³nW¾ÏŠx?	00	00€?	00	00€?	00	00€?	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>€?Lñ	04²dO	003¬Ûx±Ú±r=Ö¤·<wbr>=	1C"i¾	03Áw?	00	00€?	00	00€?	00	00€?	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0€?JÝ	06²ò	03l±P„&gt;±ïKY=öº±=ïE|¾P½v?	00	<wbr>00€?	00	00€?	00	00€?	00	00	00	00	00	00	<wbr>00	00	00	00	00	00	00	00€?RB|°Á?¤3P¸¥±S<wbr>R=`Áµ=0²…¾Y¸u?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?wFv²&gt;V3¸z±Ü¦W=ÝïÀ=pÇƒ¾æÓu?	00	00€<wbr>?	00	00€?	00	00€?	00	00	00	00	00	00	00	<wbr>00	00	00	00	00	00	00€?	0C"Ã1Yr3n«”±iÒh<wbr>=içË=&amp;àn¾m3w?	00	00€?	00	00€?	00	00€?	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0€?L€´²j¿	1E3¢&lt;?2s§„=¨=×=/1J¾Cöx?	00	00<wbr>€?	00	00€?	00	00€?	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00€?&lt;Q2V.s1)±L2	0EÐ<wbr>’=Çá=Ó$ ¾%šz?	00	00€?	00	00€?	00	00€?	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00€?	11	0<wbr>0	00	00Bone_L_FrontFemurr¯«³ï	06ò3wž!²Š<wbr>S</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">=$I	06&gt;7	15#&gt;OVz?	00	00€?	00	00€?	00	00<wbr>€?	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00	00€?_ú©2luD3äX ²Š	03	1B=h$	07&gt;f3@&gt;Lûx?	00	00€?	00	00€?<wbr>	00	00€?	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00€?	1E©x¯õ#(3 Ž	05²væ%=Ì	0Bÿ=	05gC&gt;µ	0Cy?	00	00€?	00	<wbr>00€?	00	00€?	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00€?Œ³`2öT	0B3—G	03²'	0B&amp;=<wbr>éNè=£À,&gt;wpz?	00	00€?	00	00€?	00	00€?	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>€?Zä,³	0F	02ß2-ñû±dz	14=XÊÐ=H1ò=¡°|?	00<wbr>	00€?	00	00€?	00	00€?	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00	00€?@î+³pÐÆ3ÝÊ	1A<wbr>²	17	13ð&lt;-À=Ç	0FŠ=—+~?	00	00€?	00	00€?<wbr>	00	00€?	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00€?‚‡æ²ôÁa31	1B</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">²Ú	16Þ&lt;þ‘Ç=&gt;Q	0E=	1Fˆ~?	00	00€?	00	00€?<wbr>	00	00€?	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00€?‚‡æ²ôÁa31	1B</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">²©ˆÞ&lt;	14­ß=sÊA=Å	15~?	00	00€?	00	00€?	0<wbr>0	00€?	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00€?Zä,³	0F	02ß2-ñû±Ÿ	13ß&lt;°9ï=‹´<wbr>™=¶l}?	00	00€?	00	00€?	00	00€?	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00€? ®³·<wbr>‚'3T8Á²ºí&lt;{÷=º	16½=Ðé|?	00	00€?	00	00<wbr>€?	00	00€?	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00€?Ïð«²+ùÔ3¢•	1E²	03</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">	00=eý=¼¬Û=</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">j|?	00	00€?	00	00€?	00	00€?	00	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00€?	1B½Þ1k<wbr>Da3mŸ	0B²¦Ì &nbsp; =ñ¾ü=æ&lt;æ=¸B|?	00	00€?	00	00€?	00	00€?	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0€?“/³|?b3õ–	08²h§	0F=ë×ò=žûÙ=Ý‘|?	00	<wbr>00€?	00	00€?	00	00€?	00	00	00	00	00	00	<wbr>00	00	00	00	00	00	00	00€?Œ³`2öT	0B3—G	0<wbr>3²/Ó	0F=9yå=í	04¾=÷	1D}?	00	00€?	00	00€<wbr>?	00	00€?	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00€?æ &nbsp; &nbsp;f³	07P	0C3	1F?	00²¼*	06=ÿöÖ=`Ù†=‰ã}?	00<wbr>	00€?	00	00€?	00	00€?	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00	00€?	1E©x¯õ#(3 Ž	05²‡	0Fë&lt;!±Ë=Þ&lt;	0B=Úy~?	00	00€?	00	00<wbr>€?	00	00€?	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00€?3Z³y	17œ3Ëî	10²7hÑ&lt;	19T<wbr>Í=n€”&lt;r•~?	00	00€?	00	00€?	00	00€?	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00€?<wbr>@î+³pÐÆ3ÝÊ	1A²	14÷Â&lt;	10ßØ=	13fÞ&lt;d~?	00<wbr>	00€?	00	00€?	00	00€?	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00	00€?ßÿ³ ýß2´èø±BÐ&lt;“+è==“r=TÐ}?	00	00€?	00	00€?<wbr>	00	00€?	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00€?¹—³	06	1F)3¨…	02²5ø&lt;½	17<wbr>û=;çÜ=»<wbr>q|?	00	00€?	00	00€?	00	00€?	00	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00€?&lt;8û®ð™›<wbr>3C÷	13²šx	10=q	03	06&gt;‘7	1D&gt;Ý’z?	00	00€?<wbr>	00	00€?	00	00€?	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00€?“/³|?b3õ–	08²½p	1<wbr>5=cþ	01&gt;d	05 &nbsp;&gt;,o{?	00	00€?	00	00€?	00	00€?	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00€?§´I³D<wbr>‚Y2’Îï±|	05	17=	04£ó=–©Ó=	03 |?	00	00€?<wbr>	00	00€?	00	00€?	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00€?ÀŸb2q23»<wbr>°	11²r	0F	14=Ìˆâ=	0EÝ”=4”}?	00	00€?	00	<wbr>00€?	00	00€?	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00€?Ôxh²ôòD3¨Ô	07²	03Ñ	08=<wbr>­ìÒ=	1D	1E=JM~?	00	00€?	00	00€?	00	00€<wbr>?	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00€?­Gî±þ	06Þ2¥ùþ±Ä]ï&lt; ñÇ=¥	0Fé;'©~?	00	00€?	00	00€?	00	00€?	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0€?Ôxh²ôòD3¨Ô	07²Œ6Ø&lt;ß¤Ë=7£—º7¤~?	00	00<wbr>€?	00	00€?	00	00€?	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00€? Œf²p	01ª3Ì=	16²<wbr>	17	04È&lt;ÝlÙ=Æx«&lt;‰k~?	00	00€?	00	00€?	00<wbr>	00€?	00	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00€?­Gî±þ	06Þ2¥ùþ±äJÑ&lt;ˆÅè=Û‚t=	1D<wbr>Ì}?	00	00€?	00	00€?	00	00€?	00	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00€?­Gî±þ	0<wbr>6Þ2¥ùþ±æÖø&lt;«qû=åÝ=¿m|?	00	00€?	00	00€?<wbr>	00	00€?	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00€?§´I³D‚Y2’Îï±ŽS</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">=#I	06&gt;*	15#&gt;PVz?	00	00€?	00	00€?	00	00<wbr>€?	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00	00€?	0B	00	00	00Bone_Tail02$#²†¦v³+<wbr>f5(	00	00	00	00	00	00	00€	00	00	00€	00	<wbr>00€?	00	00€?	00	00€?	00	00€?	00	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00€?cüb³Òì<wbr>›³6Ôþ§	00	00	00	00	00	00	00	00	00	00	00<wbr>€	00	00€?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€?ü<wbr>0¯³6Ü	02´„Ó‹¨	00	00	00	00	00	00	00€	00	<wbr>00	00	00	00	00€?	00	00€?	00	00€?	00	00€<wbr>?	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00€?ˆE®³ŸÄ³LÚ	17©	00	00	00€	00	00	00<wbr>€	00	00	00	00	00	00€?	00	00€?	00	00€?	0<wbr>0	00€?	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00€?H	169³	11	0B÷³íñf¨	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00€?	00	0<wbr>0€?	00	00€?	00	00€?	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00	00€?ŒOP³	1CoË³0Ð™¨	<wbr>00	00	00	00	00	00	00€	00	00	00	00	00	00<wbr>€?	00	00€?	00	00€?	00	00€?	00	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00€?d§h3#áþ±<wbr>NÖ	1E)	00	00	00	00	00	00	00	00	00	00	00<wbr>€	00	00€?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€?<wbr>Ø£³^ÒÎ²	03Çõ¨	00	00	00	00	00	00	00€	00	<wbr>00	00€	00	00€?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?	179	0C³	13#³¤	05&amp;	00	00	00	00	00<wbr>	00	00	00	00	00	00€	00	00€?	00	00€?	00	<wbr>00€?	00	00€?	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00€?‹âª2•£ñ±w1N(	00	00	00	<wbr>00	00	00	00€	00	00	00€	00	00€?	00	00€?	<wbr>00	00€?	00	00€?	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00€?—a†2°	01v²®›J(	00	0<wbr>0	00	00	00	00	00€	00	00	00€	00	00€?	00	<wbr>00€?	00	00€?	00	00€?	00	00	00	00	00	00	<wbr>00	00	00	00	00	00	00	00€?FØ|³‚&amp;e³‰N¦¨	0<wbr>0	00	00€	00	00	00€	00	00	00	00	00	00€?	<wbr>00	00€?	00	00€?	00	00€?	00	00	00	00	00	<wbr>00	00	00	00	00	00	00	00	00€?}Ú-³þY	052Ú<wbr>›‚¨	00	00	00€	00	00	00	00	00	00	00	00	0<wbr>0	00€?	00	00€?	00	00€?	00	00€?	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00€?ø…Ç²<wbr>²¼\³ácÃ'	00	00	00€	00	00	00€	00	00	00	0<wbr>0	00	00€?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€?½<wbr>IG³Ç²Ã³­Ú1¨	00	00	00	00	00	00	00€	00	00<wbr>	00	00	00	00€?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?ÏœH³	04ýä2Ü/¥§	00	00	00€	00	00	00	0<wbr>0	00	00	00	00	00	00€?	00	00€?	00	00€?	0<wbr>0	00€?	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00€?+;7³¹Òl³îÑv¨	00	00	00	00	00	<wbr>00	00€	00	00	00	00	00	00€?	00	00€?	00	0<wbr>0€?	00	00€?	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00€?ª°±²§	04J³¿­Ç'	00	00	00<wbr>€	00	00	00€	00	00	00	00	00	00€?	00	00€?<wbr>	00	00€?	00	00€?	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00€?´4 &nbsp; &nbsp;³	10æö±&gt;æ5¨	00	00	00	00	00	00	00€	00	00<wbr>	00€	00	00€?	00	00€?	00	00€?	00	00€?	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>€?À'¨³Ð§ù³Û8	05©	00	00	00€	00	00	00	00	<wbr>00	00	00€	00	00€?	00	00€?	00	00€?	00	00<wbr>€?	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00	00€?û#Ð±ËS]³ÆL8(	00	00	00	00	00	00	0<wbr>0€	00	00	00€	00	00€?	00	00€?	00	00€?	00<wbr>	00€?	00	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00€?Í)Q²s0…³ŽL'	00	00	00	00	00	0<wbr>0	00€	00	00	00€	00	00€?	00	00€?	00	00€?<wbr>	00	00€?	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00€?øÌ+1û	18ú±¡Ìî'	00	00	00€	0<wbr>0	00	00€	00	00	00	00	00	00€?	00	00€?	00<wbr>	00€?	00	00€?	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00€?øG	0F³Y3Ó³}w½§	00	00	<wbr>00	00	00	00	00€	00	00	00	00	00	00€?	00	<wbr>00€?	00	00€?	00	00€?	00	00	00	00	00	00	<wbr>00	00	00	00	00	00	00	00€?×lñ±BÀ±³ Ë£	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00€?	00	00€?	00	00€?	00	00€?	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00€?Û¡<wbr>à²–	10=1¸</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">D§	00	00	00	00	00	00	00	00	00	00	00€	00<wbr>	00€?	00	00€?	00	00€?	00	00€?	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00€?¹•;³	<wbr>1Eª¹³Â8&gt;§	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00€?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?°Š‹³8	12‰³;â¨¨	00	00	00€	00	00	00€	<wbr>00	00	00	00	00	00€?	00	00€?	00	00€?	00	<wbr>00€?	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00€?cû	0B³&gt;_Ð³²+¼§	00	00	00	00	00	<wbr>00	00	00	00	00	00€	00	00€?	00	00€?	00	0<wbr>0€?	00	00€?	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00€?y‹^³Ë11³t©F¨	00	00	00	0<wbr>0	00	00	00	00	00	00	00€	00	00€?	00	00€?<wbr>	00	00€?	00	00€?	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00€?$#²†¦v³+f5(	00	00<wbr>	00	00	00	00	00€	00	00	00€	00	00€?	00	0<wbr>0€?	00	00€?	00	00€?	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00	00€?	14	00	00	00Bon<wbr>e_R_BackHorseBoneëª’1^ˆ3øÖŽ2åŽ‡1ŽƒŒ2i	<wbr>18è¾ª/d?	00	00€?	00	00€?	00	00€?	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00€?  “³‡*O3¥û»<wbr>1½%±1ˆ•o2Qß¾ŽNf?	00	00€?	00	00€?	00	00<wbr>€?	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00	00€?¨gD3-ˆF2R·<wbr>Ÿ1Z´H2ß“T3KƒÉ¾ŸVk?	00	00€?	00	00€?	00	0<wbr>0€?	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00€?ýôU³	11,¾3–®	1C3`]2 &nbsp; &nbsp;d	042	04«¾ð5q?	00	00€?	00	00€?	00	00€?<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00€?U-©2vPá2	17T=2\ø„1Àþß1ücŽ¾Ÿæu?	00	<wbr>00€?	00	00€?	00	00€?	00	00	00	00	00	00	<wbr>00	00	00	00	00	00	00	00€?90Ð²I”œ3OÙ‰2©²<wbr>Ä1ØuÅ1ýÌ€¾hÄw?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?›u52c)¥3	04šÐ2	04ã2;	012à£¢¾ž½r?	<wbr>00	00€?	00	00€?	00	00€?	00	00	00	00	00	<wbr>00	00	00	00	00	00	00	00	00€?+”_°ö=b3¨h	<wbr>062}l	142J	1F_20œÒ¾§Vi?	00	00€?	00	00€?<wbr>	00	00€?	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00€?î	17	0C3Ìåf3ï&amp;2</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">¹¨1	18©ƒ2þkç¾m[d?	00	00€?	00	00€?	00	00<wbr>€?	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00	00€?	00O»<wbr>²ú²§3ã‹‹2j¯o1vùƒ2Ëýç¾n6d?	00	00€?	00	00<wbr>€?	00	00€?	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00€?s	12å²	0Eu‘3eÛ	0E2	07YŽ1<wbr>êÈ…2M¤å¾RÎd?	00	00€?	00	00€?	00	00€?	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>€?Z	123×;t3t~H2ž—©1»<wbr>’r2#	08Ü¾œ'g?	00	00€?	00	00€?	00	00€?	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0€?©y8³ý’Ý3šå©2Ü#×1C²&gt;2ÆÿÊ¾Ñ	04k?	00	00<wbr>€?	00	00€?	00	00€?	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00€?ÈÂ"3¹—‹3¯¹</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">2	12ž!2TŽ&lt;3•Å¶¾	10"o?	00	00€?	00	00€?	0<wbr>0	00€?	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00€?¡põ²½ˆ3Çõ«1¾hI2kí(3î</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">¥¾=Ur?	00	00€?	00	00€?	00	00€?	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00€?	05 &nbsp; ‹³äÃs3ñu	072FË;2–k	1D3—Z¾7œs?	00	00€?	<wbr>00	00€?	00	00€?	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00€?*¥í°	1BÝY3@Ê®0ÎÛ72Þ<wbr>l:3="³¾ÿÑo?	00	00€?	00	00€?	00	00€?	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00€<wbr>?Þ	08l3	14	0E	063¤ð«2JÝ	0F2Ùia2Ö	12Ö¾˜Œ<wbr>h?	00	00€?	00	00€?	00	00€?	00	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00€?Z{ù2M1F3<wbr>¾¦µ2ÊùÑ1¯	1B2=úæ¾6xd?	00	00€?	00	00€?	<wbr>00	00€?	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00€?…É3ð	1Bx3oy22N®U1	18l{2	12<wbr>Çç¾UDd?	00	00€?	00	00€?	00	00€?	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00€?ú&lt;	<wbr>02³{»<wbr>€3Û¦…1	15¶‰1–2†2;Ëä¾ª	04e?	00	00€?	00	0<wbr>0€?	00	00€?	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00€?FÇ	04±n	01X3	03K¡2,Ö¶1c<wbr>@i2	0C€Ù¾ÀÀg?	00	00€?	00	00€?	00	00€?	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0€?R „3¬ÈA3éÁe2W#	082¶y52¡~Æ¾úk?	00	00€?	00<wbr>	00€?	00	00€?	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00€?•H	16³?ÃV3ª±H¯pH2Ÿã2<wbr>3Áö¯¾	02hp?	00	00€?	00	00€?	00	00€?	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00€<wbr>?WZ]3H	00Ê3ÞJÈ2s¹e2ë|	052q	0Fœ¾sÑs?	00	<wbr>00€?	00	00€?	00	00€?	00	00	00	00	00	00	<wbr>00	00	00	00	00	00	00	00€?*8!²áÒ	133‰"	1<wbr>D2CÉ›0í(«²wY“¾^+u?	00	00€?	00	00€?	00	0<wbr>0€?	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00€?˜u+³	07§)3¾22a	14O2ã'13j'­¾rêp<wbr>?	00	00€?	00	00€?	00	00€?	00	00	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00€?2ÜÍ3õ	16O<wbr>3$4Ô2ÒÎ	142ªÍZ2	14»<wbr>Ô¾hÛh?	00	00€?	00	00€?	00	00€?	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00€?NôŸ3<wbr>‹	1881_</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">†2º	1AÎ1K	052‹	12ç¾	11rd?	00	00€?	00	0<wbr>0€?	00	00€?	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00€?%	02N³t£Æ3²âO2R;š1Ò-‡2¸<wbr>Òç¾_Ad?	00	00€?	00	00€?	00	00€?	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00€?ëª’<wbr>1^ˆ3øÖŽ2åŽ‡1ŽƒŒ2i	18è¾ª/d?	00	00€?	00	<wbr>00€?	00	00€?	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00€?	14	00	00	00Bone_L_Bac<wbr>kHorseBoneøäÿ±þ|â1xhß2Y X±	13	1AÖ²mX	0C<wbr>¿Ñ	19V?	00	00€?	00	00€?	00	00€?	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00€?óom<wbr>³ECØ²c	15¯2’Tœ0‘	1Dµ²kG &nbsp; &nbsp;¿n	14X?	00	00€?	00	00€?	00	00€?	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00€?þaˆ<wbr>³Ëªë2	1DBè2L€	152	16&amp;‰²ìb	01¿qå\?	00	00<wbr>€?	00	00€?	00	00€?	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00€?	1D…³ä¿2aù32®¢<wbr>n±8tì±	05”í¾jÅb?	00	00€?	00	00€?	00	00€<wbr>?	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00€?	01Œ8³8F‘0±ùÝ2¬¿¨1«áß°+Ù¾÷¼g?	00<wbr>	00€?	00	00€?	00	00€?	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00	00€?{´³	16F­2ñ`	<wbr>123{i8²1y	1E³	1FyÐ¾WÑi?	00	00€?	00	00€?<wbr>	00	00€?	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00€?ô	18o²Â	12÷±h	02R2?¦	11±Z¡<wbr>Ô±ÿAç¾	10fd?	00	00€?	00	00€?	00	00€?	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>€?¹÷	08±_nœ2	1Bò×2ˆŽ*1QI­²&gt;–	04¿ýZ?	00<wbr>	00€?	00	00€?	00	00€?	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00	00€?Fÿ2³ãå‚1Ð	00½<wbr>2…¼f±	04`Ú².	0C¿;5V?	00	00€?	00	00€?	0<wbr>0	00€?	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00€?žY	07³m¯Ú2ºt·<wbr>1	01=¥±ÿìá²	0BR	0C¿ÿ	1DV?	00	00€?	00	00<wbr>€?	00	00€?	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00€?ò5–³ö¬k2c]°2F%	02±ñƒÒ²×Ž<wbr>	0B¿nV?	00	00€?	00	00€?	00	00€?	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00€?ïþ<wbr>½²ÉMC3ñk*2§ƒ„0Iþ»<wbr>²ð"	08¿+ÍX?	00	00€?	00	00€?	00	00€?	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00€<wbr>?›(³·<wbr>ú	192T€Û2QÇ1©t™² &nbsp; Ý	01¿¼\?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€?	<wbr>04‰ÿ2øÐ†2&amp;DD2'I0²ª¡L²½Ùô¾5Ô`?	00	00€?	0<wbr>0	00€?	00	00€?	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00	00€?Ã¿Œ²œÜU²ƒ¬ï1	14D°±—	<wbr>03	05²´ùç¾y7d?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?­g^³‘	1Da3¦®ý2k¿c±ÉçÚ±Üpâ¾%še?	00	0<wbr>0€?	00	00€?	00	00€?	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00	00€?	10òŽ³º¾³2÷ïq2Ê<wbr>ù'²Y	087²ƒòñ¾	03a?	00	00€?	00	00€?	00	<wbr>00€?	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00€?´_Á³z&gt;03 &nbsp; _­2	11¤§0¢´²àÈ	05¿²BZ?	00	00€?	00	00€?<wbr>	00	00€?	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00€? \Y³	1EÝk3++Ø2Zk×°Ã·<wbr>Ã²R	12	0C¿´GV?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?†øÌ²ª½ó²¢</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">	1D3Ïx&gt;±!œÓ²ÏD	0C¿ª&amp;V?	00	00€?	00	00€?	<wbr>00	00€?	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00€?È=	15³5€Ÿ2à	12¢2(–ÿ°)^×²	0E<wbr>I	0B¿½ÊV?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€?é<wbr>?“²ÐŽq²ü	04x2x&lt;‡0›eÀ²)l	07¿…?Y?	00	00€?<wbr>	00	00€?	00	00€?	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00€?Á	0E	01³˜~õ2</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">ã)1Ä©	0E2‹	053	0CÀ	00¿‰D]?	00	00€?	00	<wbr>00€?	00	00€?	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00€?T¼„³P_	053õøÜ1¡^Ó±IU'²<wbr>¹¸ñ¾¬a?	00	00€?	00	00€?	00	00€?	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00€?Ü	<wbr>1Dh1k¶þ2ÕÈ­26	08*±	11L	00²õúã¾‘8e?	00	0<wbr>0€?	00	00€?	00	00€?	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00	00€?	08ˆ ²	05°b3~Â·<wbr>2’õœ0q›ž±«	0CÞ¾ÿ«f?	00	00€?	00	00€?	00	<wbr>00€?	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00€?à¬•³óÌt2á	10ú1VÓÓ±Rñ"²™…ï¾hBb?<wbr>	00	00€?	00	00€?	00	00€?	00	00	00	00	00<wbr>	00	00	00	00	00	00	00	00	00€?ˆ¿	1C²{O1<wbr>f	00Ú2S|H1ÂÔ§²”—	05¿â`Z?	00	00€?	00	00€<wbr>?	00	00€?	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00€?Øâ•³(5q2SÐ$2Ã™¯°ÄÇ²b	18	<wbr>0C¿½CV?	00	00€?	00	00€?	00	00€?	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00€?Wµè<wbr>²/j	17³	1C®	1F2%U	01±’.Ê²¤G	0C¿Ð$V?	00	<wbr>00€?	00	00€?	00	00€?	00	00	00	00	00	00	<wbr>00	00	00	00	00	00	00	00€?øäÿ±þ|â1xhß2Y <wbr>X±	13	1AÖ²mX	0C¿Ñ	19V?	00	00€?	00	00€?	<wbr>00	00€?	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00€?	0B	00	00	00Bone_Neck02é¤¥3<wbr>Ti&gt;1	1B­(	00	00	00	00	00	00	00€	00	00	<wbr>00	00	00	00€?	00	00€?	00	00€?	00	00€?	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0€?Û	00	1F4zò	1C³€	01	13)Œ"	032f¡ˆ²º.»<wbr>½²í~?	00	00€?	00	00€?	00	00€?	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00€?	1A‘<wbr>3è½U30_Å'¼ V2WŸß²+.	19¾˜	1E}?	00	00€?	0<wbr>0	00€?	00	00€?	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00	00€?óœë3ü</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">ú2ÏÐ(	0Eâ	052d~‹²ë	1A¿½	0Eâ~?	00	00€?	<wbr>00	00€?	00	00€?	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00€?	0Eµ 4Öq±²d.	15)G ˆ°ªÔ</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">1ŠNB&lt;dû?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€?&gt;<wbr>	1E34á“0}_#)K˜Ä±mÕL2pOŒ=	04f?	00	00€?<wbr>	00	00€?	00	00€?	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00€?Îc‡3['H2	15ƒ°(Þ/­±<wbr>Ûq42:5w=ˆˆ?	00	00€?	00	00€?	00	00€?	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>€?Äê½3‚ü	11³Ô	1Eß(½‰a±‚ýê1÷ =`Í?	00	00€?	00	00€?	00	00€?	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00€?$(Ñ39<wbr>2o3 	04’(ª¦p°v¼ú0ÂÀ+&lt;fü?	00	00€?	00	00€?	0<wbr>0	00€?	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00€?j"ä3 žÅ±Lë</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">)Ø&amp;ð0§6z±Ae«¼¨ñ?	00	00€?	00	00€?	00	00<wbr>€?	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00	00€?n@¤3š£±F\µ(	15³Ž1÷­	14²°K½ê®?<wbr>	00	00€?	00	00€?	00	00€?	00	00	00	00	00<wbr>	00	00	00	00	00	00	00	00	00€?Î–Ð3”Ôc36 <wbr>î(-	15Ë1Ñ—S²ºð½¬[?	00	00€?	00	00€?	00<wbr>	00€?	00	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00€?	0E¯%4Ñ	14Ý2sæ*)Iyâ1èök²p¢¡½“<wbr>3?	00	00€?	00	00€?	00	00€?	00	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00€?	06ç.49<wbr>-$³ž2	0E)8ˆ¼1ÓnD²?Ž†½fr?	00	00€?	00	00<wbr>€?	00	00€?	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00€?Ú3S3ùÿÂ2	18BL($ð^1ÉGè±k	<wbr>1C	1F½‰Î?	00	00€?	00	00€?	00	00€?	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00€?<wbr>	16	1C	044‡W29é-)	00{Ê0úöR±€‚¼Íõ?	00<wbr>	00€?	00	00€?	00	00€?	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00	00€?W	0F	054-à·<wbr>2Å+÷(}Ëª.\ô1¯çÉsºùÿ?	00	00€?	00	00€?	0<wbr>0	00€?	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00€?¥8!4&amp;Hˆ²6@0)¦Ø°ýºa1ÜŸš&lt;Sô?<wbr>	00	00€?	00	00€?	00	00€?	00	00	00	00	00<wbr>	00	00	00	00	00	00	00	00	00€?þ?Á3 …ž²	1<wbr>B	06Ë(y$8±	03Ü¿1Ll	03=BÞ?	00	00€?	00	0<wbr>0€?	00	00€?	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00€?å*¦3ê	07³1&lt;Í°(ô“&amp;±	0C­<wbr>1NÆí&lt;cä?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€?±<wbr>êª3×êê2¸)½(	00	00	00	00	00	00	00€	00	00<wbr>	00	00	00	00€?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?++â3È	1D€²Q	19 (®¨b1P(ì±KÄ!½ßÌ?	00<wbr>	00€?	00	00€?	00	00€?	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00	00€?î¯</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">4Þ ž3É0	01)Yyâ1æök²p¢¡½“3?	00	00€?	00	<wbr>00€?	00	00€?	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00€?fùB4ËŠ°ßNZ)7ˆ¼1ÕnD²?Ž<wbr>†½fr?	00	00€?	00	00€?	00	00€?	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00€?	08	<wbr>1C	184ÂÚR3c—	15)	0Fð^1®Gè±j	1C	1F½‰Î?	<wbr>00	00€?	00	00€?	00	00€?	00	00	00	00	00	<wbr>00	00	00	00	00	00	00	00	00€?ŸE4,vË2_ F)«zÊ0	03÷R±x‚¼Íõ?	00	00€?	00	00€?	00<wbr>	00€?	00	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00€?	06	103¿Š•2ó</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">“¦¼Ïª.eô1¯RÉsºùÿ?	00	00€?	00	00€?	00	0<wbr>0€?	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00€?	19	17	154¿ì³2›')‘¦Ø°Ýºa1ÜŸš&lt;S<wbr>ô?	00	00€?	00	00€?	00	00€?	00	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00€?Új	1F4p<wbr>^	0C³zz5)’$8±	06Ü¿1Nl	03=BÞ?	00	00€?	0<wbr>0	00€?	00	00€?	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00	00€?W2‹3S€ü2Ì&gt;(Ù“&amp;±%­1<wbr>IÆí&lt;cä?	00	00€?	00	00€?	00	00€?	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00€?Ø“<wbr>E3æŒ	1B²çÈµ'	00	00	00	00	00	00	00€	00	0<wbr>0	00	00	00	00€?	00	00€?	00	00€?	00	00€?<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00€?	10	00	00	00Bone_R_FrontShinÉEf´&lt; <wbr>Ï²Ó	00²lDÇ²ÍkC4Žl2?ô“7?	00	00€?	00	00€<wbr>?	00	00€?	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00€?hÙH´?°7²hV¨²1	10	14²‰R33<wbr>T3?V±6?	00	00€?	00	00€?	00	00€?	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00€?2xJ<wbr>´MÝ˜±YëÁ²/”%³	02	15m4Z	02-?’°&lt;?	00	00€?<wbr>	00	00€?	00	00€?	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00€?E &nbsp; S´</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">Tõ2U	0Eº±8¿ï²qæÐ3®	1C ?	0CÀG?	00	00€?	00	00€?	00	00€?	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00€?mÄ“<wbr>´¨Úâ²ÊÎ€²í¢*² ˜¨3"ò</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">?	02	03W?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€?¸<wbr>[L´‹dB1ÑÇ	14³5d»<wbr>²•'¾3²¬å&gt;7Ìd?	00	00€?	00	00€?	00	00€?	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0€?\Mi´û³V²s	0C	19²Íû‡²©	1F]3î—û&gt;Æõ^?	0<wbr>0	00€?	00	00€?	00	00€?	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00	00	00€?	00lH´¤úS²û_<wbr>´²hd8²à‡Ã±@à	17?í	14N?	00	00€?	00	00€?	<wbr>00	00€?	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00€?Ø &nbsp; &nbsp;ƒ´0šô²Ì'˜±	1C\°²Þ:§3èÛ"?V„E?	00	00€?	00<wbr>	00€?	00	00€?	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00€?RN-´'T,2ó{g±1Å²p]À3ý<wbr>	03(?K&amp;A?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€?,<wbr>l´=¶-¯	08¬	01³	0C	0F}²$t«3Vª+?Ãé=?	00	<wbr>00€?	00	00€?	00	00€?	00	00	00	00	00	00	<wbr>00	00	00	00	00	00	00	00€?Q	00…´	08Xe²h±<wbr>¥²fâ	12²˜L™3)¸+?CÝ=?	00	00€?	00	00€?	00<wbr>	00€?	00	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00€?Ç(j´9÷	1D²tç‹²ü	03*²»<wbr>ÓŒ3ˆ’&amp;?CeB?	00	00€?	00	00€?	00	00€?	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00€<wbr>?dãM´à	152½}£²ðºô±¾	1C	1F3§Ì	1D?	05•I?<wbr>	00	00€?	00	00€?	00	00€?	00	00	00	00	00<wbr>	00	00	00	00	00	00	00	00	00€?ðÍc´¶¨	10³<wbr>[	16Ý²?1½²;6	0C4Ü	16	11?6êR?	00	00€?	00<wbr>	00€?	00	00€?	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00€?	18a</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">´n\	1E1B÷	11³‘	00&lt;±½A3×Î	03?¾u[?	00	00<wbr>€?	00	00€?	00	00€?	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00€?cF*´“â°«#©²¨íŠ²<wbr>AëŠ3ëe	05?&lt;Z?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?27…´–öH²™Ê‘²{û	1F²â^š3…h	11?ò±R?	00<wbr>	00€?	00	00€?	00	00€?	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00	00€?‘ïj´	18 Õ±uÊ²Ïî—²Í™³3*å	1D?ÒI?	00	00€?	00	00€<wbr>?	00	00€?	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00€?Až†´+Ut°qÀì²ßÇ“±-}Š3d	02*<wbr>?¤e??	00	00€?	00	00€?	00	00€?	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00€?e‰L´d<wbr>£q1:»<wbr>²-KI±ï2ˆ3œ’2?ðn7?	00	00€?	00	00€?	00	0<wbr>0€?	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00€?	12	06&amp;´ÀÝš²	18	11	06³íLñ±åÕ^3†<wbr>´/?.:?	00	00€?	00	00€?	00	00€?	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00€?á1ˆ<wbr>´	0FxA2„ !³bÅÒ²x°+4Sª'?&amp;tA?	00	00€?	00	00€?	00	0<wbr>0€?	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00€?	12Ê‚´ñ‹	02³XËÜ±˜`Ý°Ý®t3~B	1C?(<wbr>ÇJ?	00	00€?	00	00€?	00	00€?	00	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00€?1Ái´`À8<wbr>²ÇÙ82gi¡²B	1341ž</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">?áBU?	00	00€?	00	00€?	00	00€?	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00€?L¼	04<wbr>´ü	00§²Ï	01þ°šè¿²Ð&lt;X3	1FÅþ&gt;s	0E^?	00	00<wbr>€?	00	00€?	00	00€?	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00€?	16³…´	04ä	08²wØ<wbr>ð1	1D·<wbr>,²ÙÎÿ/ƒÖ	03?"q[?	00	00€?	00	00€?	00	00€<wbr>?	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00€?Àói´{­+²	11™	172ûI²,Ç¬3}:	12?p R?	00	00€?	00	00€?	00	00€?	00	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00€?Ñù…´êŸÈ±<wbr>O$J±+	0B@² Ö±2Y	1E?±&amp;I?	00	00€?	00	00€?	00	00€?	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0€?ä`H´	1DÚV²	1Bœ²]Ÿ¤²ºŠ±3÷4*?¬8??	00	<wbr>00€?	00	00€?	00	00€?	00	00	00	00	00	00	<wbr>00	00	00	00	00	00	00	00€?&amp;ue´Ý™ê²	08	0B<wbr>²² Ÿë²±=84—l2?ë“7?	00	00€?	00	00€?	00	00€?<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00€?	10	00	00	00Bone_L_FrontShin	01	1A<wbr>ÿ³3‡`1ð	02¨±]	0B+³¹	17&amp;4ó¦	0E?#’T?	00	0<wbr>0€?	00	00€?	00	00€?	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00	00€?Ä &nbsp; &nbsp;¦³	13	1B2³ÚV%²8	02	00³ÎÑØ3 D	0F?þ'T?	00<wbr>	00€?	00	00€?	00	00€?	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00	00€?üEŸ³¿	14j³]q–<wbr>²Ó	16Ù²YîJ3'®</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">?á.W?	00	00€?	00	00€?	00	00€?	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00€?RÍõ³<wbr>ª{²gÿ˜²saï²[†	144	0Eå	00?ú.]?	00	00€?	0<wbr>0	00€?	00	00€?	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00	00€?H/½³	13½V1	00þ	14±ÃÑ<wbr>æ²ñ#g3‰@ß&gt;©af?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?PIý³¾«|¯	1B^	1E³æO§²E	12®3ed³&gt;¢Åo?	<wbr>00	00€?	00	00€?	00	00€?	00	00	00	00	00	<wbr>00	00	00	00	00	00	00	00	00€?²	13‚³¾MŠ2ô<wbr>Ù&amp;²]è	0B³¨	13	034P³Ç&gt;j¹k?	00	00€?	00	00<wbr>€?	00	00€?	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00€?ŽçÁ³ôæQ2÷ÔÛ²/Ôé²-šî3âKó&gt;<wbr>	16@a?	00	00€?	00	00€?	00	00€?	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00€?	08Ë<wbr>­³Ôßã²q«"1C\	14³9Ëù3½‚	01?ËÒ\?	00	00€?	<wbr>00	00€?	00	00€?	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00€?QæÄ³°„š2$…4²q.	17³—<wbr>×	064’_	06?	0CæY?	00	00€?	00	00€?	00	00<wbr>€?	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00	00€?	1F	1Cï³	0C•ì²D	1A‡±,£õ²¡	16	104<wbr>JH</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">?fpW?	00	00€?	00	00€?	00	00€?	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00€?]i	1A<wbr>´	18ˆ¬²¿L²H 	1D³$e"4&gt;—	0B?ö—V?	00	00€?	00	00€?	00	0<wbr>0€?	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00€?3+õ³&amp;Pˆ²ì;³±¿Ç	1E³)#"4	19H	08?Ñ<wbr>µX?	00	00€?	00	00€?	00	00€?	00	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00€?V¤4´ZÿD<wbr>³KJ?²U	1E2³¬NÅ3D‡	01?#Ð\?	00	00€?	00	00<wbr>€?	00	00€?	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00€?	19#¸³/Ãâ±û[é²¶Í·<wbr>²‰z›3Í¬í&gt;ì¾b?	00	00€?	00	00€?	00	00€?	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0€?êÿü³	10	00W°ˆ	08N1G»<wbr>Â²ºáü3 vÕ&gt;™°h?	00	00€?	00	00€?	00	00€?	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00€?ùªT<wbr>³þžþ²¯9e±þ£ò²üˆñ3ÞûÔ&gt;™Ìh?	00	00€?	00	00<wbr>€?	00	00€?	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00€?}œ±³Ô¯¤²	1BBk²V	1E–²,ˆÊ3<wbr>ù å&gt;;ïd?	00	00€?	00	00€?	00	00€?	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00€?Òëö³<wbr>ÝŸV²kë:²	1Bµ	04³;¢÷3	12qù&gt;L_?	00	00€?	<wbr>00	00€?	00	00€?	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00€?PH®³ŒÆÛ²	07çË²j€Ú²^<wbr>	16	0B4Öç	07?&lt;òX?	00	00€?	00	00€?	00	00<wbr>€?	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00	00€?	15Úp³pJ+±ýŸ×-	06@B³–Qº3íÒ	0F? Ç<wbr>S?	00	00€?	00	00€?	00	00€?	00	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00€?q&gt;¬²</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">	17Ô²Êïä²2Oæ²HŠ)4Ä	0F?-õS?	00	00€?	00	<wbr>00€?	00	00€?	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00€?ù	1A´¼ã™²bh#³§rõ²Ô®+4<wbr>øò</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">?x	02W?	00	00€?	00	00€?	00	00€?	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00€?67ú<wbr>³;*Ó±H	14E1’Ì«²´	04°3	04ñ	02?`ú[?	00	00<wbr>€?	00	00€?	00	00€?	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00€?B¢Ç³	08ÄÇ2Ãª‰°$Ü<wbr>Ù²Êëª3Ó|î&gt;Iˆb?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?A•z³ûoì1°¡Ö²Ì»<wbr>Ø²	18‘{3›!Õ&gt;öÃh?	00	00€?	00	00€?	00	00€<wbr>?	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00€?	0F^ù³ˆ¨	05²0ü	05³Ž^À²º²ã3fBØ&gt;	04<wbr>	0Bh?	00	00€?	00	00€?	00	00€?	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00€?‘Ïì³<wbr>P ³¶ùS²/úß²\æÙ3Ò	1Bé&gt;…íc?	00	00€?	00	00€?<wbr>	00	00€?	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00€?0"ï³´0ì²©ËW17­	1D³~R	044Àb<wbr>ú&gt;¸L_?	00	00€?	00	00€?	00	00€?	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00€?´¼³<wbr>	05t	0B1 ïù²	19§î²Dp	0B4¹	19	08?ôÒX?	00	00€?	00	<wbr>00€?	00	00€?	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00€?º	03h³…	12=²¿	15 °*ò9³<wbr>&gt;»<wbr>%4ô¦	0E?"’T?	00	00€?	00	00€?	00	00€?	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>€?	0F	00	00	00Bone_R_BackShin%"µ²ñ	0BO1<wbr>Î¤¬³›e¿»<wbr>sO”¾	10	07V¼Cÿt?	00	00€?	00	00€?	00	00€<wbr>?	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00€?×”\³ËAÊ²ÿa	1B´ØK»<wbr>»<wbr>	0ES’¾{©T¼ÄKu?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?€i	01´'1N²™…À³&gt;®°»<wbr>|Œ¾P‡Q¼	1B&amp;v?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?y‰¡³BÜ÷±*</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">ä³^¢»<wbr>ú?ƒ¾	04	00N¼çkw?	00	00€?	00	00€?	00	00€<wbr>?	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00€?{‘Þ³Ü</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">	1A±§„³ñ¿”»<wbr>Šnr¾Œ&lt;K¼ø²x?	00	00€?	00	00€?	00	00€?	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>€?Ió¯³	01›	0E²ÈÅÌ³t…Ž»<wbr>h{h¾z	1FJ¼çJy?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?	02ci³ì	0FÍ²'æ²³fo»<wbr>#§¾LáL¼žÞw?	00	00€?	00	00€?	00	00€?	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>€?:-£³Ê_Ë²–dá³ïŽ´»<wbr>‘±Ž¾” R¼³Ôu?	00	00€?	00	00€?	00	00€?	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>€?Ù	12a³Ü‰ò±é'	00³ûí¿»<wbr>V®”¾o	1CV¼àðt?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?dds³'&gt;®/¼Òª³	16{¿»<wbr>Ä^”¾Œ</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">V¼òüt?	00	00€?	00	00€?	00	00€?	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00€?#â—³<wbr>Ž	17×±–Ÿó³öA¿»<wbr>ra”¾“ÛU¼üt?	00	00€?	00	00€?	00	00€?	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>€?þ	11Á³h8.²ß"±³œïº»<wbr>ÂB’¾ŒoT¼6Nu?	00	00€?	00	00€?	00	00€?	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>€?ÃÑ	01³@»<wbr>“±	03?	03´¢Ý°»<wbr>û’Œ¾	17”Q¼ç"v?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?w‚¼³H_ª²™¸³&gt;œ¤»<wbr>Jñ„¾CeN¼ÿ1w?	00	00€?	00	00€?	00	00€?	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>€?	18¾ ³	16	07Ÿ²+•W³^	1Fš»<wbr>«§{¾_ØK¼! x?	00	00€?	00	00€?	00	00€?	00	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00€?¤–œ³Àü÷±<wbr>‹Ç2´H¦•»<wbr>êEu¾ÁÍJ¼d†x?	00	00€?	00	00€?	00	00€?	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>€?Úpž³Êùÿ±Œ	03_³	12D¡»<wbr>°Å‚¾©‰M¼ |w?	00	00€?	00	00€?	00	00€?	00	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00€?Ñ5Š³Î¡m<wbr>²1*³	0EÇµ»<wbr>¶V¾z	02S¼¤¼u?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?êh³	15†1²&gt;	1Fè²ÞAÀ»<wbr>fè”¾œ(V¼	0Cèt?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?yŸ³	0EW€²/s0´	14¨¿»<wbr>Z}”¾w	11V¼Nøt?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?ŒŠ	0B³wØ‰²U	1D…³ô0¿»<wbr>«e”¾LÍU¼êût?	00	00€?	00	00€?	00	00€?	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>€?ƒý³ý€&gt;²#	18É³¯Í»<wbr>»<wbr> á’¾©‘T¼v6u?	00	00€?	00	00€?	00	00€?	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>€?¶|Ù³È·<wbr>*²/ 	01´‘Ñ³»<wbr>ÁbŽ¾HSR¼&amp;àu?	00	00€?	00	00€?	00	00€?	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>€?ka€³Ñ^â²_	08 ³”©»<wbr>/Ï‡¾&gt;ëO¼</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">Îv?	00	00€?	00	00€?	00	00€?	00	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00€?š%à²pqô<wbr>±ìH›³À_ »<wbr>ÖE¾</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">N¼®w?	00	00€?	00	00€?	00	00€?	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00€?¡ì²³<wbr>KÝx±ÁøÇ³mTœ»<wbr>„z|¾¾HM¼¥	12x?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?f®ã³Žb±±šËò³í &nbsp; §»<wbr>3-†¾ÚIO¼=	07w?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?Rc€³ŒìX1E	05 ³Ã-¸»<wbr>Š×¾gS¼&amp;„u?	00	00€?	00	00€?	00	00€?	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>€?a~—³)+	03±Ÿ@ô³A0À»<wbr>QÜ”¾A&amp;V¼ãét?	00	00€?	00	00€?	00	00€?	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>€? 	14‹³ãE†²%	04´…ž¿»<wbr>æv”¾»<wbr>	0FV¼Iùt?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€?%<wbr>"µ²ñ	0BO1Î¤¬³›e¿»<wbr>sO”¾	10	07V¼Cÿt?	00	00€?	00	00€?	00	00€<wbr>?	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00€?	0F	00	00	00Bone_L_BackShindsC³¬„<wbr>ì²¡¸`³é&amp;	04¼RNÔ¾­õ	06½ÃÊh?	00	00€?	00	0<wbr>0€?	00	00€?	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00€?%,	123ž4Ì²P &nbsp;‘³D(	02¼&lt;PÔ¾œÖ	05½	0BËh?	00	00€?	00	00€<wbr>?	00	00€?	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00€?§ð	043©(	07³</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">ãÿ³‘²ø»<wbr></span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">iÓ¾Ø6	03½P	01i?	00	00€?	00	00€?	00	00€?<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00€?ë	000</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">7š²×ß	08´+</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">ç»<wbr>²–Ð¾Ö*	00½Ò¥i?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?	07L23	15ëæ²#÷ª³»<wbr>.Õ»<wbr>¤®Ì¾ÉYû¼#„j?	00	00€?	00	00€?	00	00€?	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>€?	06Ë;2¨î	04²ºzº³TÛÌ»<wbr>¸˜Ê¾TJù¼™øj?	00	00€?	00	00€?	00	00€?	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>€?	10§À²g	07Ú²+^À³ÎÅß»<wbr>ÓíÎ¾¹mþ¼Ô	04j?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?[</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">	073hKÉ²ÂSè±=jü»<wbr>Í‹Ó¾	1A)	04½Ôøh?	00	00€?	00	00€?	00	00€<wbr>?	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00€?XÖ	0C²?H×²rUp³Â	11	05¼èñÔ¾6	03	07<wbr>½U¥h?	00	00€?	00	00€?	00	00€?	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00€?%Ä‰3Ý<wbr>.º²ƒÕ³8L	04¼^hÔ¾¶÷	06½ÐÄh?	00	00€?	00	<wbr>00€?	00	00€?	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00€?ð	1Aè²¾§³²(r°³	03á	04¼<wbr>Û	15Õ¾œÍ	06½;h?	00	00€?	00	00€?	00	00€<wbr>?	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00€?Û2Z1:+²Ì—Ÿ³ññ	02¼d:Õ¾›Ÿ	05½œ•h?	<wbr>00	00€?	00	00€?	00	00€?	00	00	00	00	00	<wbr>00	00	00	00	00	00	00	00	00€?÷€’2	1AÌÇ²Ñ<wbr>[,³Ñ)ø»<wbr>(	1AÓ¾øG	03½*	13i?	00	00€?	00	00€?	00	0<wbr>0€?	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00€?ô×^±(	1FV²	12X‰³	1D	1Dæ»<wbr>	1C|Ï¾-¨	00½päi?	00	00€?	00	00€?	00	00€<wbr>?	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00€?„KÀ3¿d²²	12ñ×³Á	1CÖ»<wbr>\ÏË¾€	18ý¼@´j?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?¥?²³hý±‹€0´"5Ï»<wbr>‚	1BÊ¾1^û¼ö	12k?	00	00€?	00	00€?	00	00€<wbr>?	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00€?¨G	0F3|I€²Ÿ³Ž³íäß»<wbr>ZÝÍ¾ºùÿ¼s@j?	00	00€?	00	00€?	00	00€?	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>€?f	10Á2¹	17Å±	1A€â³Ž	1Cý»<wbr>	1C\Ó¾¯~	04½s	03i?	00	00€?	00	00€?	00	0<wbr>0€?	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00€?º´º22»<wbr>æ±:ïß³¯¤	05¼WXÕ¾	19	0B	07½Ôh?	00	00€?	<wbr>00	00€?	00	00€?	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00€?já²3Ê š²"ƒ	11³b–	04<wbr>¼çœÔ¾dü	06½Í¸h?	00	00€?	00	00€?	00	00€?<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00€?î³y°¸	12©²×&gt;?²ñ	1D	05¼aXÕ¾	11À	06½<wbr>	02Žh?	00	00€?	00	00€?	00	00€?	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00€?&lt;hJ3<wbr>	164</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">³(Ê ³Eç	04¼(°Ö¾*®	05½}?h?	00	00€?	00	00€?	0<wbr>0	00€?	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00€?U–Î2o‰	07³ÀÚ\³T3	01¼	00Ö¾jº<wbr>	03½ÛHh?	00	00€?	00	00€?	00	00€?	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00€?øù<wbr>n3ˆ{Ô²1ñÛ³}ö»<wbr>èÞÔ¾=•	01½	1B­h?	00	00€?	00	00€?	00	00€<wbr>?	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00€?|#‚1	18M„²5·<wbr>¡³ Âê»<wbr>9Ò¾p»<wbr>ÿ¼¯4i?	00	00€?	00	00€?	00	00€?	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00€?&amp;1*3<wbr>ûq#²el¤³¾kå»<wbr>"^Ñ¾	10Tþ¼Éyi?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?`b	173ÿ‹ñ²	11c	07´àÌñ»<wbr>È­Ó¾"	16	01½	03óh?	00	00€?	00	00€?	00	0<wbr>0€?	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00€?Ê6	132Ghç²­</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">ã²S	02	02¼	0BŽÕ¾æß	04½â‚h?	00	00€?	00	0<wbr>0€?	00	00€?	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00€?Ë+®2 	1DS²5àÚ³¿†	05¼ÕBÕ¾Z 	07½Å’h?	00	00€?	00	00€?	00	00€?	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00€?Ä—<wbr>F3Œ¤²Ó¡	03³3‡	04¼Í‘Ô¾Sû	06½W»<wbr>h?	00	00€?	00	00€?	00	00€?	00	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00€?dsC³¬„ì²<wbr>¡¸`³é&amp;	04¼RNÔ¾­õ	06½ÃÊh?	00	00€?	00	00€<wbr>?	00	00€?	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00€? &nbsp;	00	00	00Bone_Head›qø28gñ±lp°(,L	0E³.‘<wbr>3“YQ&gt;Ç—z?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€?ž<wbr>…o1ó‰	17³“U›(¸EÊ²D_N3øÊ	14&gt;uH}?	00	00€?<wbr>	00	00€?	00	00€?	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00€?˜	18\³ë;&gt;³Ž†¨¶õ_²<wbr>Ñä2	13¿¤=+?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?]\‡³¿±Q3ˆ”©»<wbr>ß</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">²U°2)PL=k®?	00	00€?	00	00€?	00	00€?	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0€?¢	15‚²”ºj3Œ§µ¨Ñm‚²–	12	053ã¿=³ß~?	0<wbr>0	00€?	00	00€?	00	00€?	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00	00	00€?ø—	15³±s‚±DA<wbr>	03©ËÇ	03³‹s†3àA&gt;¥^{?	00	00€?	00	00€?	<wbr>00	00€?	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00€?$¢o±ÂrÂ±&lt;·<wbr>²§¾	1DE³ˆ	1CÉ3üÿ&gt;ô„u?	00	00€?	00	00€?	<wbr>00	00€?	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00€?îÇ»<wbr>±+Ìá2×M¥¨	04&gt;b³åÓæ3Úl¦&gt;5	19r?	00	00€?	0<wbr>0	00€?	00	00€?	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00	00€?Û2uÌù²Sq¤(ãôX³™ZÝ3<wbr>8˜Ÿ&gt;Û&gt;s?	00	00€?	00	00€?	00	00€?	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00€?šŽ<wbr>L³Øß)3èÝ	0C©öŽA³H{Å3	00bŽ&gt;èæu?	00	00€?	<wbr>00	00€?	00	00€?	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00€?=E§3lû&gt;°	06“(…É"³&amp;<wbr>	16¦3”~o&gt;_æx?	00	00€?	00	00€?	00	00€?	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0€?Ü÷^³’\¦³Â«ç'Ý¬	03³	17X†3é¸A&gt;Ž`{?	00	<wbr>00€?	00	00€?	00	00€?	00	00	00	00	00	00	<wbr>00	00	00	00	00	00	00	00€?c§-³Ú8o³</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">òw¨Ä	1A×²Öv[3r;	1E&gt;Úì|?	00	00€?	00	00€?<wbr>	00	00€?	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00€?,	07P³Ön3K_…©mºÃ²÷±G3—ú	0<wbr>F&gt;õt}?	00	00€?	00	00€?	00	00€?	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00€?gë</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">²h\Á³ÑáE(	17ùô²"ðy3	1E44&gt;:	01|?	00	00€?<wbr>	00	00€?	00	00€?	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00€?»<wbr>ö	15³¯d•³YI¾(Ú	0E0³V ³3c‚&gt;Ã¬w?	00	00€?<wbr>	00	00€?	00	00€?	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00€?Ôô	01²/jÙ2œÅË¨C‰d³<wbr> &nbsp; +é3Ó	1C¨&gt;ŒÎq?	00	00€?	00	00€?	00	00€?	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0€?ûw	0C3žZj³Øã·<wbr>(¤ð{³í…	004	1ET¹&gt;ý£n?	00	00€?	00	00€?	0<wbr>0	00€?	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00€?ê¬	00³ÝÜ‰3€H	1E©+·<wbr>g³riì3Šsª&gt;¬eq?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?öô¦2</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">	00É³	17Å	08)lä:³&amp;®¾3©z‰&gt;&gt;™v?	00	00€?	0<wbr>0	00€?	00	00€?	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00	00€?¨µ3²œÙ²ñ]Ž¦,L	0E³.<wbr>‘3“YQ&gt;Ç—z?	00	00€?	00	00€?	00	00€?	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00€?<wbr>û	0Fœ²±­‡1í,£¨¨Ó	02³wz…3Uy@&gt;åo{?	00	00€<wbr>?	00	00€?	00	00€?	00	00	00	00	00	00	00	<wbr>00	00	00	00	00	00	00€?	044ž²	17	14®2ºš&amp;<wbr>©`ÜÚ²úK_3Õþ &gt;òÐ|?	00	00€?	00	00€?	00	00€?	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00€?	0FŽ±<wbr>²Ž0	01³Ø´P¨pºÃ²ù±G3—ú	0F&gt;õt}?	00	00€?	0<wbr>0	00€?	00	00€?	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00	00€?¸	1E61­­G3‰È</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">©	15ùô²	1Fðy3	1D44&gt;:	01|?	00	00€?	00	00<wbr>€?	00	00€?	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00€?</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">Ú"2x’	0B³á™	1B(Ô	0E0³T ³3c‚&gt;Ã¬w?	00	00<wbr>€?	00	00€?	00	00€?	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00€?Ë%	122koŒ2ÔýÀ¨?‰<wbr>d³	0B+é3Ó	1C¨&gt;ŒÎq?	00	00€?	00	00€?	00	0<wbr>0€?	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00€?[F	0E³£¢`³¡vÕ¨£ð{³í…	004	1ET¹&gt;ý<wbr>£n?	00	00€?	00	00€?	00	00€?	00	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00€?8÷²õ½•<wbr>² µš¨(·<wbr>g³riì3Šsª&gt;¬eq?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?›ô¾²êM	04³-¹	16'nä:³&amp;®¾3©z‰&gt;&gt;™v?	00<wbr>	00€?	00	00€?	00	00€?	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00	00€?³ø’¯K	05±žíi<wbr>'.L	0E³.‘3“YQ&gt;Ç—z?	00	00€?	00	00€?	00	<wbr>00€?	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00€?	10	00	00	00Bone_R_FrontFootN<wbr>¤³}[;1	05€²3äÈÝ=	14Uÿ¾ðÛ9=Ù[?	00	00€?	<wbr>00	00€?	00	00€?	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00€?Ÿ=³OiZ1ýÄk3Ý	1Aà=º<wbr>Ø	00¿ƒZ7=™![?	00	00€?	00	00€?	00	00€?	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0€?ï	08	0C³‰ˆÏ2.Æ43	04%Ñ=.ò¾¯ÛF=h¯_?	0<wbr>0	00€?	00	00€?	00	00€?	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00	00	00€?‚ý{³ìB+±B	08<wbr>u32Ž¸=ÌiÕ¾&amp;þ^=|"g?	00	00€?	00	00€?	00	0<wbr>0€?	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00€?©jE³×	1C	12³g7¡3V3›=lÏ¬¾†jy=_°o<wbr>?	00	00€?	00	00€?	00	00€?	00	00	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00€?ñÌÙ²ì³1¦<wbr>õ`3&lt;‚ƒ=7a†¾É-†=</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">èu?	00	00€?	00	00€?	00	00€?	00	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00€?	07-µ±V<wbr>	15m±0</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">­3	18]=j1—¾þM‚=nfs?	00	00€?	00	00€?	00<wbr>	00€?	00	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00€?	0F	0F &nbsp;³ikË±eÔ93o#¬=À</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">Æ¾â‹i=•¢j?	00	00€?	00	00€?	00	00€?	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00€?<wbr>	1B¦—³{…`²—r-3Ê	0E¾=	17BÞ¾RvW=Äÿd?	00	0<wbr>0€?	00	00€?	00	00€?	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00	00€?ö48³(ÏZ2 È©3¶)Ç<wbr>=òÒç¾	19íO=^…b?	00	00€?	00	00€?	00	00€?<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00€?ÔÍ.³˜Œ­±(¢°3hÛÍ=¬¿í¾~.K==ç`?	00	00<wbr>€?	00	00€?	00	00€?	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00€?“	0C‘²¯0=²w4Š3¥(<wbr>Í=®)ë¾</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">N=ë”a?	00	00€?	00	00€?	00	00€?	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00€?¬û‰²<wbr>®×®²YÑŒ3ÿ¯Â=?dÞ¾5)Y=Næd?	00	00€?	00	00€<wbr>?	00	00€?	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00€?£+.³›Ì4²i(±3o²³=ðÙË¾&amp;*g=‰<wbr>Oi?	00	00€?	00	00€?	00	00€?	00	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00€?	0Få™³Ç<wbr>&lt;!2blÁ3:û¡=M?´¾&lt;2v=	1DBn?	00	00€?	00	00<wbr>€?	00	00€?	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00€?*z	0E³îÔ¾1&lt;æ13¾ý’=žž¾JÜ<wbr>€=¬/r?	00	00€?	00	00€?	00	00€?	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00€?Š¬Y³<wbr>tÐ	17±&amp;Ž’3	1C	1E•=nÔ£¾ $~=	14Mq?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€?)<wbr>4A³Œ &nbsp; ¥²Có£3	03ý£=rÓ¼¾u®n=Œ™l?	00	00€?	00	00€<wbr>?	00	00€?	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00€?	0EXð²f!'2D	08Q3ô	19¶=¡wÕ<wbr>¾	0EÙ]=.(g?	00	00€?	00	00€?	00	00€?	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00€<wbr>?lb	00³	12?"²«	16F3±%Ë=Pì¾A	01L=ÿPa?	0<wbr>0	00€?	00	00€?	00	00€?	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00	00	00€?@.x³Ê”†1”.z3<wbr>EMÝ=/Uý¾ÖL&lt;=8m\?	00	00€?	00	00€?	00	00€<wbr>?	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00€?Õ}³5¼«²ÊÐ¼3	19)Õ=BGò¾	01õG=‘˜_?	<wbr>00	00€?	00	00€?	00	00€?	00	00	00	00	00	<wbr>00	00	00	00	00	00	00	00	00€?väº²tÔV1A­v<wbr>3”ÀÃ=ÉêÜ¾^I[=ö;e?	00	00€?	00	00€?	00	00<wbr>€?	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00	00€?®A³H¶£°ˆÚk3_A°=ÃšÃ¾•Gn=û	14k?	0<wbr>0	00€?	00	00€?	00	00€?	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00	00	00€?	0Es±	00§M²<wbr>Y 	073¢·<wbr>œ=-¨¾ ö~=#yp?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?\	1A3²#•,²ò¡3Ï =õt‘¾m	16…="?t?	00<wbr>	00€?	00	00€?	00	00€?	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00	00€?	14·<wbr>=³¦	06™²¹_¦3Z©’=ëaœ¾	1EÇ=Çˆr?	00	00€?	<wbr>00	00€?	00	00€?	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00€?E½Ò²”Ìþ1­×e3“¤=	16<wbr>	14¼¾	1BÅo=é¼l?	00	00€?	00	00€?	00	00€?<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00€?_I	0B²Ç«¸2…$¤3‡È¶=J2Ö¾%Z]=Qûf?	00	<wbr>00€?	00	00€?	00	00€?	00	00	00	00	00	00	<wbr>00	00	00	00	00	00	00	00€?k™F³?ÌÎ²Ð= 3	0<wbr>0†Ë=	1A¬ì¾ü³K=Þ7a?	00	00€?	00	00€?	00	0<wbr>0€?	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00€? &nbsp;Úù²\jr2é=J3üÈÝ=ÿTÿ¾†Û9=…Ù[?	00	00€?	00	<wbr>00€?	00	00€?	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00€?	10	00	00	00Bone_L_Fro<wbr>ntFoot—1‘2¡n	113jJò²`åï=	18ê	1C¿²}à&lt;ÞéG<wbr>?	00	00€?	00	00€?	00	00€?	00	00	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00€?[_'³Sã#3Ã<wbr>p†±MYò=dÐ	1D¿sGÛ&lt;×)G?	00	00€?	00	00€?	0<wbr>0	00€?	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00€?æCã2ÀøÁ1ÿÚ{²w‹â=aª	17¿Wäü&lt;^!<wbr>L?	00	00€?	00	00€?	00	00€?	00	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00€?g£x1ªµÚ2<wbr>„åH³åôÈ=þ´	0B¿i¾	19=JÓT?	00	00€?	00	00€<wbr>?	00	00€?	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00€?ãQŠ²š3:3WRÇ²</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">Ïª=WBó¾	1EÝ9=öñ_?	00	00€?	00	00€?	00	00<wbr>€?	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00	00€?‚!è2"û&gt;3	18ôq²	04a’=[ÈÍ¾ï¹S=›Ri?<wbr>	00	00€?	00	00€?	00	00€?	00	00	00	00	00<wbr>	00	00	00	00	00	00	00	00	00€?	161Ì &nbsp; &nbsp;W3êÙÄ1“Šœ=	03rÞ¾	16ñH=³fe?	00	00€?	00	0<wbr>0€?	00	00€?	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00€?®¦¾2¬ä93~	0B³²‘ì»<wbr>=	03	04¿T|'=ü}Y?	00	00€?	00	00€?	00	00<wbr>€?	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00	00€?¹_u3æ3Ý2»<wbr>cÆ²X	1EÎ=´p	0E¿&gt;ý	13=®ñR?	00	00€?	00	00<wbr>€?	00	00€?	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00€?</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">,´2†	0B„2ûbÀ²£æ×=!	0C	13¿J·<wbr> =‹¡O?	00	00€?	00	00€?	00	00€?	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00€?ú	1DÛ<wbr>°ç°!3çJC±çNß=¶E	16¿Þö	01={4M?	00	00€?	0<wbr>0	00€?	00	00€?	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00	00€?¬	05D³¬y33¶'d²Ï	08ß=<wbr>M	15	16¿,s	02=ÇXM?	00	00€?	00	00€?	00	0<wbr>0€?	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00€?	04¾	10²9	12]2câR²	0BSÔ=­*	11¿þ<wbr>	17	0E=ÿþP?	00	00€?	00	00€?	00	00€?	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00€<wbr>?B¡	013“äó2x¹‚³ÔÓÄ=É? ¿ÌÅ	1E=ÒvV?	00	00€?	00	00€?	00	00€?	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00€<wbr>?`É	163©â2ba6±7x²={ßü¾	18J2=Y2]?	00	00<wbr>€?	00	00€?	00	00€?	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00€?éŽ52¢	1CÂ1•—	1E³<wbr>lÔ¢=z—ç¾'¬B=M	14c?	00	00€?	00	00€?	00	0<wbr>0€?	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00€?+q¾34B-2¹H	01³Õu¤=Ädê¾ƒ„@=%Yb?	<wbr>00	00€?	00	00€?	00	00€?	00	00	00	00	00	<wbr>00	00	00	00	00	00	00	00	00€?~FŸ±·<wbr>ÎX3Y‹ö±Èõ²=v…þ¾º¥0=õ¸\?	00	00€?	00	00€?<wbr>	00	00€?	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00€?´tA2Ö;	192µ€	1A³±”Å=	04	19<wbr></span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">¿©é	1C=ÉéU?	00	00€?	00	00€?	00	00€?	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00€<wbr>?³	15Œ3{ÜD°Å	13‡³Q	12Ü=!ê	14¿žH	05=</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">=N?	00	00€?	00	00€?	00	00€?	00	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00€?ÅÁÄ2	00<wbr>ú	002©Ä¨²ŸÀï=JÙ	1C¿%Ýà&lt;£÷G?	00	00€?	00	<wbr>00€?	00	00€?	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00€?öþ	123xeŒ2</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">Ól³™Ïç=	18±	19¿žWò&lt;U‡J?	00	00€?	00	00€?<wbr>	00	00€?	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00€?	0CY¬²ñRœ2qËõ²* Ö=&gt;Ô	11¿L¥	0C=n‚P?	00	00€?	00	00€?	00	0<wbr>0€?	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00€?Z•h2¶ƒ¨1ð²	0C³ÃDÂ=ôt	07¿	01j"=W<wbr> W?	00	00€?	00	00€?	00	00€?	00	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00€?Ð‰[3CE¡<wbr>2ç:	07³‡C®=	07Mö¾Äì7=³	13_?	00	00€?	00	<wbr>00€?	00	00€?	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00€?{’Ö2	10è¾2	02ƒ²œšž=$	<wbr>14à¾–NH=Áûd?	00	00€?	00	00€?	00	00€?	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>€?©«†2Ã5Á2´&gt;	00³Þõ¢=Fcç¾"ðB=	01!c?	00	0<wbr>0€?	00	00€?	00	00€?	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00	00€?T÷ú2—	01 3	10¬…³M	01´=¡˜ÿ¾&gt;Î/=­f\?	00	00€?	00	00<wbr>€?	00	00€?	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00€?UÃ&lt;3uŒ2	01L2³ØRÆ=ƒ|</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">¿$	1C==§U?	00	00€?	00	00€?	00	00€?	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00€<wbr>?	1Fw	00³	0B	1Dì2	08ã	1722{Ü=°	17	15¿	0<wbr>2Ú	04=¨	1AN?	00	00€?	00	00€?	00	00€?	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>€?œ†Ñ2(	15¾2	1C”—²`åï=	0Fê	1C¿V}à&lt;åéG?	<wbr>00	00€?	00	00€?	00	00€?	00	00	00	00	00	<wbr>00	00	00	00	00	00	00	00	00€?	0F	00	00	0<wbr>0Bone_R_BackFoot©²Ó³zû§±øìé²	00	00	00€	<wbr>00	00	00€	00	00	00	00	00	00€?	00	00€?	0<wbr>0	00€?	00	00€?	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00	00€?XQŒ³w¡Ü°¦&amp; &nbsp;³	00	00	00€	00	00	00€	00	00	00	00	00	00<wbr>€?	00	00€?	00	00€?	00	00€?	00	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00€?	11	16ã³<wbr>	0B	1Cy2î¯¤³	00	00	00€	00	00	00€	00	00	<wbr>00	00	00	00€?	00	00€?	00	00€?	00	00€?	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0€?ù°Ô³©·<wbr>U2N›‰1	00	00	00€	00	00	00€	00	00	00	00	<wbr>00	00€?	00	00€?	00	00€?	00	00€?	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00€?IòÊ<wbr>²	140±LL	11³	00	00	00€	00	00	00€	00	00<wbr>	00	00	00	00€?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?Rã‚³â+m2 é	02³	00	00	00€	00	00	00€	<wbr>00	00	00	00	00	00€?	00	00€?	00	00€?	00	<wbr>00€?	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00€?	0Bã¸±Ù</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">2Ö	18w1	00	00	00€	00	00	00€	00	00	00	00<wbr>	00	00€?	00	00€?	00	00€?	00	00€?	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00€?óþ<wbr>Ý³	10·<wbr>	14²	19÷²	00	00	00€	00	00	00€	00	00	00<wbr>	00	00	00€?	00	00€?	00	00€?	00	00€?	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00€<wbr>?($*³ìî¤0€à	082	00	00	00€	00	00	00€	00	<wbr>00	00	00	00	00€?	00	00€?	00	00€?	00	00€<wbr>?	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00€?õÅV³	1AÂÒ1æºæ²	00	00	00€	00	00	00<wbr>€	00	00	00	00	00	00€?	00	00€?	00	00€?	0<wbr>0	00€?	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00€?j	0E¶³i	12ž2Œ,h³	00	00	00€	0<wbr>0	00	00€	00	00	00	00	00	00€?	00	00€?	00<wbr>	00€?	00	00€?	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00€?	0F(”³.¨œ1HÚ•²	00	00	<wbr>00€	00	00	00€	00	00	00	00	00	00€?	00	00<wbr>€?	00	00€?	00	00€?	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00€?‘ú¸³°°W­²’Æ²	00	<wbr>00	00€	00	00	00€	00	00	00	00	00	00€?	00<wbr>	00€?	00	00€?	00	00€?	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00	00€?	0Cl½³F¨æ²'a	<wbr>022	00	00	00€	00	00	00€	00	00	00	00	00	<wbr>00€?	00	00€?	00	00€?	00	00€?	00	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00€?L.m³6Ã<wbr>	0E°bw]²	00	00	00€	00	00	00€	00	00	00	0<wbr>0	00	00€?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€?a<wbr>	00Ù³52È±Åá;³	00	00	00€	00	00	00€	00	00<wbr>	00	00	00	00€?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?Ö0¿³”&gt; /{Î*³	00	00	00€	00	00	00€	00<wbr>	00	00	00	00	00€?	00	00€?	00	00€?	00	00<wbr>€?	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00	00€?&gt;LÀ²Ñ	0E1ìƒA3	00	00	00€	00	00	0<wbr>0€	00	00	00	00	00	00€?	00	00€?	00	00€?	<wbr>00	00€?	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00€?	1DÐ	04²ô´ô1	02	08Ÿ2	00	00	<wbr>00€	00	00	00€	00	00	00	00	00	00€?	00	00<wbr>€?	00	00€?	00	00€?	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00€?­‘	15´0ÈG2d8r³	0<wbr>0	00	00€	00	00	00€	00	00	00	00	00	00€?	<wbr>00	00€?	00	00€?	00	00€?	00	00	00	00	00	<wbr>00	00	00	00	00	00	00	00	00€?c¥Ó³rËª²Ø¿{<wbr>³	00	00	00€	00	00	00€	00	00	00	00	00	00<wbr>€?	00	00€?	00	00€?	00	00€?	00	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00€?9¢	01´vó<wbr>¾±| ³	00	00	00€	00	00	00€	00	00	00	00	<wbr>00	00€?	00	00€?	00	00€?	00	00€?	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00€?õBæ<wbr>³+{ì1eUw²	00	00	00€	00	00	00€	00	00	00	<wbr>00	00	00€?	00	00€?	00	00€?	00	00€?	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00€?<wbr>ÅáŒ³P+è±6	03-°	00	00	00€	00	00	00€	00	0<wbr>0	00	00	00	00€?	00	00€?	00	00€?	00	00€?<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00€?#	08³r,ü¯ÁÝ52	00	00	00€	00	00	00€<wbr>	00	00	00	00	00	00€?	00	00€?	00	00€?	00<wbr>	00€?	00	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00€?f°p³{c†2ýß÷²	00	00	00	00	00	0<wbr>0	00€	00	00	00€	00	00€?	00	00€?	00	00€?<wbr>	00	00€?	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00€?–|	05´	03×¿±è‡	19³	00	00	0<wbr>0€	00	00	00€	00	00	00	00	00	00€?	00	00€<wbr>?	00	00€?	00	00€?	00	00	00	00	00	00	00	<wbr>00	00	00	00	00	00	00€?	0Cw,²\d¡¯	038</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">1	00	00	00€	00	00	00€	00	00	00	00	00	00<wbr>€?	00	00€?	00	00€?	00	00€?	00	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00€?À†³f/š1<wbr>&gt;}Ž°	00	00	00€	00	00	00€	00	00	00	00	00<wbr>	00€?	00	00€?	00	00€?	00	00€?	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00€?	0F4Á<wbr>2—^1íÜ=3	00	00	00€	00	00	00€	00	00	00	<wbr>00	00	00€?	00	00€?	00	00€?	00	00€?	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00€?<wbr>©²Ó³zû§±øìé²	00	00	00€	00	00	00€	00	00	<wbr>00	00	00	00€?	00	00€?	00	00€?	00	00€?	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0€?	0F	00	00	00Bone_L_BackFootMút3È’	17<wbr>3b°3Ñ	15</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">5‰;	1A¾	083›±_	14}?	00	00€?	00	00€?	00	<wbr>00€?	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00€?	02¯	163dc"3ØÑ3Í	15</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">5;	1A¾u:›±_	14}?	00	00€?	00	00€?	00	00<wbr>€?	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00	00€?ä³á2*¦¬2	1AØ‡3ÿø &nbsp; 5 ;	1A¾çì3^	14}?	00	00€?	00	00€?	00	00<wbr>€?	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00	00€?œÏ²¨·<wbr>ê2„	10H3•9È4™;	1A¾•\v4^	14}?	00	00€?	00<wbr>	00€?	00	00€?	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00€?@!‚30p	14247 3P¿	035<wbr>;	1A¾h	14c4_	14}?	00	00€?	00	00€?	00	00<wbr>€?	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00	00€?‹„Û3væï2îÅ½3&lt; á4§;	1A¾Iƒ{³^	14}?	00	00€?	00	00€?	00	0<wbr>0€?	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00€?©Ô°˜	04Ï2¾Ê•3-Ü	065 ;	1A¾äÅ	15<wbr>4^	14}?	00	00€?	00	00€?	00	00€?	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00€?	10<wbr>N]3	10_ü2«z»<wbr>3+Õ/5;	1A¾^áÊ³_	14}?	00	00€?	00	00€?	0<wbr>0	00€?	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00€?“	03¡3l“ø2P¹ˆ3Ñ	15</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">5‘;	1A¾	07-›±_	14}?	00	00€?	00	00€?	00	<wbr>00€?	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00€?¯æ]3'M3$HÝ3	11ò25·<wbr>;	1A¾Í¾2´]	14}?	00	00€?	00	00€?	00	00€?<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00€?žC¹²îm°2ì½K3)Õ/5w;	1A¾¼áÊ³_	14}?	0<wbr>0	00€?	00	00€?	00	00€?	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00	00	00€? ã¾²®Ô	1C3ÖÏ<wbr>J3=Õ/5¸;	1A¾§ÞÊ³]	14}?	00	00€?	00	00€?	<wbr>00	00€?	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00€?Z.‡±Óü	013áÈd3W¿	035˜;	1A¾	<wbr>1B	15c4^	14}?	00	00€?	00	00€?	00	00€?	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0€?	13¥	163º.#3x^	153d¸,5§;	1A¾0	02Á²^	<wbr>14}?	00	00€?	00	00€?	00	00€?	00	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00€?”	11ë²<wbr>šŒ¡2s)¥3—›)5Ç;	1A¾3ÀT3\	14}?	00	00€?	00<wbr>	00€?	00	00€?	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00€?ª×˜2Ôr 2n†£3 9È4¯;	1A<wbr>¾E]v4]	14}?	00	00€?	00	00€?	00	00€?	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00€<wbr>?œsR3ÈoV2É	17ý3tôˆ4‚;	1A¾®Ñ„4_	14}?	00	<wbr>00€?	00	00€?	00	00€?	00	00	00	00	00	00	<wbr>00	00	00	00	00	00	00	00€?{1)3ˆM…2Ê(‘3-Ü<wbr>	065™;	1A¾µÅ	154^	14}?	00	00€?	00	00€?	<wbr>00	00€?	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00€?./ï²	1C4È2	1C	1Eƒ3]¸,5‘;	1A<wbr>¾	03	07Á²_	14}?	00	00€?	00	00€?	00	00€?<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00€?	11f¡3{}	053]BÌ3NsÎ4¶;	1A¾	05	0E)4<wbr>]	14}?	00	00€?	00	00€?	00	00€?	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00€?€iz3<wbr>)±È2Ô[63ÃwO5©;	1A¾fnñ³^	14}?	00	00€?	00<wbr>	00€?	00	00€?	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00€?T1·<wbr>3§	10±	00Ã±3	1D.4‰;	1A¾	1FT&lt;4_	14}?	0<wbr>0	00€?	00	00€?	00	00€?	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00	00	00€?	0E3‡3ä™2¸÷<wbr>&lt;3à¬Ô4‡;	1A¾|z·<wbr>3_	14}?	00	00€?	00	00€?	00	00€?	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00€?££W<wbr>37ÃÎ2HÜ*3ðÿÁ4 ;	1A¾	1FÖ¡4^	14}?	00	00€?<wbr>	00	00€?	00	00€?	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00€?/á_3ñ‹ð2¥ç»<wbr>3	03ù &nbsp; 5¯;	1A¾¶í3]	14}?	00	00€?	00	00€?	00	00<wbr>€?	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00	00€?%ƒ 2´º	183§;43-Ü	065§;	1A¾	1DÆ	154^	14}?	0<wbr>0	00€?	00	00€?	00	00€?	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00	00	00€?J‘	103öñp2€	<wbr>163CsÎ4§;	1A¾</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">)4^	14}?	00	00€?	00	00€?	00	00€?	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00€?ð›<wbr>j3'j¥2Æ­½3í¬Ô4§;	1A¾9|·<wbr>3^	14}?	00	00€?	00	00€?	00	00€?	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00€?	00<wbr>ZQ² Ýû2ª&lt;Ž3i±U5§;	1A¾	0F«‰´^	14}?	00	00€?	0<wbr>0	00€?	00	00€?	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00	00€?)´r22ÚÐ2	0B	07;3«2	1<wbr>05 ;	1A¾ìP¤³^	14}?	00	00€?	00	00€?	00	0<wbr>0€?	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00€?Mút3È’	173b°3Ñ	15</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">5‰;	1A¾	083›±_	14}?	00	00€?	00	00€?	00	<wbr>00€?	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00€?	0E	00	00	00NUB_RFRONTFOOTÂ÷g³<wbr>Ií	1E³A¥o2	00	00	00	00	00	00	00	00	00	0<wbr>0	00€	00	00€?	00	00€?	00	00€?	00	00€?	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0€?eµ³³œÉ*³ˆ	1EŒ²	00	00	00	00	00	00	00€<wbr>	00	00	00€	00	00€?	00	00€?	00	00€?	00	0<wbr>0€?	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00€?	0E‰i³Òö</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">³§: 2	00	00	00	00	00	00	00	00	00	00	00€	00	<wbr>00€?	00	00€?	00	00€?	00	00€?	00	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00€?vg³ôc<wbr>$³H"Ó±	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00€?	00	00€?	00	00€?	00	00€?	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00€<wbr>?NÏÒ²ny &nbsp; ³Á×Z²	00	00	00	00	00	00	00€	00	00	00€	0<wbr>0	00€?	00	00€?	00	00€?	00	00€?	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00€?öúÖ³<wbr>{ÜÍ²¬II±	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00€?	00	00€?	00	00€?	00	00€?	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0€?uv"³	01ŒW³½E[2	00	00	00	00	00	00	00	<wbr>00	00	00	00€	00	00€?	00	00€?	00	00€?	00<wbr>	00€?	00	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00€?û*	12²&gt;%;³„	1AÎ2	00	00	00	00	<wbr>00	00	00	00	00	00	00€	00	00€?	00	00€?	0<wbr>0	00€?	00	00€?	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00	00€?8wd³ÓÒD³á´°	00	00	0<wbr>0	00	00	00	00	00	00	00	00€	00	00€?	00	0<wbr>0€?	00	00€?	00	00€?	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00	00€?	13dh³0Y	1A³Ñëù<wbr>²	00	00	00	00	00	00	00	00	00	00	00€	00	<wbr>00€?	00	00€?	00	00€?	00	00€?	00	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00€?Q2a³	0<wbr>03h³!Bf²	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00€?	00	00€?	00	00€?	00	00€?	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0€?H¯	13²È</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">7³ÎÜG3	00	00	00€	00	00	00	00	00	00	00	0<wbr>0	00	00€?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€?s<wbr>ùÎ²Ë9	1E³	0C@I2	00	00	00	00	00	00	00€	0<wbr>0	00	00	00	00	00€?	00	00€?	00	00€?	00	0<wbr>0€?	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00€?ùŽ×1	1C¤2³	0ETb±	00	00	00	00	00<wbr>	00	00€	00	00	00€	00	00€?	00	00€?	00	00<wbr>€?	00	00€?	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00€?Þ°	1F³’Šu³Ý1–²	00	00	00	<wbr>00	00	00	00	00	00	00	00€	00	00€?	00	00€<wbr>?	00	00€?	00	00€?	00	00	00	00	00	00	00	<wbr>00	00	00	00	00	00	00€?:Ï²	05</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">	1B³GÛ¡0	00	00	00	00	00	00	00€	00	00	00<wbr>	00	00	00€?	00	00€?	00	00€?	00	00€?	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00€<wbr>?x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">)²#‰ú²FVì²	00	00	00	00	00	00	00€	00	00	<wbr>00€	00	00€?	00	00€?	00	00€?	00	00€?	00	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00€<wbr>?N™¦2ëê¹²h¡+3	00	00	00	00	00	00	00	00	0<wbr>0	00	00€	00	00€?	00	00€?	00	00€?	00	00€<wbr>?	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00€?‚	020³óç‰²	1C¢&amp;²	00	00	00	00	00	0<wbr>0	00	00	00	00	00€	00	00€?	00	00€?	00	00<wbr>€?	00	00€?	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00€?Åu*³ç	01	01³À¡\²	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00€?	00<wbr>	00€?	00	00€?	00	00€?	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00	00€?	15­‡1Ã-²ðÓ	<wbr>05²	00	00	00	00	00	00	00	00	00	00	00€	0<wbr>0	00€?	00	00€?	00	00€?	00	00€?	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00€?*–)³<wbr>ˆu</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">³tåz2	00	00	00	00	00	00	00€	00	00	00€	0<wbr>0	00€?	00	00€?	00	00€?	00	00€?	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00€?	19	<wbr>03`³%	04u³Z#±	00	00	00	00	00	00	00€	00<wbr>	00	00€	00	00€?	00	00€?	00	00€?	00	00€?<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00€?yO÷±_	0Cx³F‹K3	00	00	00	00	00	00	0<wbr>0€	00	00	00€	00	00€?	00	00€?	00	00€?	00<wbr>	00€?	00	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00€?Ž¸%³/J4³†©´²	00	00	00	00	00	0<wbr>0	00	00	00	00	00€	00	00€?	00	00€?	00	00<wbr>€?	00	00€?	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00€?1E•1eô±²	15kÊ2	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00	00€?	00	0<wbr>0€?	00	00€?	00	00€?	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00	00€?’ÆŒ1vùš²{¡~2	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>€?	00	00€?	00	00€?	00	00€?	00	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00€?Ä6$³Ù˜D³<wbr>	19Ø	182	00	00	00	00	00	00	00€	00	00	00<wbr>€	00	00€?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€?Õ<wbr>G»<wbr>²Ôc„³æôK²	00	00	00	00	00	00	00	00	00	00<wbr>	00€	00	00€?	00	00€?	00	00€?	00	00€?	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>€?	1C³¦©…³º•Š²	00	00	00€	00	00	00	00	<wbr>00	00	00€	00	00€?	00	00€?	00	00€?	00	00<wbr>€?	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00	00€?Šõ	0E²vÓC³_î²²	00	00	00	00	00	00<wbr>	00€	00	00	00	00	00	00€?	00	00€?	00	00€<wbr>?	00	00€?	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00€?	0E	00	00	00NUB_LFRONTFOO<wbr>T¾Œ)°yˆ-²‰Ni3	00	00	00	00	00	00	00€	00	<wbr>00	00€	00	00€?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?Æõù2Ñà	05²Äþ§3	00	00	00€	00	00	00	0<wbr>0	00	00	00€	00	00€?	00	00€?	00	00€?	00	<wbr>00€?	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00€?Ç	15Š²Û{£±ƒ=—²	00	00	00€	00	00<wbr>	00	00	00	00	00€	00	00€?	00	00€?	00	00€<wbr>?	00	00€?	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00€?¢0~³áÎ²{#¶2	00	00	00€	00<wbr>	00	00	00	00	00	00€	00	00€?	00	00€?	00	<wbr>00€?	00	00€?	00	00	00	00	00	00	00	00	00<wbr>	00	00	00	00	00€?®õJ°þï	16²ð%{3	00	00	0<wbr>0€	00	00	00	00	00	00	00€	00	00€?	00	00€<wbr>?	00	00€?	00	00€?	00	00	00	00	00	00	00	<wbr>00	00	00	00	00	00	00€?˜</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">T²ÒëA³Ü©	131	00	00	00€	00	00	00	00	00	0<wbr>0	00€	00	00€?	00	00€?	00	00€?	00	00€?	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0€?Tù…² ·<wbr>*²Ø7ÿ²	00	00	00	00	00	00	00€	00	00	00€	<wbr>00	00€?	00	00€?	00	00€?	00	00€?	00	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00€?µ	0<wbr>8ƒ²	08Xj²ŸÞ3	00	00	00	00	00	00	00€	00	<wbr>00	00€	00	00€?	00	00€?	00	00€?	00	00€?	<wbr>00	00	00	00	00	00	00	00	00	00	00	00	00	<wbr>00€?Ô¬E³(ð›±0E	14±	00	00	00	00	00	00	00<wbr>€	00	00	00€	00	00€?	00	00€?	00	00€?	00	<wbr>00€?	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00€?	19Ï€³-±„²h)</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">2	00	00	00€	00	00	00	00	00	00	00€	00	00<wbr>€?	00	00€?	00	00€?	00	00€?	00	00	00	00	<wbr>00	00	00	00	00	00	00	00	00	00€?UÝ	01³%	<wbr>1Ag²n¨-2	00	00	00	00	00	00	00€	00	00	00<wbr>€	00	00€?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€?	<wbr>03ð	003“–˜²z¢š3	00	00	00€	00	00	00	00	0<wbr>0	00	00€	00	00€?	00	00€?	00	00€?	00	00€<wbr>?	00	00	00	00	00	00	00	00	00	00	00	00	0<wbr>0	00€?/¡@3¶	05Œ².ë”3	00	00	00€	00	00	00<wbr>	00	00	00	00€	00	00€?	00	00€?	00	00€?	0<wbr>0	00€?	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00	00€?(Ê~³ðæÁ²¿›	0B²	00	00	00	00	0<wbr>0	00	00€	00	00	00€	00	00€?	00	00€?	00	0<wbr>0€?	00	00€?	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00€?B÷	04³†ºÁ±´Y&amp;³	00	00	00<wbr>€	00	00	00	00	00	00	00€	00	00€?	00	00€?<wbr>	00	00€?	00	00€?	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00€?R]g2</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">	1D°bŠ¶2	00	00	00€	00	00	00	00	00	00	00<wbr>€	00	00€?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€?!<wbr>	1E~³	0BrÐ²Y	16‰2	00	00	00	00	00	00	00	<wbr>00	00	00	00€	00	00€?	00	00€?	00	00€?	00<wbr>	00€?	00	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00€?†ì	00³žè‡²9™‡²	00	00	00	00	00<wbr>	00	00€	00	00	00€	00	00€?	00	00€?	00	00<wbr>€?	00	00€?	00	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00€?Cæ?3Vpx²:¶/2	00	00	00€	0<wbr>0	00	00	00	00	00	00€	00	00€?	00	00€?	00<wbr>	00€?	00	00€?	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00€?Y“F³ßø	1B±ºâÉ0	00	00	<wbr>00€	00	00	00	00	00	00	00€	00	00€?	00	00<wbr>€?	00	00€?	00	00€?	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00€?DN'/”&gt;ž²el†²	00	<wbr>00	00€	00	00	00€	00	00	00€	00	00€?	00	0<wbr>0€?	00	00€?	00	00€?	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00	00	00€?¾¢¢³Y	1Aî±\ý\3	<wbr>00	00	00	00	00	00	00€	00	00	00€	00	00€?<wbr>	00	00€?	00	00€?	00	00€?	00	00	00	00	00<wbr>	00	00	00	00	00	00	00	00	00€?Ì,V°DZ	0F²<wbr>x·<wbr>’3	00	00	00€	00	00	00	00	00	00	00€	00	0<wbr>0€?	00	00€?	00	00€?	00	00€?	00	00	00	00<wbr>	00	00	00	00	00	00	00	00	00	00€?¸ÑD³U	0<wbr>8æ±	1Bƒ(2	00	00	00€	00	00	00	00	00	00	0<wbr>0€	00	00€?	00	00€?	00	00€?	00	00€?	00	0<wbr>0	00	00	00	00	00	00	00	00	00	00	00	00€?<wbr>¥t	06³ä‡	01±ƒ‡§3	00	00	00€	00	00	00€	00<wbr>	00	00€	00	00€?	00	00€?	00	00€?	00	00€?<wbr>	00	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00€?	14	18T/	03	08¢²HüÑ2	00	00	00€	00	<wbr>00	00	00	00	00	00€	00	00€?	00	00€?	00	0<wbr>0€?	00	00€?	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00	00€?ý’	13±B</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">Þ1q¼	023	00	00	00€	00	00	00	00	00	00	00<wbr>€	00	00€?	00	00€?	00	00€?	00	00€?	00	00<wbr>	00	00	00	00	00	00	00	00	00	00	00	00€? <wbr>	08	00®	1De²1Lé2	00	00	00	00	00	00	00€<wbr>	00	00	00€	00	00€?	00	00€?	00	00€?	00	0<wbr>0€?	00	00	00	00	00	00	00	00	00	00	00	00<wbr>	00	00€?ºC	02³ØÉU²Ÿ˜¶²	00	00	00€	00	00	<wbr>00	00	00	00	00€	00	00€?	00	00€?	00	00€?<wbr>	00	00€?	00	00	00	00	00	00	00	00	00	00	<wbr>00	00	00	00€?­è²¬X²	15Nû1	00	00	00€	0<wbr>0	00	00	00	00	00	00€	00	00€?	00	00€?	00<wbr>	00€?	00	00€?	00	00	00	00	00	00	00	00	0<wbr>0	00	00	00	00	00€?¨k€³f•²0€	1E³	00	00	<wbr>00€	00	00	00	00	00	00	00€	00	00€?	00	00<wbr>€?	00	00€?	00	00€?	00	00	00	00	00	00	00<wbr>	00	00	00	00	00	00	00€?CallbackPoint</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">{</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">&nbsp; &nbsp; name = "decorationSound1"</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">&nbsp; &nbsp; frame = 3</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">}</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">CallbackPoint</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">{</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">&nbsp; &nbsp; name = "decorationSound1"</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">&nbsp; &nbsp; frame = 13</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">}</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">CallbackPoint</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">{</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">&nbsp; &nbsp; name = "decorationSound1"</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">&nbsp; &nbsp; frame = 23</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">}</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
