@@ -8,9 +8,10 @@ SET grimarillionDir=
 SET "lightweightModSourceDir=%~dp0\source\lightweight"
 
 :: Prep
+
 FOR %%i IN ("%~dp0..") DO (
-	IF NOT EXIST "%%~fi\___Lightweight Mod" (
-		ECHO The folder where this .bat is located must be in mods and named '___Lightweight Mod'. This is currently not the case.
+	IF NOT EXIST "%%~fi\__lightweight" (
+		ECHO The folder where this .bat is located must be in mods and named '__lightweight'. This is currently not the case.
 		PAUSE >nul
 		EXIT
 	)
@@ -32,6 +33,7 @@ FOR %%i IN ("%~dp0..") DO (
 )
 
 :: Backup
+
 FOR /f "tokens=1-3 delims=/" %%A IN ("%date%") DO SET backupDate=%%C-%%A-%%B
 SET "time=%time:~0,8%"
 SET "backupTime=%time::=%"
@@ -46,6 +48,7 @@ FOR /F %%i IN ('DIR /b /a "%backupLocation%\*"') DO (
 XCOPY "%destinationSaves%" "%backupLocation%" /e /f /y /q
 
 :: Merge
+
 :MERGE
 CLS
 ECHO Script merges the .arc archives of Grimarillion with the files from the Lightweight mod. & ECHO.
