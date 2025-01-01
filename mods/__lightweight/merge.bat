@@ -5,7 +5,7 @@ SETLOCAL EnableDelayedExpansion
 
 SET grimDawnDir=
 SET grimarillionDir=
-SET "lightweightModSourceDir=%~dp0\source\lightweight"
+SET "lightweightSourceDir=%~dp0\source\lightweight"
 
 :: Prep
 
@@ -78,12 +78,12 @@ IF "%input%"=="merge" (
 		CLS
 		GOTO :OPTIONS
 	)
-	XCOPY "%lightweightModSourceDir%\database\records" "%grimarillionDir%\database\records" /e /f /y /q /i
-	"%grimDawnDir%"\ArchiveTool.exe "%grimarillionDir%"\resources\Conversations.arc -update . "%lightweightModSourceDir%"\resources\conversations
-	"%grimDawnDir%"\ArchiveTool.exe "%grimarillionDir%"\resources\Creatures.arc -update . "%lightweightModSourceDir%"\resources\creatures
-	"%grimDawnDir%"\ArchiveTool.exe "%grimarillionDir%"\resources\Scripts.arc -update . "%lightweightModSourceDir%"\resources\scripts
-	"%grimDawnDir%"\ArchiveTool.exe "%grimarillionDir%"\resources\Sound.arc -update . "%lightweightModSourceDir%"\resources\sound
-	"%grimDawnDir%"\ArchiveTool.exe "%grimarillionDir%"\resources\Text_EN.arc -update . "%lightweightModSourceDir%"\resources\text_en
+	XCOPY "%lightweightSourceDir%\database\records" "%grimarillionDir%\database\records" /e /f /y /q /i
+	"%grimDawnDir%"\ArchiveTool.exe "%grimarillionDir%"\resources\Conversations.arc -update . "%lightweightSourceDir%"\resources\conversations
+	"%grimDawnDir%"\ArchiveTool.exe "%grimarillionDir%"\resources\Creatures.arc -update . "%lightweightSourceDir%"\resources\creatures
+	"%grimDawnDir%"\ArchiveTool.exe "%grimarillionDir%"\resources\Scripts.arc -update . "%lightweightSourceDir%"\resources\scripts
+	"%grimDawnDir%"\ArchiveTool.exe "%grimarillionDir%"\resources\Sound.arc -update . "%lightweightSourceDir%"\resources\sound
+	"%grimDawnDir%"\ArchiveTool.exe "%grimarillionDir%"\resources\Text_EN.arc -update . "%lightweightSourceDir%"\resources\text_en
 	ECHO. & ECHO Please follow the instructions from the included README.txt to patch the database file. & ECHO.
 	ECHO Press Enter to exit...
 	PAUSE >nul
