@@ -5,7 +5,7 @@ A custom [Lightweight Mod](https://forums.crateentertainment.com/t/lightweight-m
 ## Prerequisites
 
 1. Grim Dawn (v1.2.x)
-2. [Grimarillion](https://forums.crateentertainment.com/t/rel-grimarillion-v92/46587 (v0.92a)
+2. [Grimarillion](https://forums.crateentertainment.com/t/rel-grimarillion-v92/46587) (v0.92a)
 
 ## Usage
 
