@@ -28,5 +28,6 @@ Steps taken for Grimarillion compatibility:
    - DoM + Lightweight + DoM Compat
    - Grimarillion + Lightweight + DoM Compat
 
-3. Baselined changed files with Grimarillion versions.
-4. Merged Lightweight Mod DoM Compatibility Patch changes and updated skill/loot/etc indexes & weights where necessary.
+3. Baselined Grimarillion Compatibility Patch with Grimarillion file versions.
+4. Manually merged in Lightweight Mod / Lightweight Mod DoM Compatibility Patch changes.
+5. Updated skill/loot/etc indexes & weights, where necessary
