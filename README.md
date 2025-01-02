@@ -1,17 +1,20 @@
 # grimarillion-lightweight-mod-patch
 
-A custom [Lightweight Mod](https://forums.crateentertainment.com/t/lightweight-mod-for-speeding-up-the-leveling-process/108690) compatibility patch for [Grimarillion](https://forums.crateentertainment.com/t/rel-grimarillion-v92/46587), based on the official [Dawn of Masteries compatibility patch](https://forums.crateentertainment.com/t/lightweight-mod-for-speeding-up-the-leveling-process/108690/148).
+A custom Grim Dawn [Lightweight](https://forums.crateentertainment.com/t/lightweight-mod-for-speeding-up-the-leveling-process/108690) mod compatibility patch for the [Grimarillion](https://forums.crateentertainment.com/t/rel-grimarillion-v92/46587) mod, based on the [Dawn of Masteries compatibility patch](https://forums.crateentertainment.com/t/lightweight-mod-for-speeding-up-the-leveling-process/108690/148).
+
+> [!WARNING]
+> This patch has been created with best efforts and minimal modding knowledge. Support for this patch is not provided by the original mod authors.
 
 ## Prerequisites
 
-You must have the following installations:
+Installations:
 
-| Install                                                                            | Version         |
-| ---------------------------------------------------------------------------------- | --------------- |
-| Grim Dawn                                                                          | `1.2.x` (Steam) |
-| [Grimarillion](https://forums.crateentertainment.com/t/rel-grimarillion-v92/46587) | `0.92a`         |
+| Install                                                                            | Version             |
+| ---------------------------------------------------------------------------------- | ------------------- |
+| [Grim Dawn](https://store.steampowered.com/app/219990/Grim_Dawn/)                  | `1.2.x` (**Steam**) |
+| [Grimarillion](https://forums.crateentertainment.com/t/rel-grimarillion-v92/46587) | `0.92a`             |
 
-You must have the Grim Dawn AssetManager setup with the following options:
+Grim Dawn AssetManager options:
 
 | Option                        | Value                                           |
 | ----------------------------- | ----------------------------------------------- |
@@ -25,22 +28,11 @@ You must have the Grim Dawn AssetManager setup with the following options:
 
 Run `merge.bat` and follow the prompts.
 
-## Info
+## Credits
 
-Steps taken for Grimarillion compatibility:
+All credit for the original mods goes to the mod authors:
 
-1. Extracted the following mod sources:
-
-   - DoM (1.6.0a)
-   - Grimarillion (0.92a)
-   - Lightweight Mod (11.26.2023)
-   - Lightweight Mod DoM Compatibility Patch
-
-2. Three-way compared:
-
-   - DoM + Lightweight + DoM Compat
-   - Grimarillion + Lightweight + DoM Compat
-
-3. Baselined Grimarillion Compatibility Patch with Grimarillion file versions.
-4. Manually merged in Lightweight Mod / Lightweight Mod DoM Compatibility Patch changes.
-5. Updated skill/loot/etc indexes & weights, where necessary.
+| Mod                                                                                                                | Author                                                                 |
+| ------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------- |
+| [Grimarillion](https://forums.crateentertainment.com/t/rel-grimarillion-v92/46587)                                 | [ASYLUM101](https://forums.crateentertainment.com/u/asylum101/summary) |
+| [Lightweight](https://forums.crateentertainment.com/t/lightweight-mod-for-speeding-up-the-leveling-process/108690) | [Van_Houck](https://forums.crateentertainment.com/u/van_houck/summary) |
