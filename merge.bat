@@ -169,9 +169,9 @@ ECHO ^[6/7^] & ECHO.
 ECHO The Grimarillion database must be manually patched. & ECHO.
 ECHO The AssetManager will automatically open. Leave this script running and perform these steps in the AssetManager:
 ECHO 1. 'Mod' ^> 'Select' ^> '__lightweight'
-ECHO 2. Press F7
+ECHO 2. Press F7 (wait for build completion)
 ECHO 3. 'Mod' ^> 'Select' ^> 'grimarillion'
-ECHO 4. Press F7
+ECHO 4. Press F7 (wait for build completion)
 ECHO 5. Close the AssetManager
 ECHO. & ECHO Press ^(Enter^) to open the AssetManager...
 PAUSE >nul
