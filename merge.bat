@@ -140,7 +140,8 @@ CLS
 
 ECHO ^[5/6^] & ECHO.
 ECHO The Grimarillion database must be manually patched. & ECHO.
-ECHO The AssetManager will automatically open. Leave this script running and perform these steps in the AssetManager:
+ECHO The AssetManager will automatically open.
+ECHO Leave this script running and perform these steps in the AssetManager:
 ECHO 1. 'Mod' ^> 'Select' ^> '__lightweight'
 ECHO 2. Press F7
 ECHO 3. 'Mod' ^> 'Select' ^> 'grimarillion'
@@ -154,7 +155,7 @@ ECHO Waiting for the AssetManager to close...
 
 START /wait "" "%scriptDir%\AssetManager.exe"
 
-ECHO.
+CLS
 ECHO The AssetManager was closed and database patching is assumed to be complete.
 ECHO. & ECHO Press ^(Enter^) to continue...
 PAUSE >nul
