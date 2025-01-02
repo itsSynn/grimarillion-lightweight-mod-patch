@@ -18,8 +18,7 @@ A custom [Lightweight Mod](https://forums.crateentertainment.com/t/lightweight-m
 
 ## Installation
 
-1. Copy the `mods` folder and `merge.bat` into your Grim Dawn installation directory.
-2. Run `merge.bat` from the Grim Dawn installation directory and follow the steps.
+1. Run `merge.bat` from the Grim Dawn installation directory and follow the prompts.
 
 ## Patch Info
 

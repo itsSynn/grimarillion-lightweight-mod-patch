@@ -2,28 +2,55 @@
 
 SETLOCAL EnableDelayedExpansion
 
-FOR %%A IN ("%~dp0.") DO SET "scriptDir=%%~fA"
-SET "lightweightDir=%scriptDir%\mods\__lightweight"
-SET "lightweightSourceDir=%lightweightDir%\source\lightweight"
-SET "grimarillionDir=%scriptDir%\mods\grimarillion"
-SET "savesDir=%UserProfile%\Documents\My Games\Grim Dawn\save"
-
-IF NOT EXIST "%lightweightDir%" (
-	ECHO ERROR - Lightweight mod cannot be found at:
-	ECHO %scriptDir%\mods\__lightweight & ECHO.
-	ECHO Make sure the merge.bat script is at the root of your Grim Dawn installation and you've copied in the Lightweight mod source.
+FOR /F "usebackq tokens=3*" %%A IN (`REG QUERY "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 219990" /v InstallLocation 2^>nul`) DO SET "grimDawnDir=%%A %%B"
+IF NOT EXIST "%grimDawnDir%" (
+	ECHO ERROR - Could not detect Grim Dawn installation via Steam.
 	ECHO. & ECHO Press ^(Enter^) to exit...
 	PAUSE >nul
 	EXIT
 )
+
+SET "grimarillionDir=%grimDawnDir%\mods\grimarillion"
 IF NOT EXIST "%grimarillionDir%" (
 	ECHO ERROR - Grimarillion mod cannot be found at:
-	ECHO %scriptDir%\mods\grimarillion & ECHO.
-	ECHO Make sure the merge.bat script is at the root of your Grim Dawn installation and you've installed Grimarillion.
+	ECHO %grimDawnDir%\mods\grimarillion
 	ECHO. & ECHO Press ^(Enter^) to exit...
 	PAUSE >nul
 	EXIT
 )
+
+SET "lightweightDir=%grimDawnDir%\mods\__lightweight"
+SET "lightweightSourceDir=%lightweightDir%\source\lightweight"
+SET "savesDir=%UserProfile%\Documents\My Games\Grim Dawn\save"
+
+GOTO :SOURCE
+
+:: -- Lightweight source
+
+:SOURCE
+CLS
+
+IF EXIST "%lightweightDir%" (
+	ECHO ^[1/7^] & ECHO.
+	ECHO The Lightweight mod already exists at:
+	ECHO %lightweightDir%
+	ECHO. & ECHO Press ^(Enter^) to remove this directory and re-copy the mod...
+	PAUSE >nul
+
+	RMDIR /s /q "%lightweightDir%"
+	ECHO. & ECHO Directory removed: %lightweightDir%
+) ELSE (
+	ECHO ^[1/7^] & ECHO.
+	ECHO The Lightweight mod will be copied to:
+	ECHO %lightweightDir%
+	ECHO. & ECHO Press ^(Enter^) to ^copy the mod...
+	PAUSE >nul
+)
+
+ECHO.
+XCOPY /e /y /q /i "%~dp0mods\__lightweight" "%lightweightDir%"
+ECHO. & ECHO Press ^(Enter^) to continue...
+PAUSE >nul
 
 GOTO :TEMPLATES
 
@@ -32,27 +59,27 @@ GOTO :TEMPLATES
 :TEMPLATES
 CLS
 
-IF EXIST "%scriptDir%\database\templates" (
-	ECHO ^[1/6^] & ECHO.
+IF EXIST "%grimDawnDir%\database\templates" (
+	ECHO ^[2/7^] & ECHO.
 	ECHO Templates already exist at:
-	ECHO %scriptDir%\database\templates
+	ECHO %grimDawnDir%\database\templates
 	ECHO. & ECHO Press ^(Enter^) to remove this directory and re-extract templates...
 	PAUSE >nul
 
-	RMDIR /s /q "%scriptDir%\database\templates"
-	ECHO. & ECHO Directory removed: %scriptDir%\database\templates
+	RMDIR /s /q "%grimDawnDir%\database\templates"
+	ECHO. & ECHO Directory removed: %grimDawnDir%\database\templates
 ) ELSE (
-	ECHO ^[1/6^] & ECHO.
+	ECHO ^[2/7^] & ECHO.
 	ECHO Templates will be extracted to:
-	ECHO %scriptDir%\database\templates
+	ECHO %grimDawnDir%\database\templates
 	ECHO. & ECHO Press ^(Enter^) to ^extract templates...
 	PAUSE >nul
 )
 
 ECHO.
-"%scriptDir%\ArchiveTool.exe" "%scriptDir%\database\templates.arc" -extract "%scriptDir%\database"
+"%grimDawnDir%\ArchiveTool.exe" "%grimDawnDir%\database\templates.arc" -extract "%grimDawnDir%\database"
 ECHO.
-XCOPY /e /y /q /i "%lightweightSourceDir%\templates" "%scriptDir%\database\templates"
+XCOPY /e /y /q /i "%lightweightSourceDir%\templates" "%grimDawnDir%\database\templates"
 ECHO. & ECHO Press ^(Enter^) to continue...
 PAUSE >nul
 
@@ -64,7 +91,7 @@ GOTO :DATABASE
 CLS
 
 IF EXIST "%grimarillionDir%\database\records" (
-	ECHO ^[2/6^] & ECHO.
+	ECHO ^[3/7^] & ECHO.
 	ECHO The Lightweight mod database records already exists at:
 	ECHO %grimarillionDir%\database\records
 	ECHO. & ECHO Press ^(Enter^) to remove this directory and re-copy records...
@@ -73,7 +100,7 @@ IF EXIST "%grimarillionDir%\database\records" (
 	RMDIR /s /q "%grimarillionDir%\database\records"
 	ECHO. & ECHO Directory removed: %grimarillionDir%\database\records
 ) ELSE (
-	ECHO ^[2/6^] & ECHO.
+	ECHO ^[3/7^] & ECHO.
 	ECHO The Lightweight mod database records will be copied to:
 	ECHO %grimarillionDir%\database\records
 	ECHO. & ECHO Press ^(Enter^) to copy records...
@@ -87,7 +114,7 @@ PAUSE >nul
 
 GOTO :BACKUP
 
-:: -- Backup
+:: -- Save backup
 
 :BACKUP
 CLS
@@ -98,7 +125,7 @@ SET "time=%time:~0,8%"
 SET "backupTime=%time::=%"
 SET "backupLocation=%savesDir%\_backup_%backupDate%_%backupTime%"
 
-ECHO ^[3/6^] & ECHO.
+ECHO ^[4/7^] & ECHO.
 ECHO A backup of your characters will be created at:
 ECHO %backupLocation%
 ECHO. & ECHO Press ^(Enter^) to create a backup...
@@ -117,17 +144,17 @@ GOTO :MERGE
 :MERGE
 CLS
 
-ECHO ^[4/6^] & ECHO.
+ECHO ^[5/7^] & ECHO.
 ECHO The Grimarillion resources will be modified with Lightweight mod additions.
 ECHO. & ECHO Press ^(Enter^) to modify the resources...
 PAUSE >nul
 
 ECHO.
-"%scriptDir%\ArchiveTool.exe" "%grimarillionDir%\resources\Conversations.arc" -update . "%lightweightSourceDir%\resources\conversations"
-"%scriptDir%\ArchiveTool.exe" "%grimarillionDir%\resources\Creatures.arc" -update . "%lightweightSourceDir%\resources\creatures"
-"%scriptDir%\ArchiveTool.exe" "%grimarillionDir%\resources\Scripts.arc" -update . "%lightweightSourceDir%\resources\scripts"
-"%scriptDir%\ArchiveTool.exe" "%grimarillionDir%\resources\Sound.arc" -update . "%lightweightSourceDir%\resources\sound"
-"%scriptDir%\ArchiveTool.exe" "%grimarillionDir%\resources\Text_EN.arc" -update . "%lightweightSourceDir%\resources\text_en"
+"%grimDawnDir%\ArchiveTool.exe" "%grimarillionDir%\resources\Conversations.arc" -update . "%lightweightSourceDir%\resources\conversations"
+"%grimDawnDir%\ArchiveTool.exe" "%grimarillionDir%\resources\Creatures.arc" -update . "%lightweightSourceDir%\resources\creatures"
+"%grimDawnDir%\ArchiveTool.exe" "%grimarillionDir%\resources\Scripts.arc" -update . "%lightweightSourceDir%\resources\scripts"
+"%grimDawnDir%\ArchiveTool.exe" "%grimarillionDir%\resources\Sound.arc" -update . "%lightweightSourceDir%\resources\sound"
+"%grimDawnDir%\ArchiveTool.exe" "%grimarillionDir%\resources\Text_EN.arc" -update . "%lightweightSourceDir%\resources\text_en"
 ECHO. & ECHO Press ^(Enter^) to continue...
 PAUSE >nul
 
@@ -138,10 +165,9 @@ GOTO :PATCH
 :PATCH
 CLS
 
-ECHO ^[5/6^] & ECHO.
+ECHO ^[6/7^] & ECHO.
 ECHO The Grimarillion database must be manually patched. & ECHO.
-ECHO The AssetManager will automatically open.
-ECHO Leave this script running and perform these steps in the AssetManager:
+ECHO The AssetManager will automatically open. Leave this script running and perform these steps in the AssetManager:
 ECHO 1. 'Mod' ^> 'Select' ^> '__lightweight'
 ECHO 2. Press F7
 ECHO 3. 'Mod' ^> 'Select' ^> 'grimarillion'
@@ -153,9 +179,10 @@ PAUSE >nul
 ECHO.
 ECHO Waiting for the AssetManager to close...
 
-START /wait "" "%scriptDir%\AssetManager.exe"
+START /wait "" "%grimDawnDir%\AssetManager.exe"
 
 CLS
+ECHO ^[6/7^] & ECHO.
 ECHO The AssetManager was closed and database patching is assumed to be complete.
 ECHO. & ECHO Press ^(Enter^) to continue...
 PAUSE >nul
@@ -167,15 +194,15 @@ GOTO :CLEANUP
 :CLEANUP
 CLS
 
-ECHO ^[6/6^] & ECHO.
-ECHO Files used during patching will be cleaned up. & ECHO.
+ECHO ^[7/7^] & ECHO.
+ECHO Temporary files used during patching will be cleaned up. & ECHO.
 ECHO Press ^(Enter^) to perform the cleanup...
 PAUSE >nul
 
 ECHO.
-IF EXIST "%scriptDir%\database\templates" (
-	RMDIR /s /q "%scriptDir%\database\templates"
-	ECHO Directory removed: %scriptDir%\database\templates
+IF EXIST "%grimDawnDir%\database\templates" (
+	RMDIR /s /q "%grimDawnDir%\database\templates"
+	ECHO Directory removed: %grimDawnDir%\database\templates
 )
 IF EXIST "%lightweightDir%" (
 	RMDIR /s /q "%lightweightDir%"
@@ -186,8 +213,6 @@ IF EXIST "%grimarillionDir%\database\records" (
 	ECHO Directory removed: %grimarillionDir%\database\records
 )
 
-ECHO.
-ECHO Cleanup complete. You can remove this .bat file after exiting.
 ECHO. & ECHO Press ^(Enter^) to exit...
 PAUSE >nul
 
