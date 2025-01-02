@@ -11,16 +11,16 @@ SET "savesDir=%UserProfile%\Documents\My Games\Grim Dawn\save"
 IF NOT EXIST "%lightweightDir%" (
 	ECHO ERROR - Lightweight mod cannot be found at:
 	ECHO %scriptDir%\mods\__lightweight & ECHO.
-	ECHO Make sure the merge.bat script is at the root of your Grim Dawn installation and you've copied in the Lightweight mod source. & ECHO.
-	ECHO Press ^(Enter^) to exit...
+	ECHO Make sure the merge.bat script is at the root of your Grim Dawn installation and you've copied in the Lightweight mod source.
+	ECHO. & ECHO Press ^(Enter^) to exit...
 	PAUSE >nul
 	EXIT
 )
 IF NOT EXIST "%grimarillionDir%" (
 	ECHO ERROR - Grimarillion mod cannot be found at:
 	ECHO %scriptDir%\mods\grimarillion & ECHO.
-	ECHO Make sure the merge.bat script is at the root of your Grim Dawn installation and you've installed Grimarillion. & ECHO.
-	ECHO Press ^(Enter^) to exit...
+	ECHO Make sure the merge.bat script is at the root of your Grim Dawn installation and you've installed Grimarillion.
+	ECHO. & ECHO Press ^(Enter^) to exit...
 	PAUSE >nul
 	EXIT
 )
@@ -33,19 +33,19 @@ GOTO :TEMPLATES
 CLS
 
 IF EXIST "%scriptDir%\database\templates" (
-	ECHO ^[1/6^] && ECHO.
+	ECHO ^[1/6^] & ECHO.
 	ECHO Templates already exist at:
-	ECHO %scriptDir%\database\templates & ECHO.
-	ECHO Press ^(Enter^) to remove this directory and re-extract templates...
+	ECHO %scriptDir%\database\templates
+	ECHO. & ECHO Press ^(Enter^) to remove this directory and re-extract templates...
 	PAUSE >nul
 
 	RMDIR /s /q "%scriptDir%\database\templates"
 	ECHO. & ECHO Directory removed: %scriptDir%\database\templates
 ) ELSE (
-	ECHO ^[1/6^] && ECHO.
+	ECHO ^[1/6^] & ECHO.
 	ECHO Templates will be extracted to:
-	ECHO %scriptDir%\database\templates & ECHO.
-	ECHO Press ^(Enter^) to ^extract templates...
+	ECHO %scriptDir%\database\templates
+	ECHO. & ECHO Press ^(Enter^) to ^extract templates...
 	PAUSE >nul
 )
 
@@ -64,19 +64,19 @@ GOTO :DATABASE
 CLS
 
 IF EXIST "%grimarillionDir%\database\records" (
-	ECHO ^[2/6^] && ECHO.
+	ECHO ^[2/6^] & ECHO.
 	ECHO The Lightweight mod database records already exists at:
-	ECHO %grimarillionDir%\database\records & ECHO.
-	ECHO Press ^(Enter^) to remove this directory and re-copy records...
+	ECHO %grimarillionDir%\database\records
+	ECHO. & ECHO Press ^(Enter^) to remove this directory and re-copy records...
 	PAUSE >nul
 
 	RMDIR /s /q "%grimarillionDir%\database\records"
 	ECHO. & ECHO Directory removed: %grimarillionDir%\database\records
 ) ELSE (
-	ECHO ^[2/6^] && ECHO.
+	ECHO ^[2/6^] & ECHO.
 	ECHO The Lightweight mod database records will be copied to:
-	ECHO %grimarillionDir%\database\records & ECHO.
-	ECHO Press ^(Enter^) to copy records...
+	ECHO %grimarillionDir%\database\records
+	ECHO. & ECHO Press ^(Enter^) to copy records...
 	PAUSE >nul
 )
 
@@ -98,10 +98,10 @@ SET "time=%time:~0,8%"
 SET "backupTime=%time::=%"
 SET "backupLocation=%savesDir%\_backup_%backupDate%_%backupTime%"
 
-ECHO ^[3/6^] && ECHO.
+ECHO ^[3/6^] & ECHO.
 ECHO A backup of your characters will be created at:
-ECHO %backupLocation% & ECHO.
-ECHO Press ^(Enter^) to create a backup...
+ECHO %backupLocation%
+ECHO. & ECHO Press ^(Enter^) to create a backup...
 PAUSE >nul
 
 ECHO.
@@ -117,9 +117,9 @@ GOTO :MERGE
 :MERGE
 CLS
 
-ECHO ^[4/6^] && ECHO.
-ECHO The Grimarillion resources will be modified with Lightweight mod additions. & ECHO.
-ECHO Press ^(Enter^) to modify the resources...
+ECHO ^[4/6^] & ECHO.
+ECHO The Grimarillion resources will be modified with Lightweight mod additions.
+ECHO. & ECHO Press ^(Enter^) to modify the resources...
 PAUSE >nul
 
 ECHO.
@@ -138,9 +138,15 @@ GOTO :PATCH
 :PATCH
 CLS
 
-ECHO ^[5/6^] && ECHO.
+ECHO ^[5/6^] & ECHO.
 ECHO The Grimarillion database must be manually patched. & ECHO.
-ECHO Press ^(Enter^) to open the AssetManager...
+ECHO The AssetManager will automatically open. Leave this script running and perform these steps in the AssetManager:
+ECHO 1. 'Mod' ^> 'Select' ^> '__lightweight'
+ECHO 2. Press F7
+ECHO 3. 'Mod' ^> 'Select' ^> 'grimarillion'
+ECHO 4. Press F7
+ECHO 5. Close the AssetManager
+ECHO. & ECHO Press ^(Enter^) to open the AssetManager...
 PAUSE >nul
 
 ECHO.
@@ -160,7 +166,7 @@ GOTO :CLEANUP
 :CLEANUP
 CLS
 
-ECHO ^[6/6^] && ECHO.
+ECHO ^[6/6^] & ECHO.
 ECHO Files used during patching will be cleaned up. & ECHO.
 ECHO Press ^(Enter^) to perform the cleanup...
 PAUSE >nul

@@ -6,47 +6,21 @@ A custom [Lightweight Mod](https://forums.crateentertainment.com/t/lightweight-m
 
 1. Grim Dawn (v1.2.x)
 2. [Grimarillion](https://forums.crateentertainment.com/t/rel-grimarillion-v92/46587) (v0.92a)
+3. Grim Dawn AssetManager setup with the following options:
 
-## Usage
+   | Option                        | Value                                      |
+   | ----------------------------- | ------------------------------------------ |
+   | Working Directory             | `<Grim Dawn Install Directory>`            |
+   | Build Directory               | `<Grim Dawn Install Directory>`            |
+   | Tools Directory               | `<Grim Dawn Install Directory>`            |
+   | Additional Browse Directories | `<Grim Dawn Install Directory>\gdx2\`      |
+   | Additional Source Directories | `<Grim Dawn Install Directory>\mods\gdx2\` |
 
-1. Copy the `mods` folder into the Grim Dawn root directory.
+## Installation
+
+1. Copy the `mods` folder and `merge.bat` into your Grim Dawn install directory.
 2. Follow the instructions in `mods\__Lightweight Mod\README.txt`.
-
-> TODO: Rewrite this
-
-++ Patching Instructions ++
-
-!!! Note: DO NOT close the .bat when it says "Operation Completed"!
-
-To avoid any problems, please set up your AssetManager the way I have (how it is normally supposed to be). Check the .jpeg file for the settings.
-
-	0. Install Dawn of Masteries and put this '__lightweight' folder inside your mods folder
-
-	1. Run the 'Merge archives.bat' and do what it says
-	
-		Note: You can right-click the 'Merge archives.bat' and check for yourself what it does.
-
-	2. Open the AssetManager.exe inside your Grim Dawn installation directory
-
-		It is very important to do it exactly in this order!
-	
-		The build (F7) process may take several minutes. Even up to 10 to 20 minutes! Don't panic.
-
-		3a. Select 'Mod' > 'Select' > '__lightweight'
-		3b. Press F7
-		3c. Select 'Mod' > 'Select' > 'grimarillion'
-		3d. Press F7
-		
-	3. Close the AssetManager
-
-	4. Delete the '__lightweight' folder
-	
-	5. Delete the 'records' folder inside the "mods\grimarillion\database" directory
-	
-
-++ Lost progress after installation? ++
-
-Try renaming the 'Maps.arc' file inside "mods\grimarillion\resources" to 'Levels.arc'. Also remember, a backup was created in your saves directory!
+3. Run `merge.bat` and follow the steps.
 
 ## Patch Info
 
