@@ -33,24 +33,26 @@ GOTO :TEMPLATES
 CLS
 
 IF EXIST "%scriptDir%\database\templates" (
-	ECHO ^[1/6^]
-	ECHO The Grim Dawn templates.arc extract already exists at:
+	ECHO ^[1/6^] && ECHO.
+	ECHO Templates already exist at:
 	ECHO %scriptDir%\database\templates & ECHO.
-	ECHO Press ^(Enter^) to remove this directory and re-extract...
+	ECHO Press ^(Enter^) to remove this directory and re-extract templates...
 	PAUSE >nul
 
 	RMDIR /s /q "%scriptDir%\database\templates"
 	ECHO. & ECHO Directory removed: %scriptDir%\database\templates
 ) ELSE (
-	ECHO ^[1/6^]
-	ECHO The Grim Dawn templates.arc will be extracted to:
+	ECHO ^[1/6^] && ECHO.
+	ECHO Templates will be extracted to:
 	ECHO %scriptDir%\database\templates & ECHO.
-	ECHO Press ^(Enter^) to extract...
+	ECHO Press ^(Enter^) to ^extract templates...
 	PAUSE >nul
 )
 
 ECHO.
 "%scriptDir%\ArchiveTool.exe" "%scriptDir%\database\templates.arc" -extract "%scriptDir%\database"
+ECHO.
+XCOPY /e /y /q /i "%lightweightSourceDir%\templates" "%scriptDir%\database\templates"
 ECHO. & ECHO Press ^(Enter^) to continue...
 PAUSE >nul
 
@@ -62,7 +64,7 @@ GOTO :DATABASE
 CLS
 
 IF EXIST "%grimarillionDir%\database\records" (
-	ECHO ^[2/6^]
+	ECHO ^[2/6^] && ECHO.
 	ECHO The Lightweight mod database records already exists at:
 	ECHO %grimarillionDir%\database\records & ECHO.
 	ECHO Press ^(Enter^) to remove this directory and re-copy records...
@@ -71,7 +73,7 @@ IF EXIST "%grimarillionDir%\database\records" (
 	RMDIR /s /q "%grimarillionDir%\database\records"
 	ECHO. & ECHO Directory removed: %grimarillionDir%\database\records
 ) ELSE (
-	ECHO ^[2/6^]
+	ECHO ^[2/6^] && ECHO.
 	ECHO The Lightweight mod database records will be copied to:
 	ECHO %grimarillionDir%\database\records & ECHO.
 	ECHO Press ^(Enter^) to copy records...
@@ -96,7 +98,7 @@ SET "time=%time:~0,8%"
 SET "backupTime=%time::=%"
 SET "backupLocation=%savesDir%\_backup_%backupDate%_%backupTime%"
 
-ECHO ^[3/6^]
+ECHO ^[3/6^] && ECHO.
 ECHO A backup of your characters will be created at:
 ECHO %backupLocation% & ECHO.
 ECHO Press ^(Enter^) to create a backup...
@@ -115,7 +117,7 @@ GOTO :MERGE
 :MERGE
 CLS
 
-ECHO ^[4/6^]
+ECHO ^[4/6^] && ECHO.
 ECHO The Grimarillion resources will be modified with Lightweight mod additions. & ECHO.
 ECHO Press ^(Enter^) to modify the resources...
 PAUSE >nul
@@ -136,7 +138,7 @@ GOTO :PATCH
 :PATCH
 CLS
 
-ECHO ^[5/6^]
+ECHO ^[5/6^] && ECHO.
 ECHO The Grimarillion database must be manually patched. & ECHO.
 ECHO Press ^(Enter^) to open the AssetManager...
 PAUSE >nul
@@ -158,33 +160,27 @@ GOTO :CLEANUP
 :CLEANUP
 CLS
 
-ECHO ^[6/6^]
+ECHO ^[6/6^] && ECHO.
 ECHO Files used during patching will be cleaned up. & ECHO.
 ECHO Press ^(Enter^) to perform the cleanup...
 PAUSE >nul
 
-SET "removedDir=false"
+ECHO.
 IF EXIST "%scriptDir%\database\templates" (
 	RMDIR /s /q "%scriptDir%\database\templates"
 	ECHO Directory removed: %scriptDir%\database\templates
-	SET "removedDir=true"
 )
 IF EXIST "%lightweightDir%" (
 	RMDIR /s /q "%lightweightDir%"
 	ECHO Directory removed: %lightweightDir%
-	SET "removedDir=true"
 )
 IF EXIST "%grimarillionDir%\database\records" (
 	RMDIR /s /q "%grimarillionDir%\database\records"
 	ECHO Directory removed: %grimarillionDir%\database\records
-	SET "removedDir=true"
 )
 
-IF /I "%removedDir%"=="true" (
-	ECHO.
-)
-ECHO Cleanup complete.
-ECHO You can remove this .bat file after exiting.
+ECHO.
+ECHO Cleanup complete. You can remove this .bat file after exiting.
 ECHO. & ECHO Press ^(Enter^) to exit...
 PAUSE >nul
 
