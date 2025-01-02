@@ -1,26 +1,31 @@
 # grimarillion-lightweight-mod-patch
 
-A custom [Lightweight Mod](https://forums.crateentertainment.com/t/lightweight-mod-for-speeding-up-the-leveling-process/108690) (v2023.11.26) compatibility patch for [Grimarillion](https://forums.crateentertainment.com/t/rel-grimarillion-v92/46587), based on the official [Dawn of Masteries compatibility patch](https://forums.crateentertainment.com/t/lightweight-mod-for-speeding-up-the-leveling-process/108690/148).
+A custom [Lightweight Mod](https://forums.crateentertainment.com/t/lightweight-mod-for-speeding-up-the-leveling-process/108690) compatibility patch for [Grimarillion](https://forums.crateentertainment.com/t/rel-grimarillion-v92/46587), based on the official [Dawn of Masteries compatibility patch](https://forums.crateentertainment.com/t/lightweight-mod-for-speeding-up-the-leveling-process/108690/148).
 
 ## Prerequisites
 
-1. Grim Dawn (v1.2.x, Steam)
-2. [Grimarillion](https://forums.crateentertainment.com/t/rel-grimarillion-v92/46587) (v0.92a)
-3. Grim Dawn AssetManager setup with the following options:
+You must have the following installations:
 
-   | Option                        | Value                                           |
-   | ----------------------------- | ----------------------------------------------- |
-   | Working Directory             | `<Grim Dawn Installation Directory>`            |
-   | Build Directory               | `<Grim Dawn Installation Directory>`            |
-   | Tools Directory               | `<Grim Dawn Installation Directory>`            |
-   | Additional Browse Directories | `<Grim Dawn Installation Directory>\gdx2\`      |
-   | Additional Source Directories | `<Grim Dawn Installation Directory>\mods\gdx2\` |
+| Install                                                                            | Version         |
+| ---------------------------------------------------------------------------------- | --------------- |
+| Grim Dawn                                                                          | `1.2.x` (Steam) |
+| [Grimarillion](https://forums.crateentertainment.com/t/rel-grimarillion-v92/46587) | `0.92a`         |
 
-## Installation
+You must have the Grim Dawn AssetManager setup with the following options:
 
-1. Run `merge.bat` and follow the prompts.
+| Option                        | Value                                           |
+| ----------------------------- | ----------------------------------------------- |
+| Working Directory             | `<Grim Dawn Installation Directory>`            |
+| Build Directory               | `<Grim Dawn Installation Directory>`            |
+| Tools Directory               | `<Grim Dawn Installation Directory>`            |
+| Additional Browse Directories | `<Grim Dawn Installation Directory>\gdx2\`      |
+| Additional Source Directories | `<Grim Dawn Installation Directory>\mods\gdx2\` |
 
-## Patch Info
+## Setup
+
+Run `merge.bat` and follow the prompts.
+
+## Info
 
 Steps taken for Grimarillion compatibility:
 
