@@ -26,7 +26,8 @@ Grim Dawn AssetManager options:
 
 ## Setup
 
-Run `merge.bat` and follow the prompts.
+1. Download this repository.
+2. Run `merge.bat` and follow the prompts.
 
 ## Credits
 
