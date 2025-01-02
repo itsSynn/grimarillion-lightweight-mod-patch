@@ -4,23 +4,22 @@ A custom [Lightweight Mod](https://forums.crateentertainment.com/t/lightweight-m
 
 ## Prerequisites
 
-1. Grim Dawn (v1.2.x)
+1. Grim Dawn (v1.2.x) (installed via Steam)
 2. [Grimarillion](https://forums.crateentertainment.com/t/rel-grimarillion-v92/46587) (v0.92a)
 3. Grim Dawn AssetManager setup with the following options:
 
-   | Option                        | Value                                      |
-   | ----------------------------- | ------------------------------------------ |
-   | Working Directory             | `<Grim Dawn Install Directory>`            |
-   | Build Directory               | `<Grim Dawn Install Directory>`            |
-   | Tools Directory               | `<Grim Dawn Install Directory>`            |
-   | Additional Browse Directories | `<Grim Dawn Install Directory>\gdx2\`      |
-   | Additional Source Directories | `<Grim Dawn Install Directory>\mods\gdx2\` |
+   | Option                        | Value                                           |
+   | ----------------------------- | ----------------------------------------------- |
+   | Working Directory             | `<Grim Dawn Installation Directory>`            |
+   | Build Directory               | `<Grim Dawn Installation Directory>`            |
+   | Tools Directory               | `<Grim Dawn Installation Directory>`            |
+   | Additional Browse Directories | `<Grim Dawn Installation Directory>\gdx2\`      |
+   | Additional Source Directories | `<Grim Dawn Installation Directory>\mods\gdx2\` |
 
 ## Installation
 
-1. Copy the `mods` folder and `merge.bat` into your Grim Dawn install directory.
-2. Follow the instructions in `mods\__Lightweight Mod\README.txt`.
-3. Run `merge.bat` and follow the steps.
+1. Copy the `mods` folder and `merge.bat` into your Grim Dawn installation directory.
+2. Run `merge.bat` from the Grim Dawn installation directory and follow the steps.
 
 ## Patch Info
 
