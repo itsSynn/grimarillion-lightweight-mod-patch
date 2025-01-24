@@ -311,6 +311,54 @@ function gd.grimmest.setIndex( index, dd )
 	gd.grimmest.giveCurrentToken()
 end
 
+function gd.grimmest.setMode1()
+  --set to LOW
+	if ( not Server ) then return end
+
+	gd.grimmest.setIndex( GRIMMEST_LOW, gd.grimmest.densityDoubled )
+  gd.grimmest.notify()
+end
+
+function gd.grimmest.setMode2()
+  --set to MOD
+	if ( not Server ) then return end
+
+	gd.grimmest.setIndex( GRIMMEST_MOD, gd.grimmest.densityDoubled )
+  gd.grimmest.notify()
+end
+
+function gd.grimmest.setMode3()
+  --set to ML1
+	if ( not Server ) then return end
+
+	gd.grimmest.setIndex( GRIMMEST_ML1, gd.grimmest.densityDoubled )
+  gd.grimmest.notify()
+end
+
+function gd.grimmest.setMode4()
+  --set to ML2
+	if ( not Server ) then return end
+
+	gd.grimmest.setIndex( GRIMMEST_ML2, gd.grimmest.densityDoubled )
+  gd.grimmest.notify()
+end
+
+function gd.grimmest.setMode5()
+  --set to ML3
+	if ( not Server ) then return end
+
+	gd.grimmest.setIndex( GRIMMEST_ML3, gd.grimmest.densityDoubled )
+  gd.grimmest.notify()
+end
+
+function gd.grimmest.setMode6()
+  --set to LEVEL 11
+	if ( not Server ) then return end
+
+	gd.grimmest.setIndex( GRIMMEST_M11, gd.grimmest.densityDoubled )
+  gd.grimmest.notify()
+end
+
 function gd.grimmest.turnOn() 	-- Lol, function turnOn should be called turnUp
 	if ( not Server ) then return end
 

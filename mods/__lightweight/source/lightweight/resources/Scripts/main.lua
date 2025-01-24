@@ -37,4 +37,3 @@ Script.Load("_eternal/scripts/wavespawn.lua")
 -- Lightweight
 Script.Load("scripts/game/loot.lua")
 Script.Load("scripts/game/modscript.lua")
---F

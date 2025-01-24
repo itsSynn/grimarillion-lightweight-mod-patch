@@ -12,7 +12,7 @@ Installations:
 | Install                                                                            | Version             |
 | ---------------------------------------------------------------------------------- | ------------------- |
 | [Grim Dawn](https://store.steampowered.com/app/219990/Grim_Dawn/)                  | `1.2.x` (**Steam**) |
-| [Grimarillion](https://forums.crateentertainment.com/t/rel-grimarillion-v92/46587) | `0.92a`             |
+| [Grimarillion](https://forums.crateentertainment.com/t/rel-grimarillion-v92/46587) | `0.93`              |
 
 Grim Dawn AssetManager options:
 
