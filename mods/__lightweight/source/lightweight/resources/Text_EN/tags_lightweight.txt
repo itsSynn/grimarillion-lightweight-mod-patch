@@ -13,6 +13,9 @@ tag_MerchantSpawned=^yHonck has appeared!
 
 tag_Merchant=Honck
 
+tag_RecycleItem=^fTransmutation
+tag_RecycleItemDesc="Transmutes items on the ground into something different. Uniques are not targeted."
+
 tag_LootSphereCommon=Beutekugel (Common)
 tag_LootSphereCommonDesc="Holds some spoils. You should pop it."
 tag_LootSphereRandom=Beutekugel (Random)

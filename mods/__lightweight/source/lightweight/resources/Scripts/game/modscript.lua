@@ -70,39 +70,3 @@ end
 function gd.modscript.spawnTriggerOnStash(objectId)
 	Entity.Create("records/__mod/spheres/trigger_disable_spheres.dbr"):SetCoords(Entity.Get(objectId):GetCoords())
 end
-
--- Additional Level Rewards
-function gd.modscript.increaseMaxLevel()
-	for i = (Game.GetLocalPlayer():GetLevel() - 100),1,-1 do 
-		local playerLevel = i
-		local playerToken = "MAX_LEVEL_TOKEN_" .. playerLevel
-		if not Game.GetLocalPlayer():HasToken(playerToken) then
-			Game.GetLocalPlayer():GiveToken(playerToken)
-			do return end
-		end
-	end
-end
-
-function gd.modscript.checkMaxLevelAvailable()
-	local isLevelAvailable = false
-	for i = (Game.GetLocalPlayer():GetLevel() - 100),1,-1 do 
-		local playerLevel = i
-		local playerToken = "MAX_LEVEL_TOKEN_" .. playerLevel
-		if not Game.GetLocalPlayer():HasToken(playerToken) then
-			isLevelAvailable = true
-		end
-	end
-	return isLevelAvailable
-end
-
-function gd.modscript.getRandomItem(input)
-	math.randomseed(Time.Now())
-    local p = math.random()
-    local cumulativeProbability = 0
-    for name, item in pairs(input) do
-        cumulativeProbability = cumulativeProbability + item.probability
-        if (p <= cumulativeProbability) then
-            return name
-        end
-    end
-end
