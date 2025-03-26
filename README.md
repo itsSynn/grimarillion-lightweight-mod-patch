@@ -1,8 +1,6 @@
 # grimarillion-lightweight-mod-patch
 
-A custom Grim Dawn [Lightweight](https://forums.crateentertainment.com/t/lightweight-mod-for-speeding-up-the-leveling-process/108690) mod compatibility patch for the [Grimarillion](https://forums.crateentertainment.com/t/rel-grimarillion-v92/46587) mod, based on the [Dawn of Masteries compatibility patch](https://forums.crateentertainment.com/t/lightweight-mod-for-speeding-up-the-leveling-process/108690/148).
-
-Based on Lightweight mod [Patch 6](https://forums.crateentertainment.com/t/lightweight-mod-for-speeding-up-the-leveling-process/108690/674).
+A custom Grim Dawn [Lightweight](https://forums.crateentertainment.com/t/lightweight-mod-for-speeding-up-the-leveling-process/108690) mod ([Patch 6](https://forums.crateentertainment.com/t/lightweight-mod-for-speeding-up-the-leveling-process/108690/674)) compatibility patch for the [Grimarillion](https://forums.crateentertainment.com/t/rel-grimarillion-v92/46587) mod, based on the [Dawn of Masteries compatibility patch](https://forums.crateentertainment.com/t/lightweight-mod-for-speeding-up-the-leveling-process/108690/148).
 
 > [!WARNING]
 > This patch has been created with best efforts and minimal modding knowledge. Support for this patch is not provided by the original mod authors.
