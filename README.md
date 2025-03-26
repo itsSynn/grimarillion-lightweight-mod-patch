@@ -16,7 +16,7 @@ Required installs:
 
 Optional installs:
 
-| Optional Install                                                                                                | Version |
+| Install                                                                                                         | Version |
 | --------------------------------------------------------------------------------------------------------------- | ------- |
 | [Grimarillion Item Color Coding File](https://forums.crateentertainment.com/t/rel-grimarillion-v94a/46587/1433) | `0.94a` |
 
