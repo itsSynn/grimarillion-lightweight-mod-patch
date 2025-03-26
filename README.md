@@ -9,20 +9,20 @@ Based on Lightweight mod [Patch 6](https://forums.crateentertainment.com/t/light
 
 ## Prerequisites
 
-Required:
+Required installs:
 
 | Install                                                                            | Version             |
 | ---------------------------------------------------------------------------------- | ------------------- |
 | [Grim Dawn](https://store.steampowered.com/app/219990/Grim_Dawn/)                  | `1.2.x` (**Steam**) |
 | [Grimarillion](https://forums.crateentertainment.com/t/rel-grimarillion-v92/46587) | `0.94a`             |
 
-Optional:
+Optional installs:
 
 | Optional Install                                                                                                | Version |
 | --------------------------------------------------------------------------------------------------------------- | ------- |
 | [Grimarillion Item Color Coding File](https://forums.crateentertainment.com/t/rel-grimarillion-v94a/46587/1433) | `0.94a` |
 
-Grim Dawn AssetManager options:
+Required Grim Dawn AssetManager options:
 
 | Option                        | Value                                           |
 | ----------------------------- | ----------------------------------------------- |
