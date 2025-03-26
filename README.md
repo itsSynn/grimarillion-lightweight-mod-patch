@@ -9,7 +9,7 @@ Based on Lightweight mod [Patch 6](https://forums.crateentertainment.com/t/light
 
 ## Prerequisites
 
-Installations:
+Required:
 
 | Install                                                                            | Version             |
 | ---------------------------------------------------------------------------------- | ------------------- |
@@ -34,7 +34,7 @@ Grim Dawn AssetManager options:
 
 ## Setup
 
-1. Satisfy all [prequisites](#prerequisites), including any optional that you want.
+1. Satisfy the [prequisites](#prerequisites).
 2. Download this repository.
 3. Run `merge.bat` and follow the prompts.
 
