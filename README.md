@@ -44,3 +44,16 @@ All credit for the original mods goes to the mod authors:
 | ------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------- |
 | [Grimarillion](https://forums.crateentertainment.com/t/rel-grimarillion-v92/46587)                                 | [ASYLUM101](https://forums.crateentertainment.com/u/asylum101/summary) |
 | [Lightweight](https://forums.crateentertainment.com/t/lightweight-mod-for-speeding-up-the-leveling-process/108690) | [Van_Houck](https://forums.crateentertainment.com/u/van_houck/summary) |
+
+---
+
+## Unrelated Mod Recommendations
+
+A few other mods to check out while you're here.
+
+| Mod                                                                                                                                         | Description                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
+| [Clear Fonts](https://forums.crateentertainment.com/t/english-font-gd-clear-fonts-london-gothic-fonts-or-normal-clean-fonts-versions/86445) | A set of font replacements.        |
+| [ReShade Graphical Overhaul](https://www.nexusmods.com/grimdawn/mods/100)                                                                   | A vanilla-friendly ReShade preset. |
+| [GrimTex](https://www.nexusmods.com/grimdawn/mods/141)                                                                                      | Upscaled vanilla textures.         |
+| [DPYes](https://forums.crateentertainment.com/t/tool-dpyes-player-pet-dps-meter-misc-util/133378)                                           | DPS meters and other tweaks.       |
