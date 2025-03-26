@@ -16,6 +16,12 @@ Installations:
 | [Grim Dawn](https://store.steampowered.com/app/219990/Grim_Dawn/)                  | `1.2.x` (**Steam**) |
 | [Grimarillion](https://forums.crateentertainment.com/t/rel-grimarillion-v92/46587) | `0.94a`             |
 
+Optional:
+
+| Optional Install                                                                                                | Version |
+| --------------------------------------------------------------------------------------------------------------- | ------- |
+| [Grimarillion Item Color Coding File](https://forums.crateentertainment.com/t/rel-grimarillion-v94a/46587/1433) | `0.94a` |
+
 Grim Dawn AssetManager options:
 
 | Option                        | Value                                           |
@@ -28,8 +34,9 @@ Grim Dawn AssetManager options:
 
 ## Setup
 
-1. Download this repository.
-2. Run `merge.bat` and follow the prompts.
+1. Satisfy all [prequisites](#prerequisites), including any optional that you want.
+2. Download this repository.
+3. Run `merge.bat` and follow the prompts.
 
 ## Credits
 
