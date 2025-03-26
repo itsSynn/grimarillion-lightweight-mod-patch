@@ -120,7 +120,7 @@ Script.Load( "scripts/grimmest/grimmest_tables.lua" )
 
 ---show message to make sure arrays loaded
 -- LEAVE AT LEAST THIS ONE FOR DEBUGGING THAT THE SCRIPT WAS ACTUALLY READ
-UI.Notify( "tagGrimmestNotifyIntro" )
+--UI.Notify( "tagGrimmestNotifyIntro" )
 
 -- ------------------------------------------------------------------------
 -- expandTables() basically doubles the hero pool, someday all the dups will be modified
@@ -422,7 +422,7 @@ function gd.grimmest.OnAddToWorld_pc( objectId )
 		Game.GetLocalPlayer():RemoveToken("PLAYING_ALTERNATIVE_VERSION")
 	end
 
-	gd.loot.countSpheres()
+	gd.loot.updateInventory()
 
 	-- Lightweight Mod Stuff Ends
 

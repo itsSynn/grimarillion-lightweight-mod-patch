@@ -2,6 +2,8 @@
 
 A custom Grim Dawn [Lightweight](https://forums.crateentertainment.com/t/lightweight-mod-for-speeding-up-the-leveling-process/108690) mod compatibility patch for the [Grimarillion](https://forums.crateentertainment.com/t/rel-grimarillion-v92/46587) mod, based on the [Dawn of Masteries compatibility patch](https://forums.crateentertainment.com/t/lightweight-mod-for-speeding-up-the-leveling-process/108690/148).
 
+Based on Lightweight mod [Patch 6](https://forums.crateentertainment.com/t/lightweight-mod-for-speeding-up-the-leveling-process/108690/674).
+
 > [!WARNING]
 > This patch has been created with best efforts and minimal modding knowledge. Support for this patch is not provided by the original mod authors.
 
@@ -12,7 +14,7 @@ Installations:
 | Install                                                                            | Version             |
 | ---------------------------------------------------------------------------------- | ------------------- |
 | [Grim Dawn](https://store.steampowered.com/app/219990/Grim_Dawn/)                  | `1.2.x` (**Steam**) |
-| [Grimarillion](https://forums.crateentertainment.com/t/rel-grimarillion-v92/46587) | `0.93`              |
+| [Grimarillion](https://forums.crateentertainment.com/t/rel-grimarillion-v92/46587) | `0.94a`             |
 
 Grim Dawn AssetManager options:
 
