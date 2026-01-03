@@ -12,13 +12,13 @@ Required installs:
 | Install                                                                            | Version             |
 | ---------------------------------------------------------------------------------- | ------------------- |
 | [Grim Dawn](https://store.steampowered.com/app/219990/Grim_Dawn/)                  | `1.2.x` (**Steam**) |
-| [Grimarillion](https://forums.crateentertainment.com/t/rel-grimarillion-v92/46587) | `0.94a`             |
+| [Grimarillion](https://forums.crateentertainment.com/t/rel-grimarillion-v92/46587) | `0.95`              |
 
 Optional installs:
 
-| Install                                                                                                         | Version |
-| --------------------------------------------------------------------------------------------------------------- | ------- |
-| [Grimarillion Item Color Coding File](https://forums.crateentertainment.com/t/rel-grimarillion-v94a/46587/1433) | `0.94a` |
+| Install                             | Version              |
+| ----------------------------------- | -------------------- |
+| Grimarillion Item Color Coding File | `0.95` (**Pending**) |
 
 Required Grim Dawn AssetManager options:
 
