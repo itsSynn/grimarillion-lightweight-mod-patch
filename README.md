@@ -16,9 +16,10 @@ Required installs:
 
 Optional installs:
 
-| Install                             | Version              |
-| ----------------------------------- | -------------------- |
-| Grimarillion Item Color Coding File | `0.95` (**Pending**) |
+| Install                                  | Version                                                                           |
+| ---------------------------------------- | --------------------------------------------------------------------------------- |
+| Grimarillion Item Color Coding File      | `0.95` (**Pending**)                                                              |
+| Grimarillion Main Menu Class Combo Names | [`0.95`](https://forums.crateentertainment.com/t/rel-grimarillion-v95/46587/4078) |
 
 Required Grim Dawn AssetManager options:
 
