@@ -120,7 +120,7 @@ GOTO :BACKUP
 CLS
 
 FOR /f "tokens=2 delims= " %%A IN ("%date%") DO SET datePart=%%A
-FOR /f "tokens=1,2,3 delims=/ " %%A IN ("%datePart%") DO SET backupDate=%%C-%%B-%%A
+FOR /f "tokens=1,2,3 delims=/ " %%A IN ("%datePart%") DO SET backupDate=%%C-%%A-%%B
 SET "time=%time:~0,8%"
 SET "backupTime=%time::=%"
 SET "backupLocation=%savesDir%\_backup_%backupDate%_%backupTime%"
