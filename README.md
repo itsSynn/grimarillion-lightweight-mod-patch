@@ -51,9 +51,8 @@ All credit for the original mods goes to the mod authors:
 
 A few other mods to check out while you're here.
 
-| Mod                                                                                                                                         | Description                        |
-| ------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
-| [Clear Fonts](https://forums.crateentertainment.com/t/english-font-gd-clear-fonts-london-gothic-fonts-or-normal-clean-fonts-versions/86445) | A set of font replacements.        |
-| [ReShade Graphical Overhaul](https://www.nexusmods.com/grimdawn/mods/100)                                                                   | A vanilla-friendly ReShade preset. |
-| [GrimTex](https://www.nexusmods.com/grimdawn/mods/141)                                                                                      | Upscaled vanilla textures.         |
-| [DPYes](https://forums.crateentertainment.com/t/tool-dpyes-player-pet-dps-meter-misc-util/133378)                                           | DPS meters and other tweaks.       |
+| Mod                                                                                                                                         | Description                                                      |
+| ------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| [GrimTex + GrimShade](https://www.nexusmods.com/grimdawn/mods/141)                                                                          | Upscaled vanilla textures and a vanilla-friendly ReShade preset. |
+| [Clear Fonts](https://forums.crateentertainment.com/t/english-font-gd-clear-fonts-london-gothic-fonts-or-normal-clean-fonts-versions/86445) | A set of font replacements.                                      |
+| [DPYes](https://forums.crateentertainment.com/t/tool-dpyes-player-pet-dps-meter-misc-util/133378)                                           | DPS meters and other tweaks.                                     |
