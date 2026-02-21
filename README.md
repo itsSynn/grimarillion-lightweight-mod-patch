@@ -12,13 +12,13 @@ Required installs:
 | Install                                                                            | Version             |
 | ---------------------------------------------------------------------------------- | ------------------- |
 | [Grim Dawn](https://store.steampowered.com/app/219990/Grim_Dawn/)                  | `1.2.x` (**Steam**) |
-| [Grimarillion](https://forums.crateentertainment.com/t/rel-grimarillion-v92/46587) | `0.95a`             |
+| [Grimarillion](https://forums.crateentertainment.com/t/rel-grimarillion-v92/46587) | `0.95b`             |
 
 Optional installs:
 
-| Install                                  | Version                                                                            |
-| ---------------------------------------- | ---------------------------------------------------------------------------------- |
-| Grimarillion Item Color Coding           | [`0.95a`](https://forums.crateentertainment.com/t/rel-grimarillion-v95/46587/1433) |
+| Install                        | Version                                                                             |
+| ------------------------------ | ----------------------------------------------------------------------------------- |
+| Grimarillion Item Color Coding | [`0.95b`](https://forums.crateentertainment.com/t/rel-grimarillion-v95b/46587/4152) |
 
 Required Grim Dawn AssetManager options:
 
@@ -42,7 +42,7 @@ All credit for the original mods goes to the mod authors:
 
 | Mod                                                                                                                | Author                                                                 |
 | ------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------- |
-| [Grimarillion](https://forums.crateentertainment.com/t/rel-grimarillion-v92/46587)                                 | [ASYLUM101](https://forums.crateentertainment.com/u/asylum101/summary) |
+| [Grimarillion](https://forums.crateentertainment.com/t/rel-grimarillion-v95b/46587)                                | [ASYLUM101](https://forums.crateentertainment.com/u/asylum101/summary) |
 | [Lightweight](https://forums.crateentertainment.com/t/lightweight-mod-for-speeding-up-the-leveling-process/108690) | [Van_Houck](https://forums.crateentertainment.com/u/van_houck/summary) |
 
 ---
